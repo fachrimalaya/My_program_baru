@@ -255,6 +255,25 @@ display:block;
 transform:translateY(-8px) scale(1.05);
 }
 
+.logout-btn{
+position:fixed;
+top:14px;
+left:14px;
+padding:8px 14px;
+border:none;
+border-radius:10px;
+background:white;
+color:#1f2937;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+z-index:5;
+}
+
+.logout-btn:hover{
+transform:scale(1.05);
+}
+
 /* warna tombol */
 .profil{ background:#f77f00; }
 .belajar{ background:#00b4d8; }
@@ -292,6 +311,8 @@ padding:20px;
 </head>
 
 <body>
+
+<button class="logout-btn" onclick="logout()">⬅ Logout</button>
 
 <!-- BACKGROUND ELEMENT -->
 <div class="cloud cloud1"></div>
@@ -369,14 +390,44 @@ mouth.classList.remove("talking");
 },35);
 }
 
-window.onload=function(){
+</script>
 
-typeText(
-"Halo teman! 🌎 Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!"
-);
+<script>
+  function logout() {
+    localStorage.removeItem('app_user');
+    window.location.href = 'login.html';
+  }
 
-};
+  function showGreeting(username) {
+    const text = `Halo, ${username}! 🌎 Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!`;
+    if (typeof window.typeText === 'function') {
+      window.typeText(text);
+      return;
+    }
+    const bubble = document.getElementById('bubble');
+    if (bubble) bubble.textContent = text;
+  }
 
+  function initPage() {
+    const raw = localStorage.getItem('app_user');
+    if (!raw) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    try {
+      const user = JSON.parse(raw);
+      const username = user?.name && user.name.trim()
+        ? user.name.trim()
+        : (user?.email ? user.email.split('@')[0] : 'teman');
+      showGreeting(username);
+    } catch (err) {
+      localStorage.removeItem('app_user');
+      window.location.href = 'login.html';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initPage);
 </script>
 
 </body>

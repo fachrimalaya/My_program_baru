@@ -379,28 +379,28 @@ to{ transform:rotate(-10deg); }
 <section class="container">
 
     <div class="card">
-        <img src="gn_meletus.jpg">
+        <img src="assets/jpg/gn_meletus.jpg">
         <h3>Gunung Meletus</h3>
         <p></p>
         <a href="Gunung_Meletus.html" class="btn">Belajar</a>
     </div>
 
     <div class="card">
-        <img src="Tsunami.jpg">
+        <img src="assets/jpg/Tsunami.jpg">
         <h3>Tsunami</h3>
         <p></p>
         <a href="Tsunami.html" class="btn">Belajar</a>
     </div>
 
     <div class="card">
-        <img src="banjir.jpg">
+        <img src="assets/jpg/Banjir.jpg">
         <h3>Banjir</h3>
         <p></p>
         <a href="Banjir.html" class="btn">Belajar</a>
     </div>
 
     <div class="card">
-        <img src="gempa.jpg">
+        <img src="assets/jpg/Gempa.jpg">
         <h3>Gempa Bumi</h3>
         <p></p>
         <a href="gempa_Bumi.html" class="btn">Belajar</a>
@@ -441,6 +441,15 @@ btn.addEventListener("click", () => {
         btn.textContent = "🔇 Musik OFF";
     }
 });
+</script>
+
+<script>
+    (function checkLogin() {
+        const raw = localStorage.getItem('app_user');
+        if (!raw) {
+            window.location.href = 'login.html';
+        }
+    })();
 </script>
 
 </body>

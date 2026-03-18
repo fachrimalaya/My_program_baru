@@ -256,17 +256,15 @@ width:45%;
 </div>
 
 <!-- ================= VIDEO ================= -->
-<div class="video-section">
-<h2>🎥 Studi Kasus: Letusan Gunung Semeru</h2>
-
-<p>Dokumentasi letusan Gunung Semeru di Indonesia.</p>
-
 <div class="video-container">
-<video controls>
-<source src="semeru 2025.mp4" type="video/mp4">
-</video>
-</div>
-
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/AHs_MSl-ssY?si=XJy-Z7CsSxa13BDR" 
+title="YouTube video player" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+referrerpolicy="strict-origin-when-cross-origin" 
+allowfullscreen>
+</iframe>
 </div>
 
 <a href="belajar.html" class="btn">⬅ Kembali</a>
@@ -354,6 +352,15 @@ loadMateri();
 /* ================= AUTO LOAD ================= */
 loadMateri();
 
+</script>
+
+<script>
+	(function checkLogin() {
+		const raw = localStorage.getItem('app_user');
+		if (!raw) {
+			window.location.href = 'login.html';
+		}
+	})();
 </script>
 
 </body>

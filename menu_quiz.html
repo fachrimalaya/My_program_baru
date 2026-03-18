@@ -195,9 +195,23 @@ padding:8px 14px;
             <div class="quiz-title">Gempa Bumi</div>
         </a>
 
+        <a href="leaderboard.html" class="quiz-card">
+            <div class="icon">🏆</div>
+            <div class="quiz-title">Leaderboard</div>
+        </a>
+
     </div>
 
 </div>
+
+<script>
+    (function checkLogin() {
+        const raw = localStorage.getItem('app_user');
+        if (!raw) {
+            window.location.href = 'login.html';
+        }
+    })();
+</script>
 
 </body>
 </html>

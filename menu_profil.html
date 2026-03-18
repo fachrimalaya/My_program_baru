@@ -205,5 +205,14 @@ font-size:16px;
 
 </div>
 
+<script>
+	(function checkLogin() {
+		const raw = localStorage.getItem('app_user');
+		if (!raw) {
+			window.location.href = 'login.html';
+		}
+	})();
+</script>
+
 </body>
 </html>

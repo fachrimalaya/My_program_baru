@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard Quiz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Fredoka', sans-serif;
+background:linear-gradient(180deg,#d6f4ff,#f7fcff);
+color:#0f172a;
+}
+
+.back-btn{
+position:fixed;
+top:16px;
+left:16px;
+background:white;
+padding:9px 15px;
+border-radius:12px;
+text-decoration:none;
+color:#0f172a;
+font-weight:600;
+box-shadow:0 4px 12px rgba(0,0,0,.18);
+z-index:3;
+}
+
+.container{
+max-width:980px;
+margin:0 auto;
+padding:80px 18px 32px;
+}
+
+h1{
+text-align:center;
+margin:0;
+color:#0c4a6e;
+}
+
+.subtitle{
+text-align:center;
+margin:8px 0 24px;
+color:#0369a1;
+}
+
+.card{
+background:white;
+border-radius:18px;
+box-shadow:0 10px 24px rgba(0,0,0,.12);
+padding:18px;
+overflow:auto;
+}
+
+.filter-bar{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+margin:0 0 16px;
+}
+
+.filter-btn{
+border:none;
+border-radius:999px;
+padding:8px 14px;
+font-weight:600;
+cursor:pointer;
+background:#e0f2fe;
+color:#075985;
+}
+
+.filter-btn.active{
+background:#0284c7;
+color:white;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+min-width:650px;
+}
+
+th,td{
+padding:10px 8px;
+text-align:left;
+border-bottom:1px solid #e2e8f0;
+font-size:14px;
+}
+
+th{
+color:#0f766e;
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:.4px;
+}
+
+.rank{
+font-weight:700;
+color:#0f172a;
+}
+
+.empty{
+padding:20px;
+text-align:center;
+color:#475569;
+}
+
+@media (max-width:768px){
+.container{padding-top:72px;}
+h1{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<a href="menu_quiz.html" class="back-btn">⬅ Kembali</a>
+
+<div class="container">
+  <h1>🏆 Leaderboard Quiz</h1>
+  <div class="subtitle">Overall tampil jika user sudah menyelesaikan 4 quiz. Per quiz tampil kapan pun ada skor.</div>
+
+  <div class="card">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-mode="overall">Overall</button>
+      <button class="filter-btn" data-mode="banjir">Banjir</button>
+      <button class="filter-btn" data-mode="gempa_bumi">Gempa Bumi</button>
+      <button class="filter-btn" data-mode="gunung_meletus">Gunung Meletus</button>
+      <button class="filter-btn" data-mode="tsunami">Tsunami</button>
+    </div>
+
+    <div id="tableWrap"></div>
+  </div>
+</div>
+
+<script>
+(function checkLogin() {
+  const raw = localStorage.getItem('app_user');
+  if (!raw) {
+    window.location.href = 'login.html';
+  }
+})();
+</script>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const SUPABASE_URL = 'https://oojidxnmreehgkyawaaa.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vamlkeG5tcmVlaGdreWF3YWFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MzQxMDEsImV4cCI6MjA4OTQxMDEwMX0.9VMLifRBhO52A6FopWg1f1-yEnUDpFwSPlvPnj1XtKM';
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const tableWrap = document.getElementById('tableWrap');
+const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+
+function renderEmpty(text) {
+  tableWrap.innerHTML = `<div class="empty">${text}</div>`;
+}
+
+function renderOverall(rows) {
+  if (!rows || rows.length === 0) {
+    renderEmpty('Belum ada skor yang tersimpan.');
+    return;
+  }
+
+  const body = rows.map((r) => `
+    <tr>
+      <td class="rank">#${r.rank_no}</td>
+      <td>${r.name}</td>
+      <td>${r.email}</td>
+      <td>${r.total_best_score}/${r.total_max_score}</td>
+      <td>${r.quiz_played_count}</td>
+    </tr>
+  `).join('');
+
+  tableWrap.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Total Skor</th>
+          <th>Quiz Dimainkan</th>
+        </tr>
+      </thead>
+      <tbody>${body}</tbody>
+    </table>
+  `;
+}
+
+function renderByQuiz(rows) {
+  if (!rows || rows.length === 0) {
+    renderEmpty('Belum ada skor pada quiz ini.');
+    return;
+  }
+
+  const body = rows.map((r) => `
+    <tr>
+      <td class="rank">#${r.rank_no}</td>
+      <td>${r.name}</td>
+      <td>${r.email}</td>
+      <td>${r.best_score}/${r.total_questions}</td>
+      <td>${r.attempt_count}</td>
+    </tr>
+  `).join('');
+
+  tableWrap.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Best Score</th>
+          <th>Attempts</th>
+        </tr>
+      </thead>
+      <tbody>${body}</tbody>
+    </table>
+  `;
+}
+
+async function loadLeaderboard(mode) {
+  if (mode === 'overall') {
+    const { data, error } = await supabase.rpc('get_leaderboard_overall', { p_limit: 30 });
+    if (error) {
+      renderEmpty(`Gagal load leaderboard: ${error.message}`);
+      return;
+    }
+    renderOverall(data || []);
+    return;
+  }
+
+  const { data, error } = await supabase.rpc('get_leaderboard_by_quiz', {
+    p_quiz_code: mode,
+    p_limit: 30,
+  });
+
+  if (error) {
+    renderEmpty(`Gagal load leaderboard: ${error.message}`);
+    return;
+  }
+
+  renderByQuiz(data || []);
+}
+
+filterButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    loadLeaderboard(btn.dataset.mode);
+  });
+});
+
+loadLeaderboard('overall');
+</script>
+
+</body>
+</html>

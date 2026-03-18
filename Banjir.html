@@ -265,9 +265,15 @@ max-width:250px;
 <p>Dokumentasi kejadian banjir besar di Jakarta.</p>
 
 <div class="video-container">
-<video controls>
-<source src="banjir sumatra 2025.mp4" type="video/mp4">
-</video>
+<iframe 
+    width="560" height="315" 
+    src="https://www.youtube.com/embed/toKGKxD9aWg?si=670T3KTrvGBpUaC9" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen>
+</iframe>
 </div>
 
 </div>
@@ -345,6 +351,15 @@ loadMateri();
 
 loadMateri();
 
+</script>
+
+<script>
+	(function checkLogin() {
+		const raw = localStorage.getItem('app_user');
+		if (!raw) {
+			window.location.href = 'login.html';
+		}
+	})();
 </script>
 
 </body>

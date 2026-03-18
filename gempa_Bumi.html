@@ -251,9 +251,15 @@ max-width:250px;
 <p>Dokumentasi gempa bumi di Indonesia sebagai pembelajaran mitigasi.</p>
 
 <div class="video-container">
-<video controls>
-<source src="gempabumi cianjur 2026.mp4" type="video/mp4">
-</video>
+<iframe 
+    width="560" height="315" 
+    src="https://www.youtube.com/embed/BrncliszsSQ?si=lBjlCf9X8cKNWh11" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen></iframe>
+</iframe>
 </div>
 
 </div>
@@ -343,6 +349,15 @@ loadMateri();
 /* ================= AUTO LOAD ================= */
 loadMateri();
 
+</script>
+
+<script>
+	(function checkLogin() {
+		const raw = localStorage.getItem('app_user');
+		if (!raw) {
+			window.location.href = 'login.html';
+		}
+	})();
 </script>
 
 </body>
