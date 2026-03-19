@@ -14,41 +14,14 @@ font-family:Fredoka, sans-serif;
 text-align:center;
 margin:0;
 overflow-x:hidden;
-background:linear-gradient(#5dade2,#2e86c1);
+background:linear-gradient(#f7cac9,#92a8d1);
 padding:10px;
-}
-
-/* ================= HUJAN ================= */
-
-.rain{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:0;
-}
-
-.drop{
-position:absolute;
-width:2px;
-height:18px;
-background:linear-gradient(transparent,rgba(255,255,255,0.8));
-animation:fall linear infinite;
-opacity:.8;
-}
-
-@keyframes fall{
-0%{transform:translateY(-100px);opacity:1;}
-100%{transform:translateY(100vh);opacity:0;}
 }
 
 /* ================= HEADER ================= */
 
 header{
-background:#43aa8b;
+background:#e76f51;
 color:white;
 padding:15px;
 font-size:22px;
@@ -88,11 +61,24 @@ from{transform:translateY(0)}
 to{transform:translateY(-12px)}
 }
 
+/* ================= SHAKE GEMPA ================= */
+
+@keyframes shake{
+0%{transform:translate(0,0);}
+25%{transform:translate(3px,-3px);}
+50%{transform:translate(-3px,3px);}
+75%{transform:translate(3px,3px);}
+100%{transform:translate(0,0);}
+}
+
+.shake{
+animation:shake 0.3s;
+}
+
 /* ================= CHAT ================= */
 
 .bubble{
 background:rgba(255,255,255,.9);
-backdrop-filter:blur(6px);
 padding:12px 18px;
 border-radius:20px;
 display:inline-block;
@@ -112,12 +98,10 @@ margin:8px;
 border:none;
 border-radius:10px;
 cursor:pointer;
-background:#43aa8b;
+background:#e76f51;
 color:white;
 font-weight:bold;
 transition:.2s;
-position:relative;
-z-index:2;
 }
 
 button:hover{
@@ -127,43 +111,24 @@ transform:scale(1.05);
 .star{
 font-size:35px;
 color:gold;
-position:relative;
-z-index:2;
 }
 
 h2,h3{
-position:relative;
-z-index:2;
 color:white;
 }
 
-/* ================= RESPONSIVE HP ================= */
+/* ================= RESPONSIVE ================= */
 
 @media (max-width:600px){
 
-header{
-font-size:20px;
-}
-
-.earth{
-font-size:70px;
-}
-
-#question{
-font-size:20px;
-padding:0 10px;
-}
+header{font-size:20px;}
+.earth{font-size:70px;}
 
 button{
 width:90%;
 max-width:280px;
 display:block;
 margin:10px auto;
-}
-
-.back-btn{
-font-size:13px;
-padding:6px 10px;
 }
 
 }
@@ -173,10 +138,7 @@ padding:6px 10px;
 
 <body>
 
-<!-- HUJAN -->
-<div class="rain" id="rain"></div>
-
-<header>🌧️ Game Banjir</header>
+<header>🌋 Game Gempa Bumi</header>
 <a href="menu_quiz.html" class="back-btn">⬅ Kembali</a>
 
 <audio id="bgm" src="assets/mp3/backsound_quiz.mp3" loop></audio>
@@ -196,99 +158,31 @@ padding:6px 10px;
 
 <div id="stars"></div>
 
-<button id="restartBtn" onclick="restart()" style="display:none;">
-🔁 Main Lagi
-</button>
-
-<button id="submitBtn" onclick="submitResult()" style="display:none;">
-📤 Submit Skor
-</button>
-
-<button id="leaderboardBtn" onclick="goLeaderboard()" style="display:none;">
-🏆 Lihat Leaderboard
-</button>
+<button id="restartBtn" onclick="restart()" style="display:none;">🔁 Main Lagi</button>
+<button id="submitBtn" onclick="submitResult()" style="display:none;">📤 Submit Skor</button>
+<button id="leaderboardBtn" onclick="goLeaderboard()" style="display:none;">🏆 Leaderboard</button>
 
 <script>
 
 /* ===== AUTO PLAY MUSIC ===== */
-
 document.body.addEventListener("click",()=>{
 document.getElementById("bgm").play();
 },{once:true});
 
-/* ===== HUJAN ===== */
-
-const rain=document.getElementById("rain");
-
-for(let i=0;i<160;i++){
-let drop=document.createElement("div");
-drop.className="drop";
-
-drop.style.left=Math.random()*100+"%";
-drop.style.animationDuration=(0.4+Math.random()*0.6)+"s";
-drop.style.animationDelay=Math.random()*2+"s";
-drop.style.height=(12+Math.random()*15)+"px";
-
-rain.appendChild(drop);
-}
-
-/* ===== DATA QUIZ ===== */
-
+/* ===== DATA QUIZ GEMPA ===== */
 const quiz=[
-{q:"Banjir terjadi karena?",a:["Hujan deras","Salju","Kabut"],c:0},
-{q:"Air banjir itu?",a:["Berbahaya","Aman","Bersih"],c:0},
-{q:"Saat banjir kita?",a:["Ke tempat tinggi","Main air","Berenang"],c:0},
-{q:"Listrik saat banjir?",a:["Dimatikan","Dinyalakan","Tidak apa"],c:0},
-{q:"Boleh bermain banjir?",a:["Tidak boleh","Boleh","Harus"],c:0}
+{q:"Gempa bumi adalah?",a:["Getaran bumi","Hujan deras","Angin kencang"],c:0},
+{q:"Saat gempa kita harus?",a:["Berlari panik","Berlindung di bawah meja","Tidur"],c:1},
+{q:"Tempat aman saat gempa?",a:["Dekat kaca","Di bawah meja kuat","Di tangga"],c:1},
+{q:"Setelah gempa kita harus?",a:["Masuk rumah","Ke tempat terbuka","Diam saja"],c:1},
+{q:"Saat gempa jangan?",a:["Tenang","Lari sembarangan","Panik berlebihan"],c:2}
 ];
 
 let i=0;
 let score=0;
 let leaderboardSubmitted=false;
 
-async function submitScoreToLeaderboard() {
-const raw = localStorage.getItem("app_user");
-if(!raw) return { ok:false, error:"Session user tidak ditemukan. Silakan login ulang." };
-if(typeof window.saveQuizScore !== "function") return { ok:false, error:"Client Supabase belum siap." };
-
-try{
-const user = JSON.parse(raw);
-if(!user || !user.id) return { ok:false, error:"Data user tidak valid. Silakan login ulang." };
-return await window.saveQuizScore(user.id, "gempa_bumi", score, quiz.length);
-}catch(err){
-console.warn("Gagal parse session user:", err);
-return { ok:false, error:"Session rusak. Silakan login ulang." };
-}
-}
-
-async function submitResult(){
-if(leaderboardSubmitted) return;
-
-const submitBtn=document.getElementById("submitBtn");
-submitBtn.disabled=true;
-submitBtn.textContent="⏳ Mengirim...";
-
-const result = await submitScoreToLeaderboard();
-if(!result.ok){
-submitBtn.disabled=false;
-submitBtn.textContent="📤 Submit Skor";
-alert(`Gagal submit skor: ${result.error}`);
-return;
-}
-
-leaderboardSubmitted=true;
-submitBtn.textContent="✅ Skor Terkirim";
-submitBtn.disabled=true;
-
-document.getElementById("leaderboardBtn").style.display="inline-block";
-}
-
-function goLeaderboard(){
-window.location.href="leaderboard.html";
-}
-
-/* ===== TEXT KETIK ===== */
-
+/* ===== TYPE TEXT ===== */
 function typeText(text){
 let el=document.getElementById("bubble");
 el.innerHTML="";
@@ -302,11 +196,10 @@ if(n>=text.length) clearInterval(typing);
 }
 
 /* ===== LOAD ===== */
-
 function load(){
 
 if(i===0){
-typeText("Halo! Aku Bumi 🌎 Yuk belajar tentang Banjir!");
+typeText("Halo! Aku Bumi 🌎 Yuk belajar cara aman saat gempa!");
 }
 
 if(i>=quiz.length){
@@ -320,15 +213,16 @@ question.innerHTML=quiz[i].q;
 answers.innerHTML="";
 
 quiz[i].a.forEach((p,x)=>{
-answers.innerHTML+=
-`<button onclick="check(${x})">${p}</button>`;
+answers.innerHTML+=`<button onclick="check(${x})">${p}</button>`;
 });
 
 }
 
 /* ===== CEK ===== */
-
 function check(x){
+
+document.body.classList.add("shake");
+setTimeout(()=>document.body.classList.remove("shake"),300);
 
 let earth=document.getElementById("earth");
 
@@ -346,17 +240,13 @@ setTimeout(load,600);
 }
 
 /* ===== FINISH ===== */
-
 function finish(){
 
 question.innerHTML="Skor Kamu "+score+"/"+quiz.length;
-
 answers.innerHTML="";
 
 let star=3;
-
 if(score<5) star=2;
-
 if(score<=2) star=1;
 
 stars.innerHTML="⭐".repeat(star);
@@ -368,16 +258,15 @@ let earth=document.getElementById("earth");
 
 if(score===quiz.length){
 earth.innerHTML="🌎😁";
-typeText("Hebat! Kamu tahu cara aman saat banjir!");
+typeText("Hebat! Kamu sudah paham cara aman saat gempa!");
 }else{
 earth.innerHTML="🌎🙂";
-typeText("Bagus! Yuk belajar lagi agar lebih siap!");
+typeText("Bagus! Yuk belajar lagi agar lebih siap menghadapi gempa!");
 }
 
 }
 
 /* ===== RESTART ===== */
-
 function restart(){
 
 i=0;
@@ -399,41 +288,49 @@ load();
 
 }
 
-load();
+/* ===== LEADERBOARD ===== */
 
-</script>
+async function submitScoreToLeaderboard() {
+const raw = localStorage.getItem("app_user");
+if(!raw) return { ok:false, error:"Session user tidak ditemukan." };
 
-<script type="module">
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-
-const SUPABASE_URL = 'https://oojidxnmreehgkyawaaa.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vamlkeG5tcmVlaGdreWF3YWFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM4MzQxMDEsImV4cCI6MjA4OTQxMDEwMX0.9VMLifRBhO52A6FopWg1f1-yEnUDpFwSPlvPnj1XtKM';
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-window.saveQuizScore = async function(userId, quizCode, scoreValue, totalValue) {
-const { error } = await supabase.rpc('submit_quiz_score', {
-	p_user_id: userId,
-	p_quiz_code: quizCode,
-	p_score: scoreValue,
-	p_total: totalValue,
-});
-
-if (error) {
-	console.warn('Gagal simpan skor:', error.message);
-	return { ok:false, error:error.message };
+try{
+const user = JSON.parse(raw);
+return await window.saveQuizScore(user.id, "gempa_bumi", score, quiz.length);
+}catch(err){
+return { ok:false, error:"Session rusak." };
+}
 }
 
-return { ok:true };
-};
-</script>
+async function submitResult(){
 
-<script>
-	(function checkLogin() {
-		const raw = localStorage.getItem('app_user');
-		if (!raw) {
-			window.location.href = 'login.html';
-		}
-	})();
+if(leaderboardSubmitted) return;
+
+const btn=document.getElementById("submitBtn");
+btn.disabled=true;
+btn.textContent="⏳ Mengirim...";
+
+const result = await submitScoreToLeaderboard();
+
+if(!result.ok){
+btn.disabled=false;
+btn.textContent="📤 Submit Skor";
+alert("Gagal: "+result.error);
+return;
+}
+
+leaderboardSubmitted=true;
+btn.textContent="✅ Terkirim";
+
+document.getElementById("leaderboardBtn").style.display="inline-block";
+}
+
+function goLeaderboard(){
+window.location.href="leaderboard.html";
+}
+
+load();
+
 </script>
 
 </body>
