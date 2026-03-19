@@ -1,29 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
+  <title>Daftar - Edukasi Bencana Alam</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial; background: #f5f5f5; }
-    .signup-box { max-width: 350px; margin: 80px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
-    input { width: 100%; margin-bottom: 15px; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
-    button { width: 100%; padding: 10px; border-radius: 4px; background: #43aa8b; color: #fff; border: none; }
-    .error { color: red; margin-bottom: 10px; }
+
+/* ================= BODY ================= */
+body {
+  font-family: Fredoka, sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  background: linear-gradient(-45deg, #90e0ef, #caf0f8, #ade8f4, #f1fbff);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= CLOUD ================= */
+.cloud {
+  position: fixed;
+  background: white;
+  border-radius: 50px;
+  opacity: 0.6;
+  filter: blur(2px);
+  z-index: 0;
+}
+
+.cloud::before,
+.cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+}
+
+.cloud1 {
+  width: 120px;
+  height: 40px;
+  top: 80px;
+  left: -150px;
+  animation: cloudMove 40s linear infinite;
+}
+
+.cloud1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 20px;
+}
+
+.cloud1::after {
+  width: 70px;
+  height: 70px;
+  top: -35px;
+  right: 15px;
+}
+
+.cloud2 {
+  width: 160px;
+  height: 50px;
+  top: 200px;
+  left: -200px;
+  animation: cloudMove 55s linear infinite;
+}
+
+@keyframes cloudMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(130vw); }
+}
+
+/* ================= PARTICLE ================= */
+.particle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: floatParticle 8s linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-100vh) scale(0); }
+}
+
+/* ================= SIGNUP CONTAINER ================= */
+.signup-container {
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  width: 90%;
+}
+
+.signup-box {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MASCOT ================= */
+.mascot-wrapper {
+  margin-bottom: 30px;
+}
+
+.earth-mascot {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  top: 38px;
+  text-align: center;
+}
+
+.eye {
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 8px;
+  animation: blink 4s infinite;
+}
+
+@keyframes blink {
+  0%, 95%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
+.mouth {
+  width: 30px;
+  height: 14px;
+  border-bottom: 3px solid white;
+  border-radius: 0 0 25px 25px;
+  margin: 12px auto;
+}
+
+/* ================= TITLE ================= */
+h1 {
+  color: #0c4a6e;
+  font-size: 28px;
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #0369a1;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+/* ================= FORM ================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #caf0f8;
+  border-radius: 12px;
+  font-family: Fredoka, sans-serif;
+  font-size: 14px;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+button {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-family: Fredoka, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ================= ERROR MESSAGE ================= */
+#error {
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  display: none;
+}
+
+#error.show {
+  display: block;
+}
+
+/* ================= LINKS ================= */
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #475569;
+}
+
+.login-link a {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.login-link a:hover {
+  color: #0077b6;
+  text-decoration: underline;
+}
+
   </style>
+
 </head>
 <body>
-  <div class="signup-box">
-    <h2>Sign Up</h2>
-    <div id="error" class="error"></div>
-    <form id="signupForm">
-      <input type="text" id="name" placeholder="Nama" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit" id="signupBtn">Sign Up</button>
-    </form>
-    <div style="margin-top:10px;text-align:center;">
-      <a href="login.html">Sudah punya akun? Login</a>
+
+  <!-- CLOUD DECORATIONS -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+
+  <!-- PARTICLES -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 8 + 's';
+      particle.style.animationDuration = (Math.random() * 8 + 8) + 's';
+      document.body.appendChild(particle);
+    }
+  </script>
+
+  <!-- SIGNUP CONTAINER -->
+  <div class="signup-container">
+    <div class="signup-box">
+
+      <!-- MASCOT -->
+      <div class="mascot-wrapper">
+        <div class="earth-mascot">
+          <div class="face">
+            <div class="eye"></div>
+            <div class="eye"></div>
+            <div class="mouth"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TITLE -->
+      <h1>Daftar Sekarang</h1>
+      <p class="subtitle">Bergabunglah dengan Edukasi Bencana Alam</p>
+
+      <!-- ERROR MESSAGE -->
+      <div id="error"></div>
+
+      <!-- FORM -->
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="👤 Nama Lengkap" required>
+        <input type="email" id="email" placeholder="📧 Email" required>
+        <input type="password" id="password" placeholder="🔒 Password (min. 6 karakter)" required>
+        <button type="submit" id="signupBtn">Daftar</button>
+      </form>
+
+      <!-- LOGIN LINK -->
+      <div class="login-link">
+        Sudah punya akun? <a href="login.html">Masuk di sini</a>
+      </div>
+
     </div>
   </div>
   <script type="module">
@@ -37,39 +352,60 @@
     const errorEl = document.getElementById('error');
     const btn = document.getElementById('signupBtn');
 
+    function showError(message) {
+      errorEl.textContent = message;
+      errorEl.classList.add('show');
+    }
+
+    function clearError() {
+      errorEl.textContent = '';
+      errorEl.classList.remove('show');
+    }
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      errorEl.textContent = '';
+      clearError();
 
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
       const name = document.getElementById('name').value.trim();
 
       if (!email || !password || !name) {
-        errorEl.textContent = 'Nama, email, dan password wajib diisi.';
+        showError('Nama, email, dan password wajib diisi.');
+        return;
+      }
+
+      if (password.length < 6) {
+        showError('Password minimal 6 karakter.');
         return;
       }
 
       btn.disabled = true;
       btn.textContent = 'Memproses...';
 
-      const { data, error } = await supabase.rpc('register_user', {
-        p_name: name,
-        p_email: email,
-        p_password: password,
-      });
+      try {
+        const { data, error } = await supabase.rpc('register_user', {
+          p_name: name,
+          p_email: email,
+          p_password: password,
+        });
 
-      if (error) {
-        errorEl.textContent = error.message;
+        if (error) {
+          showError(error.message || 'Terjadi kesalahan. Coba lagi.');
+          btn.disabled = false;
+          btn.textContent = 'Daftar';
+          return;
+        }
+
+        const user = Array.isArray(data) ? data[0] : data;
+        localStorage.setItem('app_user', JSON.stringify(user || { name, email }));
+
+        window.location.href = 'index.html';
+      } catch (err) {
+        showError('Koneksi gagal. Periksa internet Anda.');
         btn.disabled = false;
-        btn.textContent = 'Sign Up';
-        return;
+        btn.textContent = 'Daftar';
       }
-
-      const user = Array.isArray(data) ? data[0] : data;
-      localStorage.setItem('app_user', JSON.stringify(user || { name, email }));
-
-      window.location.href = 'index.html';
     });
   </script>
 </body>
