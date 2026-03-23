@@ -49,101 +49,100 @@ display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-margin-top:30px;
+margin-top:40px;
 padding:0 15px;
-}
-
-/* BADAN BUMI */
-
-.earth{
-width:140px;
-height:140px;
-background:radial-gradient(circle at 30% 30%, #4facfe, #0077b6);
+width:160px;
+height:160px;
+margin-left:auto;
+margin-right:auto;
 border-radius:50%;
+background:radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
 position:relative;
-animation:bounce 2s ease-in-out infinite;
+box-shadow:0 12px 25px rgba(0,0,0,.25);
+animation:float 3s ease-in-out infinite;
+margin-bottom:0;
 }
 
 /* WAJAH */
 
 .face{
 position:absolute;
-width:100%;
-top:45px;
-text-align:center;
+top:50px;
+left:0;
+right:0;
 }
 
 .eye{
-width:10px;
-height:10px;
-background:#000;
+width:18px;
+height:18px;
+background:white;
 border-radius:50%;
-display:inline-block;
-margin:0 10px;
-animation:blink 4s infinite;
+position:absolute;
+animation:blink 5s infinite;
 }
 
-.smile{
-width:30px;
-height:15px;
-border-bottom:4px solid black;
-border-radius:0 0 20px 20px;
-margin:5px auto;
+.eye.left{ left:45px;}
+.eye.right{ right:45px;}
+
+@keyframes blink{
+0%,92%,100%{transform:scaleY(1);}
+95%{transform:scaleY(0.1);}
+}
+
+.mouth{
+width:45px;
+height:22px;
+border-bottom:4px solid white;
+border-radius:0 0 40px 40px;
+margin:25px auto;
+transition:.2s;
+}
+
+.talking{
+height:12px;
+background:white;
+border:none;
+border-radius:10px;
 }
 
 /* TANGAN */
 
-.arm{
-width:18px;
+.hand{
+width:24px;
 height:60px;
-background:#4facfe;
+background:#4cc9f0;
 position:absolute;
-top:50px;
+top:60px;
 border-radius:20px;
 }
 
-.left-arm{
-left:-20px;
-transform-origin:top;
+.left-hand{
+left:-22px;
 animation:wave 2s infinite;
 }
 
-.right-arm{
-right:-20px;
+.right-hand{
+right:-22px;
 }
 
-/* KAKI */
-
-.leg{
-width:18px;
-height:45px;
-background:#333;
-position:absolute;
-bottom:-35px;
-border-radius:20px;
+@keyframes wave{
+0%{transform:rotate(0deg);}
+50%{transform:rotate(-30deg);}
+100%{transform:rotate(0deg);}
 }
 
-.left-leg{
-left:35px;
-animation:walk 1s infinite alternate;
-}
+/* BUBBLE */
 
-.right-leg{
-right:35px;
-animation:walk 1s infinite alternate-reverse;
-}
-
-/* BALON KATA */
-
-.speech{
-margin-top:15px;
+.bubble{
 background:white;
-padding:10px 18px;
-border-radius:20px;
-box-shadow:0 5px 10px rgba(0,0,0,0.15);
-font-size:14px;
-animation:fadeTalk 3s infinite;
-max-width:90%;
+padding:14px 22px;
+border-radius:25px;
+display:block;
+width:fit-content;
+margin:20px auto 30px;
+box-shadow:0 5px 12px rgba(0,0,0,.2);
+min-height:40px;
+font-size:clamp(14px,3vw,18px);
 text-align:center;
 }
 
@@ -306,30 +305,9 @@ from{opacity:0; transform:translateY(40px);}
 to{opacity:1; transform:translateY(0);}
 }
 
-@keyframes bounce{
-0%,100%{ transform:translateY(0); }
-50%{ transform:translateY(-10px); }
-}
-
-@keyframes wave{
-0%{ transform:rotate(0deg); }
-50%{ transform:rotate(-35deg); }
-100%{ transform:rotate(0deg); }
-}
-
-@keyframes walk{
-from{ transform:rotate(10deg); }
-to{ transform:rotate(-10deg); }
-}
-
-@keyframes blink{
-0%,95%,100%{ transform:scaleY(1); }
-97%{ transform:scaleY(0.1); }
-}
-
-@keyframes fadeTalk{
-0%,100%{ opacity:1; }
-50%{ opacity:.7; }
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-14px);}
 }
 
 </style>
@@ -344,25 +322,20 @@ to{ transform:rotate(-10deg); }
 
 <!-- ===== BUMI HOST ===== -->
 <div class="earth-host">
-    <div class="earth">
-        <div class="face">
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-            <div class="smile"></div>
-        </div>
 
-        <!-- tangan -->
-        <div class="arm left-arm"></div>
-        <div class="arm right-arm"></div>
+<div class="face">
+<div class="eye left"></div>
+<div class="eye right"></div>
+<div class="mouth" id="mouth"></div>
+</div>
 
-        <!-- kaki -->
-        <div class="leg left-leg"></div>
-        <div class="leg right-leg"></div>
-    </div>
+<div class="hand left-hand"></div>
+<div class="hand right-hand"></div>
 
-    <div class="speech">
-        Halo teman! Yuk belajar bencana alam! 🌎
-    </div>
+</div>
+
+<div class="bubble" id="bubble">
+Halo teman! Yuk belajar bencana alam! 🌎
 </div>
 
 
