@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edukasi Bencana Alam Anak</title>
 
-<!-- FONT ANAK -->
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -22,8 +20,7 @@ background: linear-gradient(180deg,#a0e9ff,#ffffff);
 overflow-x:hidden;
 }
 
-/* ===== HEADER ===== */
-
+/* HEADER */
 header{
 text-align:center;
 padding:40px 20px;
@@ -42,28 +39,21 @@ margin-top:10px;
 font-size:clamp(14px,3vw,18px);
 }
 
-/* ===== EARTH HOST ===== */
-
+/* BUMI */
 .earth-host{
 display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-margin-top:40px;
-padding:0 15px;
+margin:40px auto 0;
 width:160px;
 height:160px;
-margin-left:auto;
-margin-right:auto;
 border-radius:50%;
 background:radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
 position:relative;
 box-shadow:0 12px 25px rgba(0,0,0,.25);
 animation:float 3s ease-in-out infinite;
-margin-bottom:0;
 }
-
-/* WAJAH */
 
 .face{
 position:absolute;
@@ -95,17 +85,7 @@ height:22px;
 border-bottom:4px solid white;
 border-radius:0 0 40px 40px;
 margin:25px auto;
-transition:.2s;
 }
-
-.talking{
-height:12px;
-background:white;
-border:none;
-border-radius:10px;
-}
-
-/* TANGAN */
 
 .hand{
 width:24px;
@@ -132,7 +112,6 @@ right:-22px;
 }
 
 /* BUBBLE */
-
 .bubble{
 background:white;
 padding:14px 22px;
@@ -141,13 +120,12 @@ display:block;
 width:fit-content;
 margin:20px auto 30px;
 box-shadow:0 5px 12px rgba(0,0,0,.2);
-min-height:40px;
-font-size:clamp(14px,3vw,18px);
 text-align:center;
+font-size:16px;
+min-height:40px;
 }
 
-/* ===== CONTENT ===== */
-
+/* CARD */
 .container{
 padding:40px 20px;
 display:flex;
@@ -159,13 +137,11 @@ gap:25px;
 .card{
 background:#fff;
 width:260px;
-max-width:90%;
 border-radius:20px;
 padding:20px;
 text-align:center;
 box-shadow:0 8px 20px rgba(0,0,0,0.1);
 transition:0.4s;
-animation:fadeUp 1s ease;
 }
 
 .card:hover{
@@ -174,17 +150,11 @@ transform:translateY(-10px) scale(1.05);
 
 .card img{
 width:100px;
-max-width:100%;
 margin-bottom:15px;
 }
 
 .card h3{
 color:#ff7b00;
-}
-
-.card p{
-font-size:14px;
-margin:10px 0;
 }
 
 .btn{
@@ -195,26 +165,22 @@ border-radius:20px;
 text-decoration:none;
 color:#fff;
 font-weight:bold;
-transition:.3s;
 }
 
 .btn:hover{
 background:#fb8500;
 }
 
-/* ===== FOOTER ===== */
-
+/* FOOTER */
 footer{
 text-align:center;
 padding:20px;
 background:#4facfe;
 color:white;
 margin-top:40px;
-font-size:14px;
 }
 
-/* ===== MUSIC BUTTON ===== */
-
+/* BUTTON */
 #musicBtn{
 position:fixed;
 bottom:20px;
@@ -224,12 +190,8 @@ border:none;
 border-radius:30px;
 background:#ffb703;
 color:white;
-font-weight:bold;
 cursor:pointer;
-box-shadow:0 5px 10px rgba(0,0,0,0.2);
 }
-
-/* ===== BUTTON KEMBALI DASHBOARD ===== */
 
 .back-btn{
 position:absolute;
@@ -237,174 +199,109 @@ top:20px;
 left:20px;
 background:white;
 color:#0077b6;
-border:none;
 padding:8px 15px;
 border-radius:25px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-box-shadow:0 4px 12px rgba(0,0,0,0.15);
 text-decoration:none;
-font-size:14px;
 }
 
-.back-btn:hover{
-background:#f1f1f1;
-transform:scale(1.05);
-}
-
-/* ===== RESPONSIVE HP ===== */
-
-@media (max-width:768px){
-
-header{
-padding:30px 15px;
-}
-
-.container{
-padding:30px 15px;
-gap:20px;
-}
-
-.card{
-width:100%;
-max-width:320px;
-}
-
-.earth{
-width:110px;
-height:110px;
-}
-
-.eye{
-margin:0 6px;
-}
-
-.speech{
-font-size:13px;
-}
-
-.back-btn{
-top:10px;
-left:10px;
-font-size:12px;
-padding:6px 12px;
-}
-
-}
-
-/* ===== ANIMATION ===== */
-
+/* ANIMATION */
 @keyframes fadeDown{
 from{opacity:0; transform:translateY(-40px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-@keyframes fadeUp{
-from{opacity:0; transform:translateY(40px);}
-to{opacity:1; transform:translateY(0);}
+to{opacity:1;}
 }
 
 @keyframes float{
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-14px);}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ===== BACKSOUND ===== -->
 <audio id="backsound" loop>
     <source src="assets/mp3/audio1.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ===== BUMI HOST ===== -->
 <div class="earth-host">
-
 <div class="face">
 <div class="eye left"></div>
 <div class="eye right"></div>
-<div class="mouth" id="mouth"></div>
+<div class="mouth"></div>
 </div>
-
 <div class="hand left-hand"></div>
 <div class="hand right-hand"></div>
-
 </div>
 
-<div class="bubble" id="bubble">
-Halo teman! Yuk belajar bencana alam! 🌎
-</div>
-
+<!-- BUBBLE TEXT -->
+<div class="bubble" id="bubble"></div>
 
 <header>
-
-<a href="index.html" class="back-btn">
-⬅ Keluar
-</a>
-
+<a href="index.html" class="back-btn">⬅ Keluar</a>
 <h1>🌎 Edukasi Bencana Alam</h1>
 <p>Belajar Aman dari Bencana dengan Cara Seru!</p>
-
 </header>
+
 <section class="container">
 
     <div class="card">
-        <img src="assets/jpg/gn_meletus.jpg">
+        <img src="assets/jpg/gn_meletus.jpg" onerror="this.src='https://via.placeholder.com/100'">
         <h3>Gunung Meletus</h3>
-        <p></p>
         <a href="Gunung_Meletus.html" class="btn">Belajar</a>
     </div>
 
     <div class="card">
-        <img src="assets/jpg/Tsunami.jpg">
+        <img src="assets/jpg/tsunami.jpg" onerror="this.src='https://via.placeholder.com/100'">
         <h3>Tsunami</h3>
-        <p></p>
         <a href="Tsunami.html" class="btn">Belajar</a>
     </div>
 
     <div class="card">
-        <img src="assets/jpg/Banjir.jpg">
+        <img src="assets/jpg/banjir.jpg" onerror="this.src='https://via.placeholder.com/100'">
         <h3>Banjir</h3>
-        <p></p>
         <a href="Banjir.html" class="btn">Belajar</a>
     </div>
 
     <div class="card">
-        <img src="assets/jpg/Gempa.jpg">
+        <img src="assets/jpg/gempa.jpg" onerror="this.src='https://via.placeholder.com/100'">
         <h3>Gempa Bumi</h3>
-        <p></p>
         <a href="gempa_Bumi.html" class="btn">Belajar</a>
     </div>
 
 </section>
 
 <footer>
-    <p>© 2026 Website Edukasi Bencana Alam | Fachri Malaya ✨</p>
+<p>© 2026 Website Edukasi Bencana Alam | Fachri Malaya ✨</p>
 </footer>
 
-<!-- BUTTON MUSIC -->
 <button id="musicBtn">🎵 Musik OFF</button>
 
-<!-- ===== SCRIPT BACKSOUND ===== -->
 <script>
+// ===== TYPING EFFECT =====
+const text = "Halo teman! Yuk belajar bencana alam! 🌎";
+let i = 0;
+const speed = 50;
+const bubble = document.getElementById("bubble");
+
+function typing(){
+    if(i < text.length){
+        bubble.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+    }
+}
+typing();
+</script>
+
+<script>
+// MUSIC
 const audio = document.getElementById("backsound");
 const btn = document.getElementById("musicBtn");
 
-let started = false;
-
-// autoplay setelah klik pertama
 document.addEventListener("click", function () {
-    if(!started){
-        audio.play();
-        btn.textContent = "🔊 Musik ON";
-        started = true;
-    }
+    audio.play();
 }, { once:true });
 
-// tombol ON/OFF
 btn.addEventListener("click", () => {
     if(audio.paused){
         audio.play();
@@ -417,12 +314,12 @@ btn.addEventListener("click", () => {
 </script>
 
 <script>
-    (function checkLogin() {
-        const raw = localStorage.getItem('app_user');
-        if (!raw) {
-            window.location.href = 'login.html';
-        }
-    })();
+(function checkLogin() {
+    const raw = localStorage.getItem('app_user');
+    if (!raw) {
+        window.location.href = 'login.html';
+    }
+})();
 </script>
 
 </body>
