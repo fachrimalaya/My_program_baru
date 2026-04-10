@@ -9,18 +9,130 @@
 
 <style>
 
+:root{
+--sea-2:#0077b6;
+--sea-3:#023e8a;
+}
+
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
-background:linear-gradient(#cdefff,#f4fbff);
 text-align:center;
 overflow-x:hidden;
+background:
+radial-gradient(circle at 12% 15%, rgba(255,255,255,.7) 0 60px, transparent 61px),
+radial-gradient(circle at 86% 18%, rgba(255,255,255,.45) 0 90px, transparent 91px),
+radial-gradient(circle at 70% 82%, rgba(84,196,240,.2) 0 180px, transparent 181px),
+linear-gradient(180deg, #d8f4ff 0%, #b7e8ff 45%, #edfaff 100%);
 }
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-2;
+opacity:.2;
+pointer-events:none;
+background:repeating-linear-gradient(
+120deg,
+rgba(255,255,255,.55) 0 14px,
+rgba(255,255,255,0) 14px 40px
+);
+}
+
+.bg-wave,
+.bg-wave-2{
+position:fixed;
+left:-5%;
+width:110%;
+height:120px;
+z-index:-1;
+opacity:.35;
+pointer-events:none;
+}
+
+.bg-wave{
+bottom:70px;
+background:radial-gradient(circle at 15% 50%, #7ae4ff 0 45px, transparent 46px),
+radial-gradient(circle at 40% 45%, #4ec9f0 0 55px, transparent 56px),
+radial-gradient(circle at 65% 50%, #7ae4ff 0 48px, transparent 49px),
+radial-gradient(circle at 88% 45%, #4ec9f0 0 55px, transparent 56px);
+animation:waveMove 8s linear infinite;
+}
+
+.bg-wave-2{
+bottom:10px;
+opacity:.25;
+background:radial-gradient(circle at 10% 45%, #0096c7 0 52px, transparent 53px),
+radial-gradient(circle at 34% 50%, #00b4d8 0 60px, transparent 61px),
+radial-gradient(circle at 58% 45%, #0096c7 0 50px, transparent 51px),
+radial-gradient(circle at 84% 50%, #00b4d8 0 58px, transparent 59px);
+animation:waveMove 12s linear infinite reverse;
+}
+
+@keyframes waveMove{
+0%{transform:translateX(0);}
+100%{transform:translateX(-120px);}
+}
+
+.bg-glow{
+position:fixed;
+right:-120px;
+top:-90px;
+width:340px;
+height:340px;
+border-radius:50%;
+z-index:-1;
+background:radial-gradient(circle, rgba(255,255,255,.75) 0%, rgba(125,219,255,.55) 38%, rgba(125,219,255,0) 70%);
+animation:glowPulse 5s ease-in-out infinite;
+pointer-events:none;
+}
+
+@keyframes glowPulse{
+0%,100%{transform:scale(1); opacity:.85;}
+50%{transform:scale(1.1); opacity:1;}
+}
+
+.bg-bubbles{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+overflow:hidden;
+}
+
+.bubble-dot{
+position:absolute;
+bottom:-80px;
+border-radius:50%;
+background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(173,236,255,.55));
+border:1px solid rgba(255,255,255,.6);
+box-shadow:inset -4px -6px 10px rgba(0,119,182,.08);
+animation:rise linear infinite;
+}
+
+@keyframes rise{
+0%{transform:translateY(0) translateX(0) scale(.95); opacity:0;}
+8%{opacity:.85;}
+50%{transform:translateY(-50vh) translateX(10px) scale(1);}
+100%{transform:translateY(-120vh) translateX(-12px) scale(1.06); opacity:0;}
+}
+
+.bubble-dot:nth-child(1){left:4%; width:22px; height:22px; animation-duration:9s; animation-delay:0s;}
+.bubble-dot:nth-child(2){left:14%; width:14px; height:14px; animation-duration:7.5s; animation-delay:1.8s;}
+.bubble-dot:nth-child(3){left:22%; width:30px; height:30px; animation-duration:11s; animation-delay:2.2s;}
+.bubble-dot:nth-child(4){left:33%; width:18px; height:18px; animation-duration:8.8s; animation-delay:.6s;}
+.bubble-dot:nth-child(5){left:44%; width:26px; height:26px; animation-duration:10.2s; animation-delay:3s;}
+.bubble-dot:nth-child(6){left:55%; width:16px; height:16px; animation-duration:7.9s; animation-delay:2.7s;}
+.bubble-dot:nth-child(7){left:66%; width:34px; height:34px; animation-duration:12s; animation-delay:1.2s;}
+.bubble-dot:nth-child(8){left:75%; width:20px; height:20px; animation-duration:9.4s; animation-delay:3.6s;}
+.bubble-dot:nth-child(9){left:84%; width:28px; height:28px; animation-duration:10.8s; animation-delay:1.4s;}
+.bubble-dot:nth-child(10){left:92%; width:15px; height:15px; animation-duration:8.1s; animation-delay:2.9s;}
 
 /* ===== HEADER ===== */
 
 header{
-background:#0077b6;
+background:linear-gradient(120deg, var(--sea-2), var(--sea-3));
 color:white;
 padding:20px;
 font-size:clamp(20px,4vw,24px);
@@ -30,18 +142,19 @@ font-weight:bold;
 /* ===== CONTAINER ===== */
 
 .container{
-max-width:900px;
+max-width:920px;
 margin:auto;
-padding:20px;
+padding:26px 16px 36px;
 }
 
 /* ===== CARD ===== */
 
 .card{
-background:white;
-padding:25px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
+background:linear-gradient(180deg, #ffffff 0%, #f7fdff 100%);
+padding:26px;
+border-radius:22px;
+box-shadow:0 10px 30px rgba(0,69,108,.16);
+border:2px solid #d7f1ff;
 }
 
 /* ===== HOST ===== */
@@ -113,13 +226,21 @@ border-radius:20px;
 .bubble{
 background:#fff;
 padding:12px 20px;
-border-radius:20px;
+border-radius:18px;
 display:inline-block;
-margin:15px;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
-min-height:50px;
+margin:12px 0 4px;
+box-shadow:0 8px 16px rgba(0,0,0,.12);
+min-height:58px;
 max-width:90%;
 font-size:clamp(14px,3vw,18px);
+line-height:1.5;
+}
+
+.intro-note{
+margin:0;
+font-size:14px;
+color:#0b5f84;
+opacity:.9;
 }
 
 /* ===== BUTTON ===== */
@@ -142,25 +263,103 @@ transform:scale(1.05);
 /* ===== SECTION ===== */
 
 .section{
-margin:40px 0;
-padding:0 10px;
+margin:26px 0;
+padding:20px 16px;
+background:#fff;
+border-radius:20px;
+box-shadow:0 8px 24px rgba(0,88,128,.12);
+border:2px dashed #b8eaff;
+}
+
+.section h2{
+margin-top:0;
+}
+
+.materi-title{
+font-size:clamp(19px,3.4vw,24px);
+margin:6px 0;
+color:#045c87;
+}
+
+.progress-pill{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 14px;
+border-radius:999px;
+background:#ebf9ff;
+border:2px solid #bae9ff;
+font-size:14px;
+font-weight:600;
+}
+
+.progress-bar{
+height:12px;
+width:min(360px, 90%);
+margin:16px auto 0;
+background:#d6f3ff;
+border-radius:999px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:0;
+background:linear-gradient(90deg, #13b4e8, #0077b6);
+border-radius:999px;
+transition:width .25s ease;
+}
+
+.btn-row{
+margin-top:16px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.safe-list{
+max-width:620px;
+margin:12px auto 0;
+padding:0;
+list-style:none;
+display:grid;
+gap:10px;
+}
+
+.safe-list li{
+background:#e9f8ff;
+border:2px solid #b7e6ff;
+border-radius:14px;
+padding:10px 12px;
+font-size:16px;
 }
 
 /* ===== VIDEO ===== */
 
 .video-section{
-margin-top:40px;
+margin-top:26px;
 padding:20px;
-background:#e6f7ff;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
+background:linear-gradient(180deg, #f1fbff 0%, #dff5ff 100%);
+border-radius:20px;
+box-shadow:0 8px 22px rgba(0,88,128,.14);
+border:2px solid #bcecff;
 }
 
-.video-container video{
+.video-frame{
+position:relative;
+padding-top:56.25%;
+overflow:hidden;
+border-radius:16px;
+box-shadow:0 10px 24px rgba(0,67,100,.22);
+}
+
+.video-frame iframe{
+position:absolute;
+inset:0;
 width:100%;
-max-width:600px;
-border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,.2);
+height:100%;
+border:0;
 }
 
 /* ===== BACK BUTTON ===== */
@@ -168,11 +367,13 @@ box-shadow:0 10px 20px rgba(0,0,0,.2);
 .btn{
 display:inline-block;
 padding:10px 18px;
-background:#0077b6;
+background:linear-gradient(120deg, var(--sea-2), var(--sea-3));
 color:white;
 text-decoration:none;
-border-radius:10px;
-margin:20px;
+border-radius:12px;
+margin:22px auto 0;
+font-weight:600;
+box-shadow:0 8px 15px rgba(2,62,138,.28);
 }
 
 /* ===== RESPONSIVE HP ===== */
@@ -180,11 +381,12 @@ margin:20px;
 @media (max-width:768px){
 
 .container{
-padding:15px;
+padding:18px 12px 30px;
 }
 
 .card{
-padding:20px;
+padding:18px 14px;
+border-radius:18px;
 }
 
 .earth-host{
@@ -196,11 +398,28 @@ height:110px;
 .eye.right{ right:30px; }
 
 .section{
-margin:30px 0;
+margin:22px 0;
+padding:16px 10px;
+border-radius:16px;
 }
 
 button{
 width:45%;
+}
+
+.bg-glow{
+width:240px;
+height:240px;
+right:-90px;
+top:-70px;
+}
+
+.video-section{
+padding:14px;
+}
+
+.safe-list li{
+font-size:15px;
 }
 
 }
@@ -209,6 +428,22 @@ width:45%;
 </head>
 
 <body>
+
+<div class="bg-wave"></div>
+<div class="bg-wave-2"></div>
+<div class="bg-glow"></div>
+<div class="bg-bubbles">
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+<span class="bubble-dot"></span>
+</div>
 
 <header>🌊 Edukasi Tsunami</header>
 
@@ -227,6 +462,7 @@ width:45%;
 </div>
 
 <div class="bubble" id="bubble"></div>
+<p class="intro-note">Yuk belajar tsunami pelan-pelan, satu materi setiap langkah.</p>
 
 </div>
 
@@ -234,12 +470,13 @@ width:45%;
 <div class="section">
 
 <h2>📘 Materi Pembelajaran</h2>
-<h3 id="judulMateri"></h3>
-<p id="progressMateri"></p>
+<h3 class="materi-title" id="judulMateri"></h3>
+<p class="progress-pill" id="progressMateri"></p>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
-<div style="margin-top:15px;">
-<button onclick="prevMateri()">⬅ Sebelumnya</button>
-<button onclick="nextMateri()">Selanjutnya ➡</button>
+<div class="btn-row">
+<button id="prevBtn" onclick="prevMateri()">⬅ Sebelumnya</button>
+<button id="nextBtn" onclick="nextMateri()">Selanjutnya ➡</button>
 </div>
 
 </div>
@@ -247,27 +484,27 @@ width:45%;
 <!-- ================= MITIGASI ================= -->
 <div class="section">
 <h2>🛑 Cara Aman Saat Tsunami</h2>
-<p>
-✅ Segera menuju tempat tinggi<br>
-✅ Jauhi pantai setelah gempa<br>
-✅ Ikuti jalur evakuasi<br>
-✅ Dengarkan informasi resmi
-</p>
+<ul class="safe-list">
+<li>✅ Segera menuju tempat tinggi</li>
+<li>✅ Jauhi pantai setelah gempa</li>
+<li>✅ Ikuti jalur evakuasi</li>
+<li>✅ Dengarkan informasi resmi</li>
+</ul>
 </div>
 
 <!-- ================= VIDEO ================= -->
-<div class="video-container">
+<div class="video-section">
+<h2>🎥 Studi Kasus Tsunami</h2>
+<p>Tonton videonya agar lebih paham tanda bahaya dan langkah penyelamatan.</p>
+<div class="video-frame">
 <iframe 
-    width="560" height="315" 
     src="https://www.youtube.com/embed/Vo_xJI69POc?si=XyLKbx0CR35Fl6UD" 
     title="YouTube video player" 
-    frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     referrerpolicy="strict-origin-when-cross-origin" 
     allowfullscreen>
 </iframe>
 </div>
-
 </div>
 
 <a href="belajar.html" class="btn">⬅ Kembali</a>
@@ -333,6 +570,12 @@ materiData[currentIndex].judul;
 
 document.getElementById("progressMateri").innerHTML =
 "Materi " + (currentIndex+1) + " / " + materiData.length;
+
+const progress = ((currentIndex + 1) / materiData.length) * 100;
+document.getElementById("progressFill").style.width = progress + "%";
+
+document.getElementById("prevBtn").disabled = currentIndex === 0;
+document.getElementById("nextBtn").disabled = currentIndex === materiData.length - 1;
 
 typeText(materiData[currentIndex].isi);
 }
