@@ -14,19 +14,29 @@ body{
 font-family:Fredoka, sans-serif;
 margin:0;
 overflow-x:hidden;
-
-/* gradient bergerak */
-background: linear-gradient(-45deg, #90e0ef, #caf0f8, #ade8f4, #f1fbff);
-background-size: 400% 400%;
-animation: gradientBG 12s ease infinite;
-
 text-align:center;
+
+/* BACKGROUND FOTO + GRADIENT MENYATU */
+background-image: 
+url('assets/bg.jpg'), 
+linear-gradient(-45deg, #90e0ef, #caf0f8, #ade8f4, #f1fbff);
+
+background-size: cover, 400% 400%;
+background-position: center;
+background-repeat: no-repeat;
+
+/* efek menyatu */
+background-blend-mode: overlay;
+
+/* animasi gradient */
+animation: gradientBG 12s ease infinite;
 }
 
+/* animasi gradient */
 @keyframes gradientBG {
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+0%{background-position: center, 0% 50%;}
+50%{background-position: center, 100% 50%;}
+100%{background-position: center, 0% 50%;}
 }
 
 /* ================= CLOUD ================= */
@@ -283,6 +293,10 @@ transform:scale(1.05);
 
 @media (max-width:768px){
 
+body{
+background-attachment: scroll;
+}
+
 .container{ padding:20px; }
 .card{ padding:20px; }
 
@@ -393,41 +407,36 @@ mouth.classList.remove("talking");
 </script>
 
 <script>
-  function logout() {
-    localStorage.removeItem('app_user');
-    window.location.href = 'login.html';
-  }
+function logout() {
+localStorage.removeItem('app_user');
+window.location.href = 'login.html';
+}
 
-  function showGreeting(username) {
-    const text = `Halo, ${username}! 🌎 Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!`;
-    if (typeof window.typeText === 'function') {
-      window.typeText(text);
-      return;
-    }
-    const bubble = document.getElementById('bubble');
-    if (bubble) bubble.textContent = text;
-  }
+function showGreeting(username) {
+const text = `Halo, ${username}! 🌎 Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!`;
+typeText(text);
+}
 
-  function initPage() {
-    const raw = localStorage.getItem('app_user');
-    if (!raw) {
-      window.location.href = 'login.html';
-      return;
-    }
+function initPage() {
+const raw = localStorage.getItem('app_user');
+if (!raw) {
+window.location.href = 'login.html';
+return;
+}
 
-    try {
-      const user = JSON.parse(raw);
-      const username = user?.name && user.name.trim()
-        ? user.name.trim()
-        : (user?.email ? user.email.split('@')[0] : 'teman');
-      showGreeting(username);
-    } catch (err) {
-      localStorage.removeItem('app_user');
-      window.location.href = 'login.html';
-    }
-  }
+try {
+const user = JSON.parse(raw);
+const username = user?.name && user.name.trim()
+? user.name.trim()
+: (user?.email ? user.email.split('@')[0] : 'teman');
+showGreeting(username);
+} catch (err) {
+localStorage.removeItem('app_user');
+window.location.href = 'login.html';
+}
+}
 
-  document.addEventListener('DOMContentLoaded', initPage);
+document.addEventListener('DOMContentLoaded', initPage);
 </script>
 
 </body>
