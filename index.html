@@ -9,6 +9,8 @@
 
 <style>
 
+*{ box-sizing:border-box; }
+
 :root{
 --sky-1:#c7e4f4;
 --sky-2:#9ac7dd;
@@ -291,6 +293,7 @@ display:grid;
 grid-template-columns:repeat(3, minmax(180px, 1fr));
 gap:16px;
 margin-top:30px;
+width:100%;
 }
 
 .menu-btn{
@@ -307,6 +310,7 @@ display:block;
 min-height:132px;
 position:relative;
 overflow:hidden;
+box-sizing:border-box;
 }
 
 .menu-btn:hover{
@@ -379,8 +383,8 @@ transform:scale(1.05);
 
 @media (max-width:768px){
 
-.container{ padding:20px; }
-.card{ padding:20px; }
+.container{ padding:16px 10px 26px; }
+.card{ padding:16px 12px; }
 
 .earth-host{
 width:120px;
@@ -394,9 +398,20 @@ height:120px;
 
 .menu-btn{
 width:100%;
-font-size:18px;
-padding:20px;
+font-size:17px;
+padding:16px 14px 14px;
+min-height:120px;
 }
+
+.menu-icon{
+width:46px;
+height:46px;
+font-size:24px;
+}
+
+.menu-title{ font-size:18px; }
+
+.menu-desc{ font-size:12px; }
 
 }
 
