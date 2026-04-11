@@ -14,13 +14,29 @@ body {
   font-family: Fredoka, sans-serif;
   margin: 0;
   overflow-x: hidden;
-  background: linear-gradient(-45deg, #90e0ef, #caf0f8, #ade8f4, #f1fbff);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
+  background: linear-gradient(-45deg, #c7e4f4, #e6f3fa, #d4eaf5, #f6fbfe, #9ac7dd);
+  background-size: 420% 420%;
+  animation: gradientBG 14s ease infinite;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .2;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(255,255,255,.5) 0 15px,
+    rgba(255,255,255,0) 15px 40px
+  );
 }
 
 @keyframes gradientBG {
@@ -82,38 +98,49 @@ body {
   100% { transform: translateX(130vw); }
 }
 
-/* ================= PARTICLE ================= */
-.particle {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: floatParticle 8s linear infinite;
-  z-index: 0;
-}
-
-@keyframes floatParticle {
-  0% { transform: translateY(0) scale(1); }
-  100% { transform: translateY(-100vh) scale(0); }
-}
-
 /* ================= LOGIN CONTAINER ================= */
 .login-container {
   position: relative;
   z-index: 2;
-  max-width: 420px;
+  max-width: 440px;
   width: 90%;
 }
 
 .login-box {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 42px 30px 34px;
+  border-radius: 28px;
+  box-shadow: 0 20px 45px rgba(3, 105, 161, 0.2);
   text-align: center;
   animation: slideUp 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-box::before {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22), rgba(56, 189, 248, 0));
+  top: -120px;
+  right: -90px;
+  pointer-events: none;
+}
+
+.login-box::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.18), rgba(14, 165, 233, 0));
+  bottom: -110px;
+  left: -70px;
+  pointer-events: none;
 }
 
 @keyframes slideUp {
@@ -129,7 +156,7 @@ body {
 
 /* ================= MASCOT ================= */
 .mascot-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
 .earth-mascot {
@@ -181,33 +208,62 @@ body {
 /* ================= TITLE ================= */
 h1 {
   color: #0c4a6e;
-  font-size: 28px;
-  margin: 0 0 10px;
+  font-size: 30px;
+  margin: 0 0 8px;
   font-weight: 600;
 }
 
 .subtitle {
   color: #0369a1;
   font-size: 14px;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e0f2fe, #cffafe);
+  color: #075985;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 /* ================= FORM ================= */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  opacity: 0.75;
 }
 
 input {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #caf0f8;
+  padding: 12px 14px 12px 40px;
+  border: 2px solid #dbeafe;
   border-radius: 12px;
   font-family: Fredoka, sans-serif;
   font-size: 14px;
   transition: 0.3s;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 input:focus {
@@ -232,6 +288,7 @@ button {
   cursor: pointer;
   transition: 0.3s;
   margin-top: 10px;
+  letter-spacing: 0.2px;
 }
 
 button:hover {
@@ -269,6 +326,8 @@ button:disabled {
   text-align: center;
   font-size: 14px;
   color: #475569;
+  position: relative;
+  z-index: 1;
 }
 
 .signup-link a {
@@ -283,6 +342,17 @@ button:disabled {
   text-decoration: underline;
 }
 
+@media (max-width: 480px) {
+  .login-box {
+    padding: 36px 22px 28px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
   </style>
 
 </head>
@@ -291,18 +361,6 @@ button:disabled {
   <!-- CLOUD DECORATIONS -->
   <div class="cloud cloud1"></div>
   <div class="cloud cloud2"></div>
-
-  <!-- PARTICLES -->
-  <script>
-    for (let i = 0; i < 20; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 8 + 's';
-      particle.style.animationDuration = (Math.random() * 8 + 8) + 's';
-      document.body.appendChild(particle);
-    }
-  </script>
 
   <!-- LOGIN CONTAINER -->
   <div class="login-container">
@@ -320,6 +378,7 @@ button:disabled {
       </div>
 
       <!-- TITLE -->
+      <div class="badge">Portal Belajar Aman</div>
       <h1>Masuk Sekarang</h1>
       <p class="subtitle">Selamat datang di Edukasi Bencana Alam</p>
 
@@ -328,8 +387,14 @@ button:disabled {
 
       <!-- FORM -->
       <form id="loginForm">
-        <input type="email" id="email" placeholder="📧 Email" required>
-        <input type="password" id="password" placeholder="🔒 Password" required>
+        <div class="input-group">
+          <span class="input-icon">📧</span>
+          <input type="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+          <span class="input-icon">🔒</span>
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
         <button type="submit" id="loginBtn">Masuk</button>
       </form>
 

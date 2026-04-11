@@ -9,32 +9,164 @@
 
 <style>
 
+*{ box-sizing:border-box; }
+
+:root{
+--sky-1:#c7e4f4;
+--sky-2:#9ac7dd;
+--sky-3:#2f6f8e;
+--sky-4:#1e4a63;
+--card:#ffffff;
+}
+
 body{
 margin:0;
 font-family:'Fredoka', sans-serif;
-background:linear-gradient(to bottom,#87CEEB,#e0f7ff);
+background-image:
+linear-gradient(180deg, rgba(199,228,244,.78), rgba(230,243,250,.88)),
+url('assets/jpg/bg.jpg');
+background-size: cover, cover;
+background-position: center, center;
+background-repeat: no-repeat, no-repeat;
+background-blend-mode: soft-light;
+animation: gradientBG 14s ease infinite;
 overflow-x:hidden; /* hanya cegah scroll samping */
+text-align:center;
+min-height:100vh;
+position:relative;
+}
+
+@keyframes gradientBG {
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* ===== CLOUD ===== */
+.cloud{
+position:absolute;
+background:white;
+border-radius:50px;
+opacity:.55;
+filter:blur(2px);
+z-index:0;
+}
+
+.cloud::before,
+.cloud::after{
+content:'';
+position:absolute;
+background:white;
+border-radius:50%;
+}
+
+.cloud1{
+width:120px; height:40px;
+top:80px;
+left:-150px;
+animation:cloudMove 40s linear infinite;
+opacity:.62;
+}
+
+.cloud1::before{
+width:50px; height:50px;
+top:-25px; left:20px;
+}
+
+.cloud1::after{
+width:70px; height:70px;
+top:-35px; right:15px;
+}
+
+.cloud2{
+width:160px; height:50px;
+top:130px;
+left:-200px;
+animation:cloudMove 55s linear infinite;
+opacity:.58;
+}
+
+.cloud2::before{
+width:64px; height:64px;
+top:-30px; left:26px;
+}
+
+.cloud2::after{
+width:82px; height:82px;
+top:-40px; right:18px;
+}
+
+.cloud3{
+width:190px; height:58px;
+top:42px;
+left:-260px;
+animation:cloudMove 64s linear infinite;
+animation-delay:-14s;
+opacity:.68;
+}
+
+.cloud3::before{
+width:72px; height:72px;
+top:-34px; left:30px;
+}
+
+.cloud3::after{
+width:94px; height:94px;
+top:-44px; right:20px;
+}
+
+.cloud4{
+width:140px; height:46px;
+top:172px;
+left:-220px;
+animation:cloudMove 48s linear infinite;
+animation-delay:-26s;
+opacity:.54;
+}
+
+.cloud4::before{
+width:56px; height:56px;
+top:-26px; left:22px;
+}
+
+.cloud4::after{
+width:74px; height:74px;
+top:-36px; right:16px;
+}
+
+@keyframes cloudMove{
+0%{transform:translateX(0);}
+100%{transform:translateX(130vw);}
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* ===== TOMBOL KEMBALI ===== */
 
 .back-btn{
-position:absolute;
+position:fixed;
 top:20px;
 left:20px;
-background:white;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(10px);
 padding:10px 18px;
-border-radius:12px;
+border-radius:999px;
 text-decoration:none;
-color:#333;
+color:#0c4a6e;
 font-weight:600;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
+box-shadow:0 10px 24px rgba(31,75,100,.14);
+border:1px solid rgba(255,255,255,.65);
 transition:0.3s;
 font-size:14px;
+z-index:3;
 }
 
 .back-btn:hover{
-transform:scale(1.05);
+transform:translateY(-2px);
+box-shadow:0 14px 28px rgba(31,75,100,.18);
 }
 
 /* ===== CONTAINER ===== */
@@ -46,7 +178,24 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:40px 20px;
+padding:80px 20px 40px;
+position:relative;
+z-index:2;
+max-width:1100px;
+margin:auto;
+}
+
+.hero-badge{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:6px 14px;
+border-radius:999px;
+background:linear-gradient(135deg, #e0f2fe, #cffafe);
+color:#075985;
+font-size:12px;
+font-weight:600;
+margin-bottom:14px;
 }
 
 /* ===== JUDUL ===== */
@@ -54,92 +203,120 @@ padding:40px 20px;
 h1{
 color:#0c4a6e;
 font-size:clamp(26px,5vw,38px);
-margin-bottom:10px;
+margin:0 0 8px;
 }
 
 .subtitle{
 color:#0369a1;
-margin-bottom:40px;
+margin-bottom:30px;
 font-size:clamp(14px,3vw,18px);
+}
+
+.panel{
+width:min(100%, 1060px);
+background:rgba(255,255,255,.88);
+border:1px solid rgba(255,255,255,.65);
+backdrop-filter:blur(10px);
+box-shadow:0 14px 32px rgba(31,75,100,.14);
+border-radius:24px;
+padding:28px;
+animation:fadeIn 1s ease;
 }
 
 /* ===== GRID QUIZ ===== */
 
 .quiz-grid{
 display:grid;
-grid-template-columns:repeat(2,250px);
-gap:30px;
+grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+gap:18px;
 }
 
 /* ===== CARD QUIZ ===== */
 
 .quiz-card{
-background:white;
-padding:30px;
-border-radius:20px;
+background:rgba(255,255,255,.96);
+padding:24px 18px;
+border-radius:22px;
 text-decoration:none;
-color:#333;
-box-shadow:0 10px 20px rgba(0,0,0,0.15);
+color:#0f172a;
+box-shadow:0 10px 22px rgba(31,75,100,.12);
+border:1px solid rgba(191,219,254,.8);
 transition:0.3s;
-width:250px;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:170px;
 }
 
 .quiz-card:hover{
-transform:translateY(-8px) scale(1.05);
-box-shadow:0 15px 30px rgba(0,0,0,0.25);
+transform:translateY(-8px);
+box-shadow:0 16px 30px rgba(31,75,100,.18);
 }
 
 /* ICON */
 
 .icon{
-font-size:50px;
-margin-bottom:15px;
+width:72px;
+height:72px;
+display:grid;
+place-items:center;
+font-size:36px;
+margin-bottom:14px;
+border-radius:22px;
+background:linear-gradient(135deg, #e0f2fe, #eef2ff);
+box-shadow:inset 0 0 0 1px rgba(255,255,255,.75);
 }
 
 /* TEXT */
 
 .quiz-title{
-font-size:20px;
+font-size:18px;
 font-weight:600;
-}
-
-/* ===== CLOUD ANIMATION ===== */
-
-.cloud{
-position:absolute;
-top:50px;
-width:150px;
-opacity:0.8;
-animation:gerakAwan 40s linear infinite;
-}
-
-.cloud2{
-top:120px;
-animation-duration:55s;
-}
-
-@keyframes gerakAwan{
-from{ transform:translateX(-200px);}
-to{ transform:translateX(120vw);}
+line-height:1.25;
 }
 
 /* ===== RESPONSIVE HP ===== */
 
 @media (max-width:768px){
 
+body{
+align-items:flex-start;
+justify-content:flex-start;
+padding:72px 0 28px;
+}
+
+.container{
+min-height:auto;
+width:100%;
+padding:0 16px;
+}
+
+.hero-badge{
+margin-top:4px;
+}
+
+.panel{
+width:100%;
+padding:22px 16px;
+}
+
 .quiz-grid{
 grid-template-columns:1fr;
-gap:20px;
+gap:16px;
 }
 
 .quiz-card{
-width:90%;
-max-width:300px;
-padding:25px;
+width:100%;
+max-width:none;
+min-height:150px;
 }
 
 .icon{
-font-size:40px;
+width:64px;
+height:64px;
+font-size:32px;
 }
 
 .quiz-title{
@@ -164,14 +341,19 @@ padding:8px 14px;
 <a href="index.html" class="back-btn">⬅ Keluar</a>
 
 <!-- Awan -->
-<img src="https://cdn-icons-png.flaticon.com/512/414/414825.png" class="cloud">
-<img src="https://cdn-icons-png.flaticon.com/512/414/414825.png" class="cloud cloud2">
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="cloud cloud3"></div>
+<div class="cloud cloud4"></div>
 
 <div class="container">
 
+    <div class="hero-badge">Ayo main dan belajar</div>
     <h1>🎮 Pilih Quiz Game</h1>
     <div class="subtitle">Yuk uji pengetahuan bencana alam kamu!</div>
 
+    <div class="panel">
+    
     <div class="quiz-grid">
 
         <a href="quiz_GM.html" class="quiz-card">
@@ -199,6 +381,8 @@ padding:8px 14px;
             <div class="icon">🏆</div>
             <div class="quiz-title">Leaderboard</div>
         </a>
+
+    </div>
 
     </div>
 
