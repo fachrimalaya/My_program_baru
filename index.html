@@ -374,10 +374,35 @@ backdrop-filter:blur(8px);
 transform:scale(1.05);
 }
 
+.profile-btn{
+position:fixed;
+top:14px;
+right:14px;
+padding:8px 12px;
+border:none;
+border-radius:12px;
+background:rgba(255,255,255,.94);
+color:#1f2937;
+font-weight:bold;
+font-size:14px;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+z-index:5;
+backdrop-filter:blur(8px);
+text-decoration:none;
+display:inline-flex;
+align-items:center;
+gap:6px;
+}
+
+.profile-btn:hover{
+transform:scale(1.05);
+}
+
 /* warna tombol */
-.profil{ background:linear-gradient(135deg, #c19158, #9a6a3a); }
 .belajar{ background:linear-gradient(135deg, #5f97b4, #2f6f8e); }
 .game{ background:linear-gradient(135deg, #5c8f85, #3f6d63); }
+.kasus{ background:linear-gradient(135deg, #a55f7f, #74405a); }
 
 /* ================= RESPONSIVE ================= */
 
@@ -421,6 +446,7 @@ font-size:24px;
 <body>
 
 <button class="logout-btn" onclick="logout()">⬅ Logout</button>
+<a href="menu_profil.html" class="profile-btn">👤 Profil</a>
 
 <!-- BACKGROUND ELEMENT -->
 <div class="cloud cloud1"></div>
@@ -461,10 +487,10 @@ Selamat datang!
 
 <div class="menu">
 
-<a href="menu_profil.html" class="menu-btn profil">
-<span class="menu-icon">👤</span>
-<span class="menu-title">Profil</span>
-<span class="menu-desc">Kenalan pembuat</span>
+<a href="studi_kasus.html" class="menu-btn kasus">
+<span class="menu-icon">🎥</span>
+<span class="menu-title">Studi Kasus</span>
+<span class="menu-desc">Video & kejadian nyata</span>
 </a>
 <a href="belajar.html" class="menu-btn belajar">
 <span class="menu-icon">📘</span>
