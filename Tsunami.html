@@ -1,24 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edukasi Tsunami</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
+:root{
+--wave-1:#2d9cdb;
+--wave-2:#0f5b95;
+--paper:#ffffff;
+--paper-soft:#f7fcff;
+--ink:#103149;
+--line:#c8e5f6;
+}
 
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
 text-align:center;
 overflow-x:hidden;
+color:var(--ink);
 background:
-radial-gradient(circle at 12% 15%, rgba(255,255,255,.7) 0 60px, transparent 61px),
-radial-gradient(circle at 86% 18%, rgba(255,255,255,.45) 0 90px, transparent 91px),
-radial-gradient(circle at 70% 82%, rgba(84,196,240,.2) 0 180px, transparent 181px),
-linear-gradient(180deg, #d8f4ff 0%, #b7e8ff 45%, #edfaff 100%);
+radial-gradient(circle at 14% 14%, rgba(255,255,255,.72) 0 65px, transparent 66px),
+radial-gradient(circle at 84% 20%, rgba(255,255,255,.38) 0 110px, transparent 111px),
+linear-gradient(180deg, #d2efff 0%, #bfe6ff 45%, #eef8ff 100%);
 }
 
 body::before{
@@ -26,140 +32,70 @@ content:"";
 position:fixed;
 inset:0;
 z-index:-2;
-opacity:.2;
 pointer-events:none;
+opacity:.15;
 background:repeating-linear-gradient(
 120deg,
-rgba(255,255,255,.55) 0 14px,
-rgba(255,255,255,0) 14px 40px
+rgba(255,255,255,.45) 0 14px,
+rgba(255,255,255,0) 14px 42px
 );
 }
 
-.bg-wave,
-.bg-wave-2{
+.wave-layer{
 position:fixed;
-left:-5%;
-width:110%;
-height:120px;
-z-index:-1;
-opacity:.35;
+left:0;
+bottom:-50px;
+width:200%;
+height:220px;
+background:rgba(255,255,255,.34);
+border-radius:42%;
+animation:waveMove 7s linear infinite;
 pointer-events:none;
+z-index:-1;
 }
 
-.bg-wave{
-bottom:70px;
-background:radial-gradient(circle at 15% 50%, #7ae4ff 0 45px, transparent 46px),
-radial-gradient(circle at 40% 45%, #4ec9f0 0 55px, transparent 56px),
-radial-gradient(circle at 65% 50%, #7ae4ff 0 48px, transparent 49px),
-radial-gradient(circle at 88% 45%, #4ec9f0 0 55px, transparent 56px);
-animation:waveMove 8s linear infinite;
-}
-
-.bg-wave-2{
-bottom:10px;
-opacity:.25;
-background:radial-gradient(circle at 10% 45%, #0096c7 0 52px, transparent 53px),
-radial-gradient(circle at 34% 50%, #00b4d8 0 60px, transparent 61px),
-radial-gradient(circle at 58% 45%, #0096c7 0 50px, transparent 51px),
-radial-gradient(circle at 84% 50%, #00b4d8 0 58px, transparent 59px);
-animation:waveMove 12s linear infinite reverse;
+.wave-layer.second{
+bottom:-70px;
+opacity:.5;
+animation-duration:10s;
 }
 
 @keyframes waveMove{
-0%{transform:translateX(0);}
-100%{transform:translateX(-120px);}
+from{transform:translateX(0);}
+to{transform:translateX(-50%);}
 }
-
-.bg-glow{
-position:fixed;
-right:-120px;
-top:-90px;
-width:340px;
-height:340px;
-border-radius:50%;
-z-index:-1;
-background:radial-gradient(circle, rgba(255,255,255,.75) 0%, rgba(125,219,255,.55) 38%, rgba(125,219,255,0) 70%);
-animation:glowPulse 5s ease-in-out infinite;
-pointer-events:none;
-}
-
-@keyframes glowPulse{
-0%,100%{transform:scale(1); opacity:.85;}
-50%{transform:scale(1.1); opacity:1;}
-}
-
-.bg-bubbles{
-position:fixed;
-inset:0;
-z-index:-1;
-pointer-events:none;
-overflow:hidden;
-}
-
-.bubble-dot{
-position:absolute;
-bottom:-80px;
-border-radius:50%;
-background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(173,236,255,.55));
-border:1px solid rgba(255,255,255,.6);
-box-shadow:inset -4px -6px 10px rgba(0,119,182,.08);
-animation:rise linear infinite;
-}
-
-@keyframes rise{
-0%{transform:translateY(0) translateX(0) scale(.95); opacity:0;}
-8%{opacity:.85;}
-50%{transform:translateY(-50vh) translateX(10px) scale(1);}
-100%{transform:translateY(-120vh) translateX(-12px) scale(1.06); opacity:0;}
-}
-
-.bubble-dot:nth-child(1){left:4%; width:22px; height:22px; animation-duration:9s; animation-delay:0s;}
-.bubble-dot:nth-child(2){left:14%; width:14px; height:14px; animation-duration:7.5s; animation-delay:1.8s;}
-.bubble-dot:nth-child(3){left:22%; width:30px; height:30px; animation-duration:11s; animation-delay:2.2s;}
-.bubble-dot:nth-child(4){left:33%; width:18px; height:18px; animation-duration:8.8s; animation-delay:.6s;}
-.bubble-dot:nth-child(5){left:44%; width:26px; height:26px; animation-duration:10.2s; animation-delay:3s;}
-.bubble-dot:nth-child(6){left:55%; width:16px; height:16px; animation-duration:7.9s; animation-delay:2.7s;}
-.bubble-dot:nth-child(7){left:66%; width:34px; height:34px; animation-duration:12s; animation-delay:1.2s;}
-.bubble-dot:nth-child(8){left:75%; width:20px; height:20px; animation-duration:9.4s; animation-delay:3.6s;}
-.bubble-dot:nth-child(9){left:84%; width:28px; height:28px; animation-duration:10.8s; animation-delay:1.4s;}
-.bubble-dot:nth-child(10){left:92%; width:15px; height:15px; animation-duration:8.1s; animation-delay:2.9s;}
-
-/* ===== HEADER ===== */
 
 header{
-background:linear-gradient(120deg, #0077b6, #023e8a);
+background:linear-gradient(120deg, var(--wave-1), var(--wave-2));
 color:white;
-padding:20px;
-font-size:clamp(20px,4vw,24px);
+padding:18px 16px;
+font-size:clamp(20px,4vw,26px);
 font-weight:bold;
+box-shadow:0 8px 20px rgba(14,72,120,.24);
 }
-
-/* ===== CONTAINER ===== */
 
 .container{
-max-width:920px;
+max-width:900px;
 margin:auto;
-padding:26px 16px 36px;
+padding:24px 16px 34px;
+display:grid;
+gap:22px;
 }
-
-/* ===== CARD ===== */
 
 .card{
-background:linear-gradient(180deg, #ffffff 0%, #f7fdff 100%);
-padding:26px;
-border-radius:22px;
-box-shadow:0 10px 30px rgba(0,69,108,.16);
-border:2px solid #d7f1ff;
+background:linear-gradient(180deg, var(--paper) 0%, var(--paper-soft) 100%);
+padding:24px 18px;
+border-radius:20px;
+box-shadow:0 12px 28px rgba(14,72,120,.14);
+border:2px solid var(--line);
 }
-
-/* ===== HOST ===== */
 
 .earth-host{
 width:150px;
 height:150px;
 margin:20px auto;
 border-radius:50%;
-background:radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
+background:radial-gradient(circle at 35% 35%, #59c3ff, #1a75bb);
 position:relative;
 box-shadow:0 12px 25px rgba(0,0,0,.25);
 animation:float 3s ease-in-out infinite;
@@ -185,8 +121,8 @@ border-radius:50%;
 position:absolute;
 }
 
-.eye.left{ left:42px; }
-.eye.right{ right:42px; }
+.eye.left{left:42px;}
+.eye.right{right:42px;}
 
 .mouth{
 width:40px;
@@ -207,73 +143,67 @@ border-radius:10px;
 .hand{
 width:22px;
 height:55px;
-background:#4cc9f0;
+background:#59c3ff;
 position:absolute;
 top:55px;
 border-radius:20px;
 }
 
-.left-hand{ left:-20px; }
-.right-hand{ right:-20px; }
-
-/* ===== BUBBLE ===== */
+.left-hand{left:-20px;}
+.right-hand{right:-20px;}
 
 .bubble{
 background:#fff;
-padding:12px 20px;
-border-radius:18px;
+padding:14px 20px;
+border-radius:20px;
 display:inline-block;
-margin:12px 0 4px;
+margin:12px 0 6px;
 box-shadow:0 8px 16px rgba(0,0,0,.12);
 min-height:58px;
-max-width:90%;
+max-width:92%;
 font-size:clamp(14px,3vw,18px);
 line-height:1.5;
 }
 
-.intro-note{
-margin:0;
-font-size:14px;
-color:#0b5f84;
-opacity:.9;
-}
-
-/* ===== BUTTON ===== */
-
 button{
-padding:10px 18px;
+padding:11px 20px;
 margin:6px;
 border:none;
-border-radius:10px;
-background:#0077b6;
+border-radius:12px;
+background:linear-gradient(120deg, var(--wave-1), #1a75bb);
 color:white;
 cursor:pointer;
-font-weight:bold;
+font-weight:600;
+box-shadow:0 5px 14px rgba(26,117,187,.24);
+transition:transform .2s, box-shadow .2s;
 }
 
 button:hover{
-transform:scale(1.05);
+transform:translateY(-2px) scale(1.02);
+box-shadow:0 10px 18px rgba(26,117,187,.32);
 }
 
-/* ===== SECTION ===== */
+button:disabled{
+opacity:.55;
+cursor:not-allowed;
+transform:none;
+box-shadow:none;
+}
 
 .section{
-margin:26px 0;
 padding:20px 16px;
 background:#fff;
 border-radius:20px;
-box-shadow:0 8px 24px rgba(0,88,128,.12);
-border:2px dashed #b8eaff;
+box-shadow:0 8px 24px rgba(14,72,120,.12);
+border:2px dashed #c8e5f6;
 }
 
-.section h2{
-margin-top:0;
-}
+.section h2{margin:0 0 6px;}
 
 .materi-title{
 font-size:clamp(19px,3.4vw,24px);
 margin:6px 0;
-color:#045c87;
+color:#175e93;
 }
 
 .progress-pill{
@@ -282,17 +212,17 @@ align-items:center;
 gap:8px;
 padding:8px 14px;
 border-radius:999px;
-background:#ebf9ff;
-border:2px solid #bae9ff;
+background:#ecf7ff;
+border:2px solid #c8e5f6;
 font-size:14px;
 font-weight:600;
 }
 
 .progress-bar{
 height:12px;
-width:min(360px, 90%);
+width:min(360px, 92%);
 margin:16px auto 0;
-background:#d6f3ff;
+background:#def0fb;
 border-radius:999px;
 overflow:hidden;
 }
@@ -300,7 +230,7 @@ overflow:hidden;
 .progress-fill{
 height:100%;
 width:0;
-background:linear-gradient(90deg, #13b4e8, #0077b6);
+background:linear-gradient(90deg, var(--wave-1), var(--wave-2));
 border-radius:999px;
 transition:width .25s ease;
 }
@@ -323,129 +253,67 @@ gap:10px;
 }
 
 .safe-list li{
-background:#e9f8ff;
-border:2px solid #b7e6ff;
+background:#eef8ff;
+border:2px solid #c9e6f7;
 border-radius:14px;
 padding:10px 12px;
 font-size:16px;
+text-align:left;
 }
-
-/* ===== VIDEO ===== */
 
 .video-section{
-margin-top:26px;
 padding:20px;
-background:linear-gradient(180deg, #f1fbff 0%, #dff5ff 100%);
+background:linear-gradient(180deg, #f2faff 0%, #e6f4fd 100%);
 border-radius:20px;
-box-shadow:0 8px 22px rgba(0,88,128,.14);
-border:2px solid #bcecff;
+box-shadow:0 8px 22px rgba(14,72,120,.14);
+border:2px solid #c8e5f6;
 }
 
-.video-frame{
-position:relative;
-padding-top:56.25%;
-overflow:hidden;
-border-radius:16px;
-box-shadow:0 10px 24px rgba(0,67,100,.22);
-}
-
-.video-frame iframe{
-position:absolute;
-inset:0;
+.video-placeholder{
 width:100%;
-height:100%;
-border:0;
+max-width:600px;
+margin:0 auto;
+padding:35px 20px;
+border-radius:15px;
+background:linear-gradient(135deg,#ddf2ff,#ffffff);
+border:2px dashed #98cde7;
+color:#1c5f8f;
+font-weight:600;
 }
-
-/* ===== BACK BUTTON ===== */
 
 .btn{
 display:inline-block;
 padding:10px 18px;
-background:linear-gradient(120deg, #0077b6, #023e8a);
+background:linear-gradient(120deg, var(--wave-1), var(--wave-2));
 color:white;
 text-decoration:none;
 border-radius:12px;
-margin:22px auto 0;
+margin:0 auto;
 font-weight:600;
-box-shadow:0 8px 15px rgba(2,62,138,.28);
+box-shadow:0 8px 15px rgba(14,72,120,.28);
 }
 
-/* ===== RESPONSIVE HP ===== */
-
-@media (max-width:768px){
-
-.container{
-padding:18px 12px 30px;
+@media (max-width:600px){
+.container{padding:18px 12px 30px;gap:18px;}
+header{font-size:20px;padding:15px;}
+.card{padding:18px 14px;border-radius:18px;}
+.earth-host{width:120px;height:120px;}
+.eye{width:12px;height:12px;}
+.mouth{width:30px;}
+.hand{height:45px;}
+.section{padding:16px 10px;border-radius:16px;}
+button{width:90%;max-width:250px;}
+.video-section{padding:14px;}
+.safe-list li{font-size:15px;}
 }
-
-.card{
-padding:18px 14px;
-border-radius:18px;
-}
-
-.earth-host{
-width:110px;
-height:110px;
-}
-
-.eye.left{ left:30px; }
-.eye.right{ right:30px; }
-
-.section{
-margin:22px 0;
-padding:16px 10px;
-border-radius:16px;
-}
-
-button{
-width:45%;
-}
-
-.bg-glow{
-width:240px;
-height:240px;
-right:-90px;
-top:-70px;
-}
-
-.video-section{
-padding:14px;
-}
-
-.safe-list li{
-font-size:15px;
-}
-
-}
-
 </style>
 </head>
-
 <body>
-
-<div class="bg-wave"></div>
-<div class="bg-wave-2"></div>
-<div class="bg-glow"></div>
-<div class="bg-bubbles">
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-<span class="bubble-dot"></span>
-</div>
-
+<div class="wave-layer"></div>
+<div class="wave-layer second"></div>
 <header>&#x1F30A; Edukasi Tsunami</header>
-
 <div class="container">
-
 <div class="card">
-
 <div class="earth-host">
 <div class="face">
 <div class="eye left"></div>
@@ -455,88 +323,63 @@ font-size:15px;
 <div class="hand left-hand"></div>
 <div class="hand right-hand"></div>
 </div>
-
 <div class="bubble" id="bubble"></div>
-<p class="intro-note">Yuk belajar tsunami pelan-pelan, satu materi setiap langkah.</p>
-
 </div>
 
-<!-- ================= MATERI ================= -->
 <div class="section">
-
 <h2>&#x1F4D8; Materi Pembelajaran</h2>
 <h3 class="materi-title" id="judulMateri"></h3>
 <p class="progress-pill" id="progressMateri"></p>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-
 <div class="btn-row">
 <button id="prevBtn" onclick="prevMateri()">&#x2B05; Sebelumnya</button>
 <button id="nextBtn" onclick="nextMateri()">Selanjutnya &#x27A1;</button>
 </div>
-
 </div>
 
-<!-- ================= MITIGASI ================= -->
 <div class="section">
 <h2>&#x1F6D1; Cara Aman Saat Tsunami</h2>
 <ul class="safe-list">
-<li>&#x2705; Segera menuju tempat tinggi</li>
-<li>&#x2705; Jauhi pantai setelah gempa</li>
-<li>&#x2705; Ikuti jalur evakuasi</li>
-<li>&#x2705; Dengarkan informasi resmi</li>
+<li>&#x2705; Setelah gempa kuat, segera menuju tempat tinggi</li>
+<li>&#x2705; Jauhi pantai dan muara sungai tanpa menunggu ombak datang</li>
+<li>&#x2705; Ikuti jalur evakuasi dan arahan petugas</li>
+<li>&#x2705; Jangan kembali sebelum ada pengumuman resmi aman</li>
+<li>&#x2705; Bawa tas siaga berisi dokumen, obat, dan air minum</li>
 </ul>
 </div>
 
-<!-- ================= VIDEO ================= -->
 <div class="video-section">
 <h2>&#x1F3A5; Video Animasi Edukasi Tsunami</h2>
-<p>Silakan masukkan link YouTube animasi edukasi tsunami pada video di bawah ini.</p>
-<div class="video-frame">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6qWWysS53E4?si=F-8xAkdZYMyrAY9p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-</div>
+<p>Video studi kasus sedang diperbarui. Sambil menunggu, pelajari materi mitigasi di atas dulu ya.</p>
+<div class="video-placeholder">Konten video akan segera tersedia.</div>
 </div>
 
 <a href="belajar.html" class="btn">&#x2B05; Kembali</a>
-
 </div>
 
 <script>
-
-/* ================= DATA MATERI ================= */
-const materiData = [
-{
-judul:"Apa itu Tsunami?",
-isi:"Tsunami adalah gelombang laut besar yang terjadi akibat gangguan di dasar laut."
-},
-{
-judul:"Penyebab Tsunami",
-isi:"Tsunami biasanya disebabkan oleh gempa bumi bawah laut, longsor bawah laut, atau letusan gunung api."
-},
-{
-judul:"Proses Terjadinya",
-isi:"Gempa menyebabkan dasar laut naik atau turun sehingga mendorong air laut dan membentuk gelombang besar."
-},
-{
-judul:"Dampak Tsunami",
-isi:"Tsunami dapat merusak wilayah pesisir, menghancurkan bangunan, serta menimbulkan korban jiwa."
-},
-{
-judul:"Mitigasi Tsunami",
-isi:"Mitigasi dilakukan dengan sistem peringatan dini, jalur evakuasi, dan edukasi masyarakat."
-}
+const materiData=[
+{judul:"Apa itu Tsunami?",isi:"Tsunami adalah gelombang laut besar yang dipicu gangguan tiba-tiba di dasar laut."},
+{judul:"Penyebab Tsunami",isi:"Tsunami biasanya disebabkan gempa bumi bawah laut, longsor bawah laut, atau letusan gunung api."},
+{judul:"Proses Terjadinya",isi:"Perubahan dasar laut mendorong massa air laut dan membentuk gelombang yang bergerak cepat ke arah pantai."},
+{judul:"Dampak Tsunami",isi:"Tsunami dapat merusak wilayah pesisir, menghancurkan bangunan, serta menimbulkan korban jiwa."},
+{judul:"Mitigasi Tsunami",isi:"Mitigasi dilakukan melalui sistem peringatan dini, latihan evakuasi, peta bahaya, dan edukasi masyarakat."}
 ];
 
-let currentIndex = 0;
+let currentIndex=0;
+let typingTimer;
 
-/* ================= TYPE EFFECT ================= */
 function typeText(text){
-let bubble=document.getElementById("bubble");
-let mouth=document.getElementById("mouth");
+const bubble=document.getElementById("bubble");
+const mouth=document.getElementById("mouth");
 bubble.textContent="";
 let i=0;
 
-let typing=setInterval(()=>{
+if(typingTimer){
+clearInterval(typingTimer);
+}
+
+typingTimer=setInterval(()=>{
 bubble.textContent+=text.charAt(i);
 mouth.classList.add("talking");
 
@@ -547,30 +390,23 @@ mouth.classList.remove("talking");
 i++;
 
 if(i>=text.length){
-clearInterval(typing);
+clearInterval(typingTimer);
+typingTimer=null;
 mouth.classList.remove("talking");
 }
 },30);
 }
 
-/* ================= LOAD MATERI ================= */
 function loadMateri(){
-document.getElementById("judulMateri").textContent =
-materiData[currentIndex].judul;
-
-document.getElementById("progressMateri").textContent =
-"Materi " + (currentIndex+1) + " / " + materiData.length;
-
-const progress = ((currentIndex + 1) / materiData.length) * 100;
-document.getElementById("progressFill").style.width = progress + "%";
-
-document.getElementById("prevBtn").disabled = currentIndex === 0;
-document.getElementById("nextBtn").disabled = currentIndex === materiData.length - 1;
-
+document.getElementById("judulMateri").textContent=materiData[currentIndex].judul;
+document.getElementById("progressMateri").textContent="Materi "+(currentIndex+1)+" / "+materiData.length;
+const progress=((currentIndex+1)/materiData.length)*100;
+document.getElementById("progressFill").style.width=progress+"%";
+document.getElementById("prevBtn").disabled=currentIndex===0;
+document.getElementById("nextBtn").disabled=currentIndex===materiData.length-1;
 typeText(materiData[currentIndex].isi);
 }
 
-/* ================= NAVIGASI ================= */
 function nextMateri(){
 if(currentIndex < materiData.length-1){
 currentIndex++;
@@ -585,19 +421,7 @@ loadMateri();
 }
 }
 
-/* ================= AUTO LOAD ================= */
 loadMateri();
-
 </script>
-
-<script>
-	(function checkLogin() {
-		const raw = localStorage.getItem('app_user');
-		if (!raw) {
-			window.location.href = 'login.html';
-		}
-	})();
-</script>
-
 </body>
 </html>

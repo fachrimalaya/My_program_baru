@@ -9,15 +9,25 @@
 
 <style>
 
+:root{
+--lava-1:#ff7b54;
+--lava-2:#b42318;
+--paper:#ffffff;
+--paper-soft:#fff8f5;
+--ink:#4b2b16;
+--line:#ffd9c9;
+}
+
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
-text-align:center;
-overflow-x:hidden;
 background:
 radial-gradient(circle at 14% 14%, rgba(255,248,240,.7) 0 65px, transparent 66px),
 radial-gradient(circle at 84% 20%, rgba(255,214,190,.35) 0 110px, transparent 111px),
 linear-gradient(180deg, #ffd8c9 0%, #ffd4b8 45%, #fff0e6 100%);
+text-align:center;
+overflow-x:hidden;
+color:var(--ink);
 }
 
 body::before{
@@ -99,8 +109,10 @@ animation:emberRise linear infinite;
 100%{transform:translateY(-110vh) translateX(-14px) scale(1.2); opacity:0;}
 }
 
+/* ===== HEADER ===== */
+
 header{
-background:linear-gradient(120deg, #ff7b54, #b42318);
+background:linear-gradient(120deg, var(--lava-1), var(--lava-2));
 color:white;
 padding:18px 16px;
 font-size:clamp(20px,4vw,26px);
@@ -108,18 +120,24 @@ font-weight:bold;
 box-shadow:0 8px 20px rgba(132,26,14,.24);
 }
 
+/* ===== CONTAINER ===== */
+
 .container{
-max-width:920px;
+max-width:900px;
 margin:auto;
-padding:26px 16px 36px;
+padding:24px 16px 34px;
+display:grid;
+gap:22px;
 }
 
+/* ===== CARD ===== */
+
 .card{
-background:linear-gradient(180deg, #ffffff 0%, #fff8f5 100%);
-padding:26px;
-border-radius:22px;
-box-shadow:0 10px 30px rgba(140,53,23,.14);
-border:2px solid #ffd9c9;
+background:linear-gradient(180deg, var(--paper) 0%, var(--paper-soft) 100%);
+padding:24px 18px;
+border-radius:20px;
+box-shadow:0 12px 28px rgba(140,53,23,.14);
+border:2px solid var(--line);
 }
 
 /* ===== HOST ===== */
@@ -191,21 +209,14 @@ border-radius:20px;
 .bubble{
 background:#fff;
 padding:14px 20px;
-border-radius:18px;
+border-radius:20px;
 display:inline-block;
-margin:12px 0 4px;
+margin:12px 0 6px;
 box-shadow:0 8px 16px rgba(0,0,0,.12);
 min-height:58px;
-max-width:90%;
+max-width:92%;
 font-size:clamp(14px,3vw,18px);
 line-height:1.5;
-}
-
-.intro-note{
-margin:0;
-font-size:14px;
-color:#8f3000;
-opacity:.9;
 }
 
 /* ===== BUTTON ===== */
@@ -215,7 +226,7 @@ padding:11px 20px;
 margin:6px;
 border:none;
 border-radius:12px;
-background:linear-gradient(120deg, #ff7b54, #f35b04);
+background:linear-gradient(120deg, var(--lava-1), #f35b04);
 color:white;
 cursor:pointer;
 font-weight:600;
@@ -228,10 +239,16 @@ transform:translateY(-2px) scale(1.02);
 box-shadow:0 10px 18px rgba(243,91,4,.32);
 }
 
+button:disabled{
+opacity:.55;
+cursor:not-allowed;
+transform:none;
+box-shadow:none;
+}
+
 /* ===== SECTION ===== */
 
 .section{
-margin:26px 0;
 padding:20px 16px;
 background:#fff;
 border-radius:20px;
@@ -240,7 +257,7 @@ border:2px dashed #ffc8ad;
 }
 
 .section h2{
-margin-top:0;
+margin:0 0 6px;
 }
 
 .materi-title{
@@ -263,7 +280,7 @@ font-weight:600;
 
 .progress-bar{
 height:12px;
-width:min(360px, 90%);
+width:min(360px, 92%);
 margin:16px auto 0;
 background:#ffe3d3;
 border-radius:999px;
@@ -301,12 +318,12 @@ border:2px solid #ffd2bd;
 border-radius:14px;
 padding:10px 12px;
 font-size:16px;
+text-align:left;
 }
 
 /* ===== VIDEO ===== */
 
 .video-section{
-margin-top:26px;
 padding:20px;
 background:linear-gradient(180deg, #fff4ee 0%, #ffe8dc 100%);
 border-radius:20px;
@@ -330,16 +347,28 @@ height:100%;
 border:0;
 }
 
+.video-placeholder{
+width:100%;
+max-width:600px;
+margin:0 auto;
+padding:35px 20px;
+border-radius:15px;
+background:linear-gradient(135deg,#ffe4da,#ffffff);
+border:2px dashed #f5a67d;
+color:#8b3e1f;
+font-weight:600;
+}
+
 /* ===== BACK BUTTON ===== */
 
 .btn{
 display:inline-block;
 padding:10px 18px;
-background:linear-gradient(120deg, #ff7b54, #b42318);
+background:linear-gradient(120deg, var(--lava-1), var(--lava-2));
 color:white;
 text-decoration:none;
 border-radius:12px;
-margin:22px auto 0;
+margin:0 auto;
 font-weight:600;
 box-shadow:0 8px 15px rgba(146,47,19,.28);
 }
@@ -350,6 +379,7 @@ box-shadow:0 8px 15px rgba(146,47,19,.28);
 
 .container{
 padding:18px 12px 30px;
+gap:18px;
 }
 
 .card{
@@ -366,13 +396,13 @@ height:110px;
 .eye.right{ right:30px; }
 
 .section{
-margin:22px 0;
 padding:16px 10px;
 border-radius:16px;
 }
 
 button{
-width:45%;
+width:90%;
+max-width:250px;
 }
 
 .video-section{
@@ -428,7 +458,6 @@ font-size:15px;
 </div>
 
 <div class="bubble" id="bubble"></div>
-<p class="intro-note">Belajarnya santai ya, pahami tanda bahaya gunung aktif satu per satu.</p>
 
 </div>
 
@@ -498,6 +527,7 @@ isi:"Tanda gunung akan meletus antara lain gempa kecil, suara gemuruh, asap teba
 ];
 
 let currentIndex = 0;
+let typingTimer;
 
 /* ================= TYPE EFFECT ================= */
 function typeText(text){
@@ -506,7 +536,11 @@ let mouth=document.getElementById("mouth");
 bubble.textContent="";
 let i=0;
 
-let typing=setInterval(()=>{
+if(typingTimer){
+clearInterval(typingTimer);
+}
+
+typingTimer=setInterval(()=>{
 bubble.textContent+=text.charAt(i);
 mouth.classList.add("talking");
 
@@ -517,7 +551,8 @@ mouth.classList.remove("talking");
 i++;
 
 if(i>=text.length){
-clearInterval(typing);
+clearInterval(typingTimer);
+typingTimer=null;
 mouth.classList.remove("talking");
 }
 },30);
@@ -531,11 +566,11 @@ materiData[currentIndex].judul;
 document.getElementById("progressMateri").textContent =
 "Materi " + (currentIndex+1) + " / " + materiData.length;
 
-const progress = ((currentIndex + 1) / materiData.length) * 100;
+const progress=((currentIndex+1)/materiData.length)*100;
 document.getElementById("progressFill").style.width = progress + "%";
 
-document.getElementById("prevBtn").disabled = currentIndex === 0;
-document.getElementById("nextBtn").disabled = currentIndex === materiData.length - 1;
+document.getElementById("prevBtn").disabled = currentIndex===0;
+document.getElementById("nextBtn").disabled = currentIndex===materiData.length-1;
 
 typeText(materiData[currentIndex].isi);
 }
@@ -558,15 +593,6 @@ loadMateri();
 /* ================= AUTO LOAD ================= */
 loadMateri();
 
-</script>
-
-<script>
-	(function checkLogin() {
-		const raw = localStorage.getItem('app_user');
-		if (!raw) {
-			window.location.href = 'login.html';
-		}
-	})();
 </script>
 
 </body>

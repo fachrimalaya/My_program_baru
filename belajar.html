@@ -1,549 +1,443 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Materi Belajar - Edukasi Bencana</title>
+<title>Edukasi Bencana Alam Anak</title>
 
+<!-- FONT ANAK -->
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 
-*{ box-sizing:border-box; }
-
-/* ================= BODY ================= */
-body{
-font-family:Fredoka, sans-serif;
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Fredoka', sans-serif;
+}
+
+body{
+background: linear-gradient(180deg,#a0e9ff,#ffffff);
 overflow-x:hidden;
-
-background: linear-gradient(-45deg, #c7e4f4, #e6f3fa, #d4eaf5, #f6fbfe, #9ac7dd);
-background-size: 420% 420%;
-animation: gradientBG 14s ease infinite;
-
-text-align:center;
 }
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-z-index:-2;
-pointer-events:none;
-opacity:.2;
-background:repeating-linear-gradient(
-120deg,
-rgba(255,255,255,.5) 0 15px,
-rgba(255,255,255,0) 15px 40px
-);
-}
+/* ===== HEADER ===== */
 
-@keyframes gradientBG {
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* ================= CLOUD ================= */
-.cloud{
-position:absolute;
-background:white;
-border-radius:50px;
-opacity:.55;
-filter:blur(2px);
-z-index:0;
-}
-
-.cloud::before,
-.cloud::after{
-content:'';
-position:absolute;
-background:white;
-border-radius:50%;
-}
-
-.cloud1{
-width:120px; height:40px;
-top:80px;
-left:-150px;
-animation:cloudMove 40s linear infinite;
-}
-
-.cloud1::before{
-width:50px; height:50px;
-top:-25px; left:20px;
-}
-
-.cloud1::after{
-width:70px; height:70px;
-top:-35px; right:15px;
-}
-
-.cloud2{
-width:160px; height:50px;
-top:200px;
-left:-200px;
-animation:cloudMove 55s linear infinite;
-}
-
-.blob{
-position:fixed;
-border-radius:50%;
-filter:blur(2px);
-pointer-events:none;
-z-index:0;
-opacity:.35;
-}
-
-.blob1{
-width:230px;
-height:230px;
-left:-60px;
-top:180px;
-background:radial-gradient(circle, rgba(196,146,92,.26), rgba(196,146,92,0) 70%);
-animation:blobFloat 10s ease-in-out infinite;
-}
-
-.blob2{
-width:280px;
-height:280px;
-right:-70px;
-bottom:70px;
-background:radial-gradient(circle, rgba(94,136,154,.24), rgba(94,136,154,0) 70%);
-animation:blobFloat 13s ease-in-out infinite reverse;
-}
-
-@keyframes blobFloat{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-14px);}
-}
-
-@keyframes cloudMove{
-0%{transform:translateX(0);}
-100%{transform:translateX(130vw);}
-}
-
-/* ================= PARTICLE ================= */
-.particle{
-position:absolute;
-width:6px;
-height:6px;
-background:#ffffff;
-border-radius:50%;
-opacity:.4;
-animation:floatParticle 8s linear infinite;
-z-index:0;
-}
-
-@keyframes floatParticle{
-0%{transform:translateY(0) scale(1);}
-100%{transform:translateY(-100vh) scale(0);}
-}
-
-/* ================= HEADER ================= */
 header{
-background:linear-gradient(120deg, #2f6f8e, #1e4a63);
-color:white;
-padding:18px;
-font-size:clamp(18px,4vw,26px);
-font-weight:bold;
+text-align:center;
+padding:40px 20px;
+color:#fff;
+background:linear-gradient(45deg,#00b4ff,#4facfe);
+animation:fadeDown 1s ease;
 position:relative;
-z-index:2;
-box-shadow:0 10px 24px rgba(30,74,99,.24);
 }
 
 header h1{
-margin:0;
+font-size:clamp(24px,5vw,40px);
 }
 
-/* ================= CONTAINER ================= */
-.container{
-max-width:1000px;
-margin:auto;
-padding:26px 16px 36px;
+header p{
+margin-top:10px;
+font-size:clamp(14px,3vw,18px);
+}
+
+/* ===== EARTH HOST ===== */
+
+.earth-host{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+margin-top:30px;
+padding:0 15px;
+}
+
+/* BADAN BUMI */
+
+.earth{
+width:140px;
+height:140px;
+background:radial-gradient(circle at 30% 30%, #4facfe, #0077b6);
+border-radius:50%;
 position:relative;
-z-index:2;
+animation:bounce 2s ease-in-out infinite;
+}
+
+/* WAJAH */
+
+.face{
+position:absolute;
+width:100%;
+top:45px;
+text-align:center;
+}
+
+.eye{
+width:10px;
+height:10px;
+background:#000;
+border-radius:50%;
+display:inline-block;
+margin:0 10px;
+animation:blink 4s infinite;
+}
+
+.smile{
+width:30px;
+height:15px;
+border-bottom:4px solid black;
+border-radius:0 0 20px 20px;
+margin:5px auto;
+}
+
+/* TANGAN */
+
+.arm{
+width:18px;
+height:60px;
+background:#4facfe;
+position:absolute;
+top:50px;
+border-radius:20px;
+}
+
+.left-arm{
+left:-20px;
+transform-origin:top;
+animation:wave 2s infinite;
+}
+
+.right-arm{
+right:-20px;
+}
+
+/* KAKI */
+
+.leg{
+width:18px;
+height:45px;
+background:#333;
+position:absolute;
+bottom:-35px;
+border-radius:20px;
+}
+
+.left-leg{
+left:35px;
+animation:walk 1s infinite alternate;
+}
+
+.right-leg{
+right:35px;
+animation:walk 1s infinite alternate-reverse;
+}
+
+/* BALON KATA */
+
+.speech{
+margin-top:15px;
+background:white;
+padding:10px 18px;
+border-radius:20px;
+box-shadow:0 5px 10px rgba(0,0,0,0.15);
+font-size:14px;
+animation:fadeTalk 3s infinite;
+max-width:90%;
+text-align:center;
+}
+
+/* ===== CONTENT ===== */
+
+.container{
+padding:40px 20px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
 }
 
 .card{
-background:rgba(255,255,255,.88);
-padding:26px;
-border-radius:24px;
-box-shadow:0 14px 32px rgba(31,75,100,.14);
-border:1px solid rgba(255,255,255,.65);
-backdrop-filter:blur(10px);
+background:#fff;
+width:260px;
+max-width:90%;
+border-radius:20px;
+padding:20px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+transition:0.4s;
+animation:fadeUp 1s ease;
 }
 
-/* ================= HOST ================= */
-
-.host-wrapper{
-margin-bottom:30px;
-animation:fadeIn 1s ease;
+.card:hover{
+transform:translateY(-10px) scale(1.05);
 }
 
-@keyframes fadeIn{
+.card img{
+width:100px;
+max-width:100%;
+margin-bottom:15px;
+}
+
+.card h3{
+color:#ff7b00;
+}
+
+.card p{
+font-size:14px;
+margin:10px 0;
+}
+
+.btn{
+display:inline-block;
+padding:10px 18px;
+background:#ffb703;
+border-radius:20px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+transition:.3s;
+}
+
+.btn:hover{
+background:#fb8500;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+text-align:center;
+padding:20px;
+background:#4facfe;
+color:white;
+margin-top:40px;
+font-size:14px;
+}
+
+/* ===== MUSIC BUTTON ===== */
+
+#musicBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:12px 18px;
+border:none;
+border-radius:30px;
+background:#ffb703;
+color:white;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== BUTTON KEMBALI DASHBOARD ===== */
+
+.back-btn{
+position:absolute;
+top:20px;
+left:20px;
+background:white;
+color:#0077b6;
+border:none;
+padding:8px 15px;
+border-radius:25px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+text-decoration:none;
+font-size:14px;
+}
+
+.back-btn:hover{
+background:#f1f1f1;
+transform:scale(1.05);
+}
+
+/* ===== RESPONSIVE HP ===== */
+
+@media (max-width:768px){
+
+header{
+padding:30px 15px;
+}
+
+.container{
+padding:30px 15px;
+gap:20px;
+}
+
+.card{
+width:100%;
+max-width:320px;
+}
+
+.earth{
+width:110px;
+height:110px;
+}
+
+.eye{
+margin:0 6px;
+}
+
+.speech{
+font-size:13px;
+}
+
+.back-btn{
+top:10px;
+left:10px;
+font-size:12px;
+padding:6px 12px;
+}
+
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeDown{
+from{opacity:0; transform:translateY(-40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp{
 from{opacity:0; transform:translateY(40px);}
 to{opacity:1; transform:translateY(0);}
 }
 
-.earth-host{
-width:160px;
-height:160px;
-margin:auto;
-border-radius:50%;
-background:radial-gradient(circle at 35% 35%, #8ec6df, #2f6f8e);
-position:relative;
-box-shadow:0 12px 25px rgba(0,0,0,.25);
-animation:float 3s ease-in-out infinite;
-}
-
-.face{
-position:absolute;
-top:50px;
-left:0;
-right:0;
-}
-
-.eye{
-width:18px;
-height:18px;
-background:white;
-border-radius:50%;
-position:absolute;
-animation:blink 5s infinite;
-}
-
-.eye.left{ left:45px;}
-.eye.right{ right:45px;}
-
-@keyframes blink{
-0%,92%,100%{transform:scaleY(1);}
-95%{transform:scaleY(0.1);}
-}
-
-.mouth{
-width:45px;
-height:22px;
-border-bottom:4px solid white;
-border-radius:0 0 40px 40px;
-margin:25px auto;
-transition:.2s;
-}
-
-.talking{
-height:12px;
-background:white;
-border:none;
-border-radius:10px;
-}
-
-/* tangan */
-.hand{
-width:24px;
-height:60px;
-background:#8ec6df;
-position:absolute;
-top:60px;
-border-radius:20px;
-}
-
-.left-hand{
-left:-22px;
-animation:wave 2s infinite;
-}
-
-.right-hand{
-right:-22px;
+@keyframes bounce{
+0%,100%{ transform:translateY(0); }
+50%{ transform:translateY(-10px); }
 }
 
 @keyframes wave{
-0%{transform:rotate(0deg);}
-50%{transform:rotate(-30deg);}
-100%{transform:rotate(0deg);}
+0%{ transform:rotate(0deg); }
+50%{ transform:rotate(-35deg); }
+100%{ transform:rotate(0deg); }
 }
 
-/* chat bubble */
-.bubble{
-background:rgba(255,255,255,.95);
-padding:14px 22px;
-border-radius:24px;
-display:inline-block;
-margin-top:15px;
-box-shadow:0 5px 12px rgba(0,0,0,.2);
-min-height:40px;
-font-size:clamp(14px,3vw,18px);
-max-width:90%;
-line-height:1.5;
+@keyframes walk{
+from{ transform:rotate(10deg); }
+to{ transform:rotate(-10deg); }
 }
 
-/* ================= MENU ================= */
-
-.menu{
-display:grid;
-grid-template-columns:repeat(2, minmax(160px, 1fr));
-gap:16px;
-margin-top:30px;
-width:100%;
+@keyframes blink{
+0%,95%,100%{ transform:scaleY(1); }
+97%{ transform:scaleY(0.1); }
 }
 
-.menu-btn{
-padding:18px 16px 16px;
-border-radius:20px;
-color:white;
-font-size:18px;
-font-weight:700;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 10px 18px rgba(0,0,0,.16);
-text-decoration:none;
-display:block;
-min-height:132px;
-position:relative;
-overflow:hidden;
-box-sizing:border-box;
-}
-
-.menu-btn:hover{
-transform:translateY(-7px) scale(1.03);
-}
-
-.menu-btn::after{
-content:"";
-position:absolute;
-width:100px;
-height:100px;
-right:-30px;
-bottom:-30px;
-border-radius:50%;
-background:rgba(255,255,255,.16);
-}
-
-.menu-icon{
-width:52px;
-height:52px;
-margin:0 auto 10px;
-border-radius:16px;
-display:grid;
-place-items:center;
-font-size:28px;
-background:rgba(255,255,255,.22);
-box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
-}
-
-.menu-title{
-display:block;
-font-size:20px;
-line-height:1.1;
-}
-
-.menu-desc{
-display:block;
-margin-top:6px;
-font-size:13px;
-font-weight:600;
-opacity:.94;
-}
-
-.logout-btn{
-position:fixed;
-top:14px;
-left:14px;
-padding:8px 14px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,.94);
-color:#1f2937;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
-z-index:5;
-backdrop-filter:blur(8px);
-}
-
-.logout-btn:hover{
-transform:scale(1.05);
-}
-
-#musicBtn{
-position:fixed;
-top:14px;
-right:14px;
-padding:8px 14px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,.94);
-color:#1f2937;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
-z-index:5;
-backdrop-filter:blur(8px);
-}
-
-#musicBtn:hover{
-transform:scale(1.05);
-}
-
-/* warna tombol */
-.gunung{ background:linear-gradient(135deg, #ff7b54, #f35b04); }
-.tsunami{ background:linear-gradient(135deg, #0077b6, #023e8a); }
-.banjir{ background:linear-gradient(135deg, #00a8db, #0077b6); }
-.gempa{ background:linear-gradient(135deg, #a1887f, #8d6e63); }
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:768px){
-
-.container{ padding:16px 10px 26px; }
-.card{ padding:16px 12px; }
-
-.earth-host{
-width:120px;
-height:120px;
-}
-
-.eye.left{ left:30px;}
-.eye.right{ right:30px;}
-
-.menu{ grid-template-columns:1fr; }
-
-.menu-btn{
-width:100%;
-font-size:17px;
-padding:16px 14px 14px;
-min-height:120px;
-}
-
-.menu-icon{
-width:46px;
-height:46px;
-font-size:24px;
-}
-
-.menu-title{
-font-size:18px;
-}
-
-.menu-desc{
-font-size:12px;
-}
-
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-14px);}
+@keyframes fadeTalk{
+0%,100%{ opacity:1; }
+50%{ opacity:.7; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- ===== BACKSOUND ===== -->
 <audio id="backsound" loop>
     <source src="assets/mp3/audio1.mp3" type="audio/mpeg">
 </audio>
 
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
-
-<div class="host-wrapper">
+<!-- ===== BUMI HOST ===== -->
 <div class="earth-host">
-<div class="face">
-<div class="eye left"></div>
-<div class="eye right"></div>
-<div class="mouth"></div>
-</div>
-<div class="hand left-hand"></div>
-<div class="hand right-hand"></div>
+    <div class="earth">
+        <div class="face">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="smile"></div>
+        </div>
+
+        <!-- tangan -->
+        <div class="arm left-arm"></div>
+        <div class="arm right-arm"></div>
+
+        <!-- kaki -->
+        <div class="leg left-leg"></div>
+        <div class="leg right-leg"></div>
+    </div>
+
+    <div class="speech">
+        Halo teman! Yuk belajar bencana alam! 🌎
+    </div>
 </div>
 
-<!-- BUBBLE TEXT -->
-<div class="bubble" id="bubble"></div>
-</div>
 
 <header>
-<h1>&#x1F4DA; Materi Pembelajaran</h1>
+
+<a href="index.html" class="back-btn">
+⬅ Keluar
+</a>
+
+<h1>🌎 Edukasi Bencana Alam</h1>
+<p>Belajar Aman dari Bencana dengan Cara Seru!</p>
 </header>
+<section class="container">
+    <div class="card">
+        <img src="assets/jpg/gn_meletus.jpg">
+        <h3>Gunung Meletus</h3>
+        <p></p>
+        <a href="Gunung_Meletus.html" class="btn">Belajar</a>
+    </div>
 
-<div class="container">
-<div class="card">
-<div class="menu">
-<a href="Gunung_Meletus.html" class="menu-btn gunung">
-<div class="menu-icon">&#x1F30B;</div>
-<span class="menu-title">Gunung Meletus</span>
-<span class="menu-desc">Erupsi Magma</span>
-</a>
+    <div class="card">
+        <img src="assets/jpg/Tsunami.jpg">
+        <h3>Tsunami</h3>
+        <p></p>
+        <a href="Tsunami.html" class="btn">Belajar</a>
+    </div>
 
-<a href="Tsunami.html" class="menu-btn tsunami">
-<div class="menu-icon">&#x1F30A;</div>
-<span class="menu-title">Tsunami</span>
-<span class="menu-desc">Gelombang Besar</span>
-</a>
+    <div class="card">
+        <img src="assets/jpg/banjir.jpg">
+        <h3>Banjir</h3>
+        <p></p>
+        <a href="Banjir.html" class="btn">Belajar</a>
+    </div>
 
-<a href="Banjir.html" class="menu-btn banjir">
-<div class="menu-icon">&#x1F4A7;</div>
-<span class="menu-title">Banjir</span>
-<span class="menu-desc">Genangan Air</span>
-</a>
+    <div class="card">
+        <img src="assets/jpg/gempa.jpg">
+        <h3>Gempa Bumi</h3>
+        <p></p>
+        <a href="gempa_Bumi.html" class="btn">Belajar</a>
+    </div>
 
-<a href="gempa_Bumi.html" class="menu-btn gempa">
-<div class="menu-icon">&#x1F4CD;</div>
-<span class="menu-title">Gempa Bumi</span>
-<span class="menu-desc">Getaran Tanah</span>
-</a>
+</section>
 
-</div>
-</div>
-</div>
+<footer>
+    <p>© 2026 Website Edukasi Bencana Alam | Fachri Malaya ✨</p>
+</footer>
 
-<button class="logout-btn" onclick="window.location.href='index.html'">&larr; Kembali</button>
+<!-- BUTTON MUSIC -->
+<button id="musicBtn">🎵 Musik OFF</button>
 
-<button id="musicBtn">&#x1F3B5; Musik OFF</button>
-
+<!-- ===== SCRIPT BACKSOUND ===== -->
 <script>
-// ===== TYPING EFFECT =====
-const text = "Yuk belajar mengenai bencana alam! \u{1F4DA}";
-let i = 0;
-const speed = 50;
-const bubble = document.getElementById("bubble");
-
-function typeText(){
-    if(i < text.length){
-        bubble.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeText, speed);
-    }
-}
-typeText();
-</script>
-
-<script>
-// MUSIC
 const audio = document.getElementById("backsound");
 const btn = document.getElementById("musicBtn");
 
+let started = false;
+
+// autoplay setelah klik pertama
 document.addEventListener("click", function () {
-    audio.play();
+    if(!started){
+        audio.play();
+        btn.textContent = "🔊 Musik ON";
+        started = true;
+    }
 }, { once:true });
 
+// tombol ON/OFF
 btn.addEventListener("click", () => {
     if(audio.paused){
         audio.play();
-        btn.textContent = "\u{1F50A} Musik ON";
+        btn.textContent = "🔊 Musik ON";
     } else {
         audio.pause();
-        btn.textContent = "\u{1F507} Musik OFF";
+        btn.textContent = "🔇 Musik OFF";
     }
 });
-</script>
-
-<script>
-(function checkLogin() {
-    const raw = localStorage.getItem('app_user');
-    if (!raw) {
-        window.location.href = 'login.html';
-    }
-})();
 </script>
 
 </body>
