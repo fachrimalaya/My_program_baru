@@ -440,7 +440,7 @@ font-size:15px;
 <span class="bubble-dot"></span>
 </div>
 
-<header>ðŸŒŠ Edukasi Tsunami</header>
+<header>&#x1F30A; Edukasi Tsunami</header>
 
 <div class="container">
 
@@ -464,32 +464,32 @@ font-size:15px;
 <!-- ================= MATERI ================= -->
 <div class="section">
 
-<h2>ðŸ“˜ Materi Pembelajaran</h2>
+<h2>&#x1F4D8; Materi Pembelajaran</h2>
 <h3 class="materi-title" id="judulMateri"></h3>
 <p class="progress-pill" id="progressMateri"></p>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
 <div class="btn-row">
-<button id="prevBtn" onclick="prevMateri()">â¬… Sebelumnya</button>
-<button id="nextBtn" onclick="nextMateri()">Selanjutnya âž¡</button>
+<button id="prevBtn" onclick="prevMateri()">&#x2B05; Sebelumnya</button>
+<button id="nextBtn" onclick="nextMateri()">Selanjutnya &#x27A1;</button>
 </div>
 
 </div>
 
 <!-- ================= MITIGASI ================= -->
 <div class="section">
-<h2>ðŸ›‘ Cara Aman Saat Tsunami</h2>
+<h2>&#x1F6D1; Cara Aman Saat Tsunami</h2>
 <ul class="safe-list">
-<li>âœ… Segera menuju tempat tinggi</li>
-<li>âœ… Jauhi pantai setelah gempa</li>
-<li>âœ… Ikuti jalur evakuasi</li>
-<li>âœ… Dengarkan informasi resmi</li>
+<li>&#x2705; Segera menuju tempat tinggi</li>
+<li>&#x2705; Jauhi pantai setelah gempa</li>
+<li>&#x2705; Ikuti jalur evakuasi</li>
+<li>&#x2705; Dengarkan informasi resmi</li>
 </ul>
 </div>
 
 <!-- ================= VIDEO ================= -->
 <div class="video-section">
-<h2>ðŸŽ¥ Video Animasi Edukasi Tsunami</h2>
+<h2>&#x1F3A5; Video Animasi Edukasi Tsunami</h2>
 <p>Silakan masukkan link YouTube animasi edukasi tsunami pada video di bawah ini.</p>
 <div class="video-frame">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6qWWysS53E4?si=F-8xAkdZYMyrAY9p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -497,7 +497,7 @@ font-size:15px;
 </div>
 </div>
 
-<a href="belajar.html" class="btn">â¬… Kembali</a>
+<a href="belajar.html" class="btn">&#x2B05; Kembali</a>
 
 </div>
 
@@ -533,11 +533,11 @@ let currentIndex = 0;
 function typeText(text){
 let bubble=document.getElementById("bubble");
 let mouth=document.getElementById("mouth");
-bubble.innerHTML="";
+bubble.textContent="";
 let i=0;
 
 let typing=setInterval(()=>{
-bubble.innerHTML+=text.charAt(i);
+bubble.textContent+=text.charAt(i);
 mouth.classList.add("talking");
 
 setTimeout(()=>{
@@ -555,10 +555,10 @@ mouth.classList.remove("talking");
 
 /* ================= LOAD MATERI ================= */
 function loadMateri(){
-document.getElementById("judulMateri").innerHTML =
+document.getElementById("judulMateri").textContent =
 materiData[currentIndex].judul;
 
-document.getElementById("progressMateri").innerHTML =
+document.getElementById("progressMateri").textContent =
 "Materi " + (currentIndex+1) + " / " + materiData.length;
 
 const progress = ((currentIndex + 1) / materiData.length) * 100;

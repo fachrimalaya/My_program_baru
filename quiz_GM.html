@@ -35,13 +35,13 @@ button:disabled{opacity:.75;cursor:not-allowed;transform:none;}
 <body>
 <div class="ash"></div>
 <header>Game Gunung Meletus</header>
-<a href="menu_quiz.html" class="back-btn">â¬… Kembali</a>
+<a href="menu_quiz.html" class="back-btn">&#x2B05; Kembali</a>
 <audio id="bgm" src="assets/mp3/backsound_quiz.mp3" loop></audio>
 <audio id="benar" src="assets/mp3/benar.mp3"></audio>
 <audio id="salah" src="assets/mp3/salah.mp3"></audio>
 <div class="dashboard">
   <div class="dashboard-top">
-    <div class="earth" id="earth">ðŸŒŽðŸ™‚</div>
+    <div class="earth" id="earth">&#x1F30E;&#x1F642;</div>
     <div class="bubble" id="bubble"></div>
   </div>
   <h3 id="progress"></h3>
@@ -49,22 +49,22 @@ button:disabled{opacity:.75;cursor:not-allowed;transform:none;}
   <div id="answers"></div>
   <h2 id="result"></h2>
   <div id="stars"></div>
-  <button id="restartBtn" onclick="restart()" style="display:none;">ðŸ” Main Lagi</button>
-  <button id="submitBtn" onclick="submitResult()" style="display:none;">ðŸ“¤ Submit Skor</button>
-  <button id="leaderboardBtn" onclick="goLeaderboard()" style="display:none;">ðŸ† Lihat Leaderboard</button>
+  <button id="restartBtn" onclick="restart()" style="display:none;">&#x1F501; Main Lagi</button>
+  <button id="submitBtn" onclick="submitResult()" style="display:none;">&#x1F4E4; Submit Skor</button>
+  <button id="leaderboardBtn" onclick="goLeaderboard()" style="display:none;">&#x1F3C6; Lihat Leaderboard</button>
 </div>
 <script>
 document.body.addEventListener("click",()=>{document.getElementById("bgm").play();},{once:true});
 const quiz=[{q:"Gunung meletus mengeluarkan?",a:["Lava panas","Salju","Angin"],c:0},{q:"Saat abu turun kita harus?",a:["Pakai masker","Main","Tidur luar"],c:0},{q:"Saat evakuasi?",a:["Ikuti petugas","Selfie","Lari sendiri"],c:0},{q:"Bolehkah mendekati lava?",a:["Tidak","Boleh","Aman"],c:0},{q:"Yang melindungi pernapasan?",a:["Masker","Topi","Sepatu"],c:0}];
 let i=0,score=0,leaderboardSubmitted=false;
 async function submitScoreToLeaderboard(){const raw=localStorage.getItem("app_user");if(!raw) return {ok:false,error:"Session user tidak ditemukan. Silakan login ulang."};if(typeof window.saveQuizScore!=="function") return {ok:false,error:"Client Supabase belum siap."};try{const user=JSON.parse(raw);if(!user||!user.id) return {ok:false,error:"Data user tidak valid. Silakan login ulang."};return await window.saveQuizScore(user.id,"gunung_meletus",score,quiz.length);}catch(err){return {ok:false,error:"Session rusak. Silakan login ulang."};}}
-async function submitResult(){if(leaderboardSubmitted) return;const submitBtn=document.getElementById("submitBtn");submitBtn.disabled=true;submitBtn.textContent="â³ Mengirim...";const result=await submitScoreToLeaderboard();if(!result.ok){submitBtn.disabled=false;submitBtn.textContent="ðŸ“¤ Submit Skor";alert(`Gagal submit skor: ${result.error}`);return;}leaderboardSubmitted=true;submitBtn.textContent="âœ… Skor Terkirim";submitBtn.disabled=true;document.getElementById("leaderboardBtn").style.display="inline-block";}
+async function submitResult(){if(leaderboardSubmitted) return;const submitBtn=document.getElementById("submitBtn");submitBtn.disabled=true;submitBtn.textContent="\u23F3 Mengirim...";const result=await submitScoreToLeaderboard();if(!result.ok){submitBtn.disabled=false;submitBtn.textContent="\u{1F4E4} Submit Skor";alert(`Gagal submit skor: ${result.error}`);return;}leaderboardSubmitted=true;submitBtn.textContent="\u2705 Skor Terkirim";submitBtn.disabled=true;document.getElementById("leaderboardBtn").style.display="inline-block";}
 function goLeaderboard(){window.location.href="leaderboard.html";}
-function typeText(text){let el=document.getElementById("bubble");el.innerHTML="";let n=0;let typing=setInterval(()=>{el.innerHTML+=text.charAt(n);n++;if(n>=text.length) clearInterval(typing);},28);}
-function load(){if(i===0){typeText("Halo! Aku Bumi ðŸŒŽ Yuk belajar Gunung Meletus!");document.getElementById("earth").innerHTML="ðŸŒŽðŸ™‚";}if(i>=quiz.length){finish();return;}progress.innerHTML="Soal "+(i+1)+" / "+quiz.length;question.innerHTML=quiz[i].q;answers.innerHTML="";quiz[i].a.forEach((p,x)=>{answers.innerHTML+=`<button onclick="check(${x})">${p}</button>`;});}
-function check(x){if(x===quiz[i].c){score++;document.getElementById("earth").innerHTML="ðŸŒŽðŸ˜Š";document.getElementById("benar").play();}else{document.getElementById("earth").innerHTML="ðŸŒŽðŸ˜¢";document.getElementById("salah").play();}i++;setTimeout(load,600);}
-function finish(){question.innerHTML="Skor Kamu "+score+"/"+quiz.length;answers.innerHTML="";progress.innerHTML="";let star=3;if(score<5) star=2;if(score<=2) star=1;stars.innerHTML="â­".repeat(star);if(score===quiz.length){document.getElementById("earth").innerHTML="ðŸŒŽðŸ˜";typeText("Hebat! Kamu penyelamat bumi!");}else{document.getElementById("earth").innerHTML="ðŸŒŽðŸ™‚";typeText("Bagus! Yuk belajar lagi!");}document.getElementById("restartBtn").style.display="inline-block";document.getElementById("submitBtn").style.display="inline-block";}
-function restart(){i=0;score=0;stars.innerHTML="";document.getElementById("earth").innerHTML="ðŸŒŽðŸ™‚";document.getElementById("restartBtn").style.display="none";document.getElementById("submitBtn").style.display="none";document.getElementById("leaderboardBtn").style.display="none";const submitBtn=document.getElementById("submitBtn");submitBtn.textContent="ðŸ“¤ Submit Skor";submitBtn.disabled=false;leaderboardSubmitted=false;load();}
+function typeText(text){let el=document.getElementById("bubble");el.textContent="";let n=0;let typing=setInterval(()=>{el.textContent+=text.charAt(n);n++;if(n>=text.length) clearInterval(typing);},28);}
+function load(){if(i===0){typeText("Halo! Aku Bumi \u{1F30E} Yuk belajar Gunung Meletus!");document.getElementById("earth").textContent="\u{1F30E}\u{1F642}";}if(i>=quiz.length){finish();return;}progress.textContent="Soal "+(i+1)+" / "+quiz.length;question.textContent=quiz[i].q;answers.innerHTML="";quiz[i].a.forEach((p,x)=>{answers.innerHTML+=`<button onclick="check(${x})">${p}</button>`;});}
+function check(x){if(x===quiz[i].c){score++;document.getElementById("earth").textContent="\u{1F30E}\u{1F60A}";document.getElementById("benar").play();}else{document.getElementById("earth").textContent="\u{1F30E}\u{1F622}";document.getElementById("salah").play();}i++;setTimeout(load,600);}
+function finish(){question.textContent="Skor Kamu "+score+"/"+quiz.length;answers.innerHTML="";progress.textContent="";let star=3;if(score<5) star=2;if(score<=2) star=1;stars.textContent="\u2B50".repeat(star);if(score===quiz.length){document.getElementById("earth").textContent="\u{1F30E}\u{1F601}";typeText("Hebat! Kamu penyelamat bumi!");}else{document.getElementById("earth").textContent="\u{1F30E}\u{1F642}";typeText("Bagus! Yuk belajar lagi!");}document.getElementById("restartBtn").style.display="inline-block";document.getElementById("submitBtn").style.display="inline-block";}
+function restart(){i=0;score=0;stars.textContent="";document.getElementById("earth").textContent="\u{1F30E}\u{1F642}";document.getElementById("restartBtn").style.display="none";document.getElementById("submitBtn").style.display="none";document.getElementById("leaderboardBtn").style.display="none";const submitBtn=document.getElementById("submitBtn");submitBtn.textContent="\u{1F4E4} Submit Skor";submitBtn.disabled=false;leaderboardSubmitted=false;load();}
 load();
 </script>
 <script type="module">

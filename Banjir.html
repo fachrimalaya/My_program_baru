@@ -342,7 +342,7 @@ font-size:15px;
 
 <body>
 
-<header>ðŸŒ§ï¸ Edukasi Banjir</header>
+<header>&#x1F327;&#xFE0F; Edukasi Banjir</header>
 
 <div id="rain-container"></div>
 
@@ -367,30 +367,30 @@ font-size:15px;
 
 <div class="section">
 
-<h2>ðŸ“˜ Materi Pembelajaran</h2>
+<h2>&#x1F4D8; Materi Pembelajaran</h2>
 <h3 class="materi-title" id="judulMateri"></h3>
 <p class="progress-pill" id="progressMateri"></p>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
 <div class="btn-row">
-<button id="prevBtn" onclick="prevMateri()">â¬… Sebelumnya</button>
-<button id="nextBtn" onclick="nextMateri()">Selanjutnya âž¡</button>
+<button id="prevBtn" onclick="prevMateri()">&#x2B05; Sebelumnya</button>
+<button id="nextBtn" onclick="nextMateri()">Selanjutnya &#x27A1;</button>
 </div>
 
 </div>
 
 <div class="section">
-<h2>ðŸ›‘ Cara Aman Saat Banjir</h2>
+<h2>&#x1F6D1; Cara Aman Saat Banjir</h2>
 <ul class="safe-list">
-<li>âœ… Matikan listrik</li>
-<li>âœ… Pindah ke tempat tinggi</li>
-<li>âœ… Hindari arus deras</li>
-<li>âœ… Siapkan tas siaga</li>
+<li>&#x2705; Matikan listrik</li>
+<li>&#x2705; Pindah ke tempat tinggi</li>
+<li>&#x2705; Hindari arus deras</li>
+<li>&#x2705; Siapkan tas siaga</li>
 </ul>
 </div>
 
 <div class="video-section">
-<h2>ðŸŽ¥ Video Animasi Edukasi Banjir</h2>
+<h2>&#x1F3A5; Video Animasi Edukasi Banjir</h2>
 <p>Silakan masukkan link YouTube animasi edukasi banjir pada video di bawah ini.</p>
 
 <div class="video-frame">
@@ -399,7 +399,7 @@ font-size:15px;
 
 </div>
 
-<a href="belajar.html" class="btn">â¬… Kembali</a>
+<a href="belajar.html" class="btn">&#x2B05; Kembali</a>
 
 </div>
 
@@ -430,11 +430,11 @@ let currentIndex=0;
 function typeText(text){
 let bubble=document.getElementById("bubble");
 let mouth=document.getElementById("mouth");
-bubble.innerHTML="";
+bubble.textContent="";
 let i=0;
 
 let typing=setInterval(()=>{
-bubble.innerHTML+=text.charAt(i);
+bubble.textContent+=text.charAt(i);
 mouth.classList.add("talking");
 
 setTimeout(()=>{
@@ -451,8 +451,8 @@ mouth.classList.remove("talking");
 }
 
 function loadMateri(){
-document.getElementById("judulMateri").innerHTML=materiData[currentIndex].judul;
-document.getElementById("progressMateri").innerHTML="Materi "+(currentIndex+1)+" / "+materiData.length;
+document.getElementById("judulMateri").textContent=materiData[currentIndex].judul;
+document.getElementById("progressMateri").textContent="Materi "+(currentIndex+1)+" / "+materiData.length;
 
 const progress=((currentIndex+1)/materiData.length)*100;
 document.getElementById("progressFill").style.width=progress+"%";

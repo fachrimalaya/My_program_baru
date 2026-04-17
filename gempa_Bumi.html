@@ -385,7 +385,7 @@ font-size:15px;
 <span class="dust"></span>
 </div>
 
-<header>ðŸŒ Edukasi Gempa Bumi</header>
+<header>&#x1F30D; Edukasi Gempa Bumi</header>
 
 <div class="container">
 
@@ -408,31 +408,31 @@ font-size:15px;
 
 <div class="section">
 
-<h2>ðŸ“˜ Materi Pembelajaran</h2>
+<h2>&#x1F4D8; Materi Pembelajaran</h2>
 <h3 class="materi-title" id="judulMateri"></h3>
 <p class="progress-pill" id="progressMateri"></p>
 <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
 <div class="btn-row">
-<button id="prevBtn" onclick="prevMateri()">â¬… Sebelumnya</button>
-<button id="nextBtn" onclick="nextMateri()">Selanjutnya âž¡</button>
+<button id="prevBtn" onclick="prevMateri()">&#x2B05; Sebelumnya</button>
+<button id="nextBtn" onclick="nextMateri()">Selanjutnya &#x27A1;</button>
 </div>
 
 </div>
 
 <div class="section">
-<h2>ðŸ›‘ Cara Aman Saat Gempa</h2>
+<h2>&#x1F6D1; Cara Aman Saat Gempa</h2>
 <ul class="safe-list">
-<li>âœ… Berlindung di bawah meja</li>
-<li>âœ… Lindungi kepala</li>
-<li>âœ… Jauhi kaca dan lemari</li>
-<li>âœ… Keluar ruangan setelah guncangan berhenti</li>
-<li>âœ… Ikuti informasi resmi pemerintah</li>
+<li>&#x2705; Berlindung di bawah meja</li>
+<li>&#x2705; Lindungi kepala</li>
+<li>&#x2705; Jauhi kaca dan lemari</li>
+<li>&#x2705; Keluar ruangan setelah guncangan berhenti</li>
+<li>&#x2705; Ikuti informasi resmi pemerintah</li>
 </ul>
 </div>
 
 <div class="video-section">
-<h2>ðŸŽ¥ Video Animasi Edukasi Gempa Bumi</h2>
+<h2>&#x1F3A5; Video Animasi Edukasi Gempa Bumi</h2>
 
 <p>Silakan masukkan link YouTube animasi edukasi gempa bumi pada video di bawah ini.</p>
 
@@ -443,7 +443,7 @@ font-size:15px;
 
 </div>
 
-<a href="belajar.html" class="btn">â¬… Kembali</a>
+<a href="belajar.html" class="btn">&#x2B05; Kembali</a>
 
 </div>
 
@@ -479,11 +479,11 @@ let currentIndex = 0;
 function typeText(text){
 let bubble=document.getElementById("bubble");
 let mouth=document.getElementById("mouth");
-bubble.innerHTML="";
+bubble.textContent="";
 let i=0;
 
 let typing=setInterval(()=>{
-bubble.innerHTML+=text.charAt(i);
+bubble.textContent+=text.charAt(i);
 mouth.classList.add("talking");
 
 setTimeout(()=>{
@@ -501,10 +501,10 @@ mouth.classList.remove("talking");
 
 /* ================= LOAD MATERI ================= */
 function loadMateri(){
-document.getElementById("judulMateri").innerHTML =
+document.getElementById("judulMateri").textContent =
 materiData[currentIndex].judul;
 
-document.getElementById("progressMateri").innerHTML =
+document.getElementById("progressMateri").textContent =
 "Materi " + (currentIndex+1) + " / " + materiData.length;
 
 const progress = ((currentIndex + 1) / materiData.length) * 100;

@@ -364,6 +364,26 @@ backdrop-filter:blur(8px);
 transform:scale(1.05);
 }
 
+#musicBtn{
+position:fixed;
+top:14px;
+right:14px;
+padding:8px 14px;
+border:none;
+border-radius:12px;
+background:rgba(255,255,255,.94);
+color:#1f2937;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+z-index:5;
+backdrop-filter:blur(8px);
+}
+
+#musicBtn:hover{
+transform:scale(1.05);
+}
+
 /* warna tombol */
 .gunung{ background:linear-gradient(135deg, #ff7b54, #f35b04); }
 .tsunami{ background:linear-gradient(135deg, #0077b6, #023e8a); }
@@ -442,32 +462,32 @@ font-size:12px;
 </div>
 
 <header>
-<h1>ðŸ“š Materi Pembelajaran</h1>
+<h1>&#x1F4DA; Materi Pembelajaran</h1>
 </header>
 
 <div class="container">
 <div class="card">
 <div class="menu">
 <a href="Gunung_Meletus.html" class="menu-btn gunung">
-<div class="menu-icon">ðŸŒ‹</div>
+<div class="menu-icon">&#x1F30B;</div>
 <span class="menu-title">Gunung Meletus</span>
 <span class="menu-desc">Erupsi Magma</span>
 </a>
 
 <a href="Tsunami.html" class="menu-btn tsunami">
-<div class="menu-icon">ðŸŒŠ</div>
+<div class="menu-icon">&#x1F30A;</div>
 <span class="menu-title">Tsunami</span>
 <span class="menu-desc">Gelombang Besar</span>
 </a>
 
 <a href="Banjir.html" class="menu-btn banjir">
-<div class="menu-icon">ðŸ’§</div>
+<div class="menu-icon">&#x1F4A7;</div>
 <span class="menu-title">Banjir</span>
 <span class="menu-desc">Genangan Air</span>
 </a>
 
 <a href="gempa_Bumi.html" class="menu-btn gempa">
-<div class="menu-icon">ðŸ“</div>
+<div class="menu-icon">&#x1F4CD;</div>
 <span class="menu-title">Gempa Bumi</span>
 <span class="menu-desc">Getaran Tanah</span>
 </a>
@@ -476,20 +496,20 @@ font-size:12px;
 </div>
 </div>
 
-<button class="logout-btn" onclick="window.location.href='index.html'">â† Kembali</button>
+<button class="logout-btn" onclick="window.location.href='index.html'">&larr; Kembali</button>
 
-<button id="musicBtn">ðŸŽµ Musik OFF</button>
+<button id="musicBtn">&#x1F3B5; Musik OFF</button>
 
 <script>
 // ===== TYPING EFFECT =====
-const text = "Yuk belajar mengenai bencana alam! ðŸ“š";
+const text = "Yuk belajar mengenai bencana alam! \u{1F4DA}";
 let i = 0;
 const speed = 50;
 const bubble = document.getElementById("bubble");
 
 function typeText(){
     if(i < text.length){
-        bubble.innerHTML += text.charAt(i);
+        bubble.textContent += text.charAt(i);
         i++;
         setTimeout(typeText, speed);
     }
@@ -509,10 +529,10 @@ document.addEventListener("click", function () {
 btn.addEventListener("click", () => {
     if(audio.paused){
         audio.play();
-        btn.textContent = "ðŸ”Š Musik ON";
+        btn.textContent = "\u{1F50A} Musik ON";
     } else {
         audio.pause();
-        btn.textContent = "ðŸ”‡ Musik OFF";
+        btn.textContent = "\u{1F507} Musik OFF";
     }
 });
 </script>
