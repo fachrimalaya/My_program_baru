@@ -9,33 +9,18 @@
 
 <style>
 
-*{ box-sizing:border-box; }
-
 /* ================= BODY ================= */
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
 overflow-x:hidden;
 
-background: linear-gradient(-45deg, #c7e4f4, #e6f3fa, #d4eaf5, #f6fbfe, #9ac7dd);
-background-size: 420% 420%;
-animation: gradientBG 14s ease infinite;
+/* gradient bergerak */
+background: linear-gradient(-45deg, #90e0ef, #caf0f8, #ade8f4, #f1fbff);
+background-size: 400% 400%;
+animation: gradientBG 12s ease infinite;
 
 text-align:center;
-}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-z-index:-2;
-pointer-events:none;
-opacity:.2;
-background:repeating-linear-gradient(
-120deg,
-rgba(255,255,255,.5) 0 15px,
-rgba(255,255,255,0) 15px 40px
-);
 }
 
 @keyframes gradientBG {
@@ -49,7 +34,7 @@ rgba(255,255,255,0) 15px 40px
 position:absolute;
 background:white;
 border-radius:50px;
-opacity:.55;
+opacity:.6;
 filter:blur(2px);
 z-index:0;
 }
@@ -86,38 +71,6 @@ left:-200px;
 animation:cloudMove 55s linear infinite;
 }
 
-.blob{
-position:fixed;
-border-radius:50%;
-filter:blur(2px);
-pointer-events:none;
-z-index:0;
-opacity:.35;
-}
-
-.blob1{
-width:230px;
-height:230px;
-left:-60px;
-top:180px;
-background:radial-gradient(circle, rgba(196,146,92,.26), rgba(196,146,92,0) 70%);
-animation:blobFloat 10s ease-in-out infinite;
-}
-
-.blob2{
-width:280px;
-height:280px;
-right:-70px;
-bottom:70px;
-background:radial-gradient(circle, rgba(94,136,154,.24), rgba(94,136,154,0) 70%);
-animation:blobFloat 13s ease-in-out infinite reverse;
-}
-
-@keyframes blobFloat{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-14px);}
-}
-
 @keyframes cloudMove{
 0%{transform:translateX(0);}
 100%{transform:translateX(130vw);}
@@ -128,9 +81,9 @@ animation:blobFloat 13s ease-in-out infinite reverse;
 position:absolute;
 width:6px;
 height:6px;
-background:#ffffff;
+background:white;
 border-radius:50%;
-opacity:.4;
+opacity:.5;
 animation:floatParticle 8s linear infinite;
 z-index:0;
 }
@@ -142,32 +95,29 @@ z-index:0;
 
 /* ================= HEADER ================= */
 header{
-background:linear-gradient(120deg, #2f6f8e, #1e4a63);
+background:#0077b6;
 color:white;
-padding:18px;
+padding:20px;
 font-size:clamp(18px,4vw,26px);
 font-weight:bold;
 position:relative;
 z-index:2;
-box-shadow:0 10px 24px rgba(30,74,99,.24);
 }
 
 /* ================= CONTAINER ================= */
 .container{
 max-width:1000px;
 margin:auto;
-padding:26px 16px 36px;
+padding:30px;
 position:relative;
 z-index:2;
 }
 
 .card{
-background:rgba(255,255,255,.88);
-padding:26px;
-border-radius:24px;
-box-shadow:0 14px 32px rgba(31,75,100,.14);
-border:1px solid rgba(255,255,255,.65);
-backdrop-filter:blur(10px);
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
 /* ================= HOST ================= */
@@ -187,7 +137,7 @@ width:160px;
 height:160px;
 margin:auto;
 border-radius:50%;
-background:radial-gradient(circle at 35% 35%, #8ec6df, #2f6f8e);
+background:radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
 position:relative;
 box-shadow:0 12px 25px rgba(0,0,0,.25);
 animation:float 3s ease-in-out infinite;
@@ -243,7 +193,7 @@ border-radius:10px;
 .hand{
 width:24px;
 height:60px;
-background:#8ec6df;
+background:#4cc9f0;
 position:absolute;
 top:60px;
 border-radius:20px;
@@ -266,142 +216,56 @@ right:-22px;
 
 /* chat bubble */
 .bubble{
-background:rgba(255,255,255,.95);
+background:white;
 padding:14px 22px;
-border-radius:24px;
+border-radius:25px;
 display:inline-block;
 margin-top:15px;
 box-shadow:0 5px 12px rgba(0,0,0,.2);
 min-height:40px;
 font-size:clamp(14px,3vw,18px);
 max-width:90%;
-line-height:1.5;
 }
 
 /* ================= MENU ================= */
 
 .menu{
-display:grid;
-grid-template-columns:repeat(3, minmax(180px, 1fr));
-gap:16px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
 margin-top:30px;
-width:100%;
 }
 
 .menu-btn{
-padding:18px 16px 16px;
-border-radius:20px;
+width:200px;
+padding:25px;
+border-radius:18px;
 color:white;
-font-size:18px;
-font-weight:700;
+font-size:20px;
+font-weight:bold;
 cursor:pointer;
 transition:.3s;
-box-shadow:0 10px 18px rgba(0,0,0,.16);
+box-shadow:0 6px 15px rgba(0,0,0,.2);
 text-decoration:none;
 display:block;
-min-height:132px;
-position:relative;
-overflow:hidden;
-box-sizing:border-box;
 }
 
 .menu-btn:hover{
-transform:translateY(-7px) scale(1.03);
-}
-
-.menu-btn::after{
-content:"";
-position:absolute;
-width:100px;
-height:100px;
-right:-30px;
-bottom:-30px;
-border-radius:50%;
-background:rgba(255,255,255,.16);
-}
-
-.menu-icon{
-width:52px;
-height:52px;
-margin:0 auto 10px;
-border-radius:16px;
-display:grid;
-place-items:center;
-font-size:28px;
-background:rgba(255,255,255,.22);
-box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
-}
-
-.menu-title{
-display:block;
-font-size:20px;
-line-height:1.1;
-}
-
-.menu-desc{
-display:block;
-margin-top:6px;
-font-size:13px;
-font-weight:600;
-opacity:.94;
-}
-
-.logout-btn{
-position:fixed;
-top:14px;
-left:14px;
-padding:8px 14px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,.94);
-color:#1f2937;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
-z-index:5;
-backdrop-filter:blur(8px);
-}
-
-.logout-btn:hover{
-transform:scale(1.05);
-}
-
-.profile-btn{
-position:fixed;
-top:14px;
-right:14px;
-padding:8px 12px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,.94);
-color:#1f2937;
-font-weight:bold;
-font-size:14px;
-cursor:pointer;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
-z-index:5;
-backdrop-filter:blur(8px);
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-gap:6px;
-}
-
-.profile-btn:hover{
-transform:scale(1.05);
+transform:translateY(-8px) scale(1.05);
 }
 
 /* warna tombol */
-.belajar{ background:linear-gradient(135deg, #5f97b4, #2f6f8e); }
-.game{ background:linear-gradient(135deg, #5c8f85, #3f6d63); }
-.kasus{ background:linear-gradient(135deg, #a55f7f, #74405a); }
+.profil{ background:#f77f00; }
+.belajar{ background:#00b4d8; }
+.game{ background:#43aa8b; }
 
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:768px){
 
-.container{ padding:16px 10px 26px; }
-.card{ padding:16px 12px; }
+.container{ padding:20px; }
+.card{ padding:20px; }
 
 .earth-host{
 width:120px;
@@ -411,24 +275,16 @@ height:120px;
 .eye.left{ left:30px;}
 .eye.right{ right:30px;}
 
-.menu{ grid-template-columns:1fr; }
+.menu{
+flex-direction:column;
+align-items:center;
+}
 
 .menu-btn{
-width:100%;
-font-size:17px;
-padding:16px 14px 14px;
-min-height:120px;
+width:90%;
+font-size:18px;
+padding:20px;
 }
-
-.menu-icon{
-width:46px;
-height:46px;
-font-size:24px;
-}
-
-.menu-title{ font-size:18px; }
-
-.menu-desc{ font-size:12px; }
 
 }
 
@@ -437,14 +293,9 @@ font-size:24px;
 
 <body>
 
-<button class="logout-btn" onclick="logout()">⬅ Logout</button>
-<a href="menu_profil.html" class="profile-btn">👤 Profil</a>
-
 <!-- BACKGROUND ELEMENT -->
 <div class="cloud cloud1"></div>
 <div class="cloud cloud2"></div>
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
 
 <div class="particle" style="left:20%; animation-delay:0s;"></div>
 <div class="particle" style="left:40%; animation-delay:2s;"></div>
@@ -479,21 +330,9 @@ Selamat datang!
 
 <div class="menu">
 
-<a href="studi_kasus.html" class="menu-btn kasus">
-<span class="menu-icon">🎥</span>
-<span class="menu-title">Studi Kasus</span>
-<span class="menu-desc">Video & kejadian nyata</span>
-</a>
-<a href="belajar.html" class="menu-btn belajar">
-<span class="menu-icon">📘</span>
-<span class="menu-title">Belajar</span>
-<span class="menu-desc">Materi seru</span>
-</a>
-<a href="menu_quiz.html" class="menu-btn game">
-<span class="menu-icon">🎮</span>
-<span class="menu-title">Game</span>
-<span class="menu-desc">Main sambil uji ilmu</span>
-</a>
+<a href="menu_profil.html" class="menu-btn profil">👤 Profil</a>
+<a href="belajar.html" class="menu-btn belajar">📘 Belajar</a>
+<a href="menu_quiz.html" class="menu-btn game">🎮 Game</a>
 
 </div>
 
@@ -530,44 +369,14 @@ mouth.classList.remove("talking");
 },35);
 }
 
-</script>
+window.onload=function(){
 
-<script>
-  function logout() {
-    localStorage.removeItem('app_user');
-    window.location.href = 'login.html';
-  }
+typeText(
+"Halo teman! 🌎 Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!"
+);
 
-  function showGreeting(username) {
-    const text = `Halo, ${username}! 🌎 Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!`;
-    if (typeof window.typeText === 'function') {
-      window.typeText(text);
-      return;
-    }
-    const bubble = document.getElementById('bubble');
-    if (bubble) bubble.textContent = text;
-  }
+};
 
-  function initPage() {
-    const raw = localStorage.getItem('app_user');
-    if (!raw) {
-      window.location.href = 'login.html';
-      return;
-    }
-
-    try {
-      const user = JSON.parse(raw);
-      const username = user?.name && user.name.trim()
-        ? user.name.trim()
-        : (user?.email ? user.email.split('@')[0] : 'teman');
-      showGreeting(username);
-    } catch (err) {
-      localStorage.removeItem('app_user');
-      window.location.href = 'login.html';
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', initPage);
 </script>
 
 </body>

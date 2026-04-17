@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -12,26 +12,9 @@
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
+background:linear-gradient(#dff6ff,#f5fbff);
 text-align:center;
 overflow-x:hidden;
-background:
-radial-gradient(circle at 12% 18%, rgba(255,255,255,.78) 0 58px, transparent 59px),
-radial-gradient(circle at 86% 14%, rgba(255,255,255,.52) 0 90px, transparent 91px),
-linear-gradient(180deg, #dff6ff 0%, #cdefff 45%, #f5fbff 100%);
-}
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-z-index:-2;
-pointer-events:none;
-opacity:.2;
-background:repeating-linear-gradient(
-120deg,
-rgba(255,255,255,.55) 0 14px,
-rgba(255,255,255,0) 14px 40px
-);
 }
 
 /* HUJAN */
@@ -42,8 +25,6 @@ height:18px;
 background:#90e0ef;
 animation:fall linear infinite;
 opacity:.6;
-z-index:-1;
-pointer-events:none;
 }
 
 @keyframes fall{
@@ -52,26 +33,25 @@ to{transform:translateY(100vh);}
 }
 
 header{
-background:linear-gradient(120deg, #00a8db, #023e8a);
+background:#0096c7;
 color:white;
-padding:18px 16px;
-font-size:clamp(20px,4vw,26px);
+padding:18px;
+font-size:24px;
 font-weight:bold;
-box-shadow:0 8px 20px rgba(2,62,138,.24);
 }
 
 .container{
-max-width:920px;
+max-width:900px;
 margin:auto;
-padding:26px 16px 36px;
+padding:20px;
+width:95%;
 }
 
 .card{
-background:linear-gradient(180deg, #ffffff 0%, #f7fdff 100%);
-padding:26px;
-border-radius:22px;
-box-shadow:0 10px 30px rgba(0,69,108,.16);
-border:2px solid #d7f1ff;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
 /* HOST */
@@ -139,163 +119,78 @@ border-radius:20px;
 
 .bubble{
 background:#fff;
-padding:14px 20px;
-border-radius:18px;
+padding:12px 18px;
+border-radius:20px;
 display:inline-block;
-margin:12px 0 4px;
-box-shadow:0 8px 16px rgba(0,0,0,.12);
-min-height:58px;
-max-width:90%;
-font-size:clamp(14px,3vw,18px);
-line-height:1.5;
-}
-
-.intro-note{
-margin:0;
-font-size:14px;
-color:#0b5f84;
-opacity:.9;
+margin:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+min-height:50px;
+max-width:95%;
 }
 
 button{
-padding:11px 20px;
+padding:10px 18px;
 margin:6px;
 border:none;
-border-radius:12px;
-background:linear-gradient(120deg, #00a8db, #0077b6);
+border-radius:10px;
+background:#0096c7;
 color:white;
 cursor:pointer;
-font-weight:600;
-box-shadow:0 5px 14px rgba(0,119,182,.28);
-transition:transform .2s, box-shadow .2s;
+font-weight:bold;
 }
 
 button:hover{
-transform:translateY(-2px) scale(1.02);
-box-shadow:0 10px 18px rgba(0,119,182,.3);
+transform:scale(1.05);
 }
 
 .section{
-margin:26px 0;
-padding:20px 16px;
-background:#fff;
-border-radius:20px;
-box-shadow:0 8px 24px rgba(0,88,128,.12);
-border:2px dashed #b8eaff;
-}
-
-.section h2{
-margin-top:0;
-}
-
-.materi-title{
-font-size:clamp(19px,3.4vw,24px);
-margin:6px 0;
-color:#045c87;
-}
-
-.progress-pill{
-display:inline-flex;
-align-items:center;
-gap:8px;
-padding:8px 14px;
-border-radius:999px;
-background:#ebf9ff;
-border:2px solid #bae9ff;
-font-size:14px;
-font-weight:600;
-}
-
-.progress-bar{
-height:12px;
-width:min(360px, 90%);
-margin:16px auto 0;
-background:#d6f3ff;
-border-radius:999px;
-overflow:hidden;
-}
-
-.progress-fill{
-height:100%;
-width:0;
-background:linear-gradient(90deg, #13b4e8, #0077b6);
-border-radius:999px;
-transition:width .25s ease;
-}
-
-.btn-row{
-margin-top:16px;
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.safe-list{
-max-width:620px;
-margin:12px auto 0;
-padding:0;
-list-style:none;
-display:grid;
-gap:10px;
-}
-
-.safe-list li{
-background:#e9f8ff;
-border:2px solid #b7e6ff;
-border-radius:14px;
-padding:10px 12px;
-font-size:16px;
+margin:40px 0;
 }
 
 .video-section{
-margin-top:26px;
+margin-top:40px;
 padding:20px;
-background:linear-gradient(180deg, #f1fbff 0%, #dff5ff 100%);
-border-radius:20px;
-box-shadow:0 8px 22px rgba(0,88,128,.14);
-border:2px solid #bcecff;
+background:#e3f7ff;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
-.video-frame{
-position:relative;
-padding-top:56.25%;
-overflow:hidden;
-border-radius:16px;
-box-shadow:0 10px 24px rgba(0,67,100,.22);
-}
-
-.video-frame iframe{
-position:absolute;
-inset:0;
+.video-container video{
 width:100%;
-height:100%;
-border:0;
+max-width:600px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+.video-placeholder{
+width:100%;
+max-width:600px;
+margin:0 auto;
+padding:35px 20px;
+border-radius:15px;
+background:linear-gradient(135deg,#d8f3ff,#ffffff);
+border:2px dashed #7ec8e3;
+color:#0b5b7a;
+font-weight:600;
 }
 
 .btn{
 display:inline-block;
 padding:10px 18px;
-background:linear-gradient(120deg, #00a8db, #023e8a);
+background:#0096c7;
 color:white;
 text-decoration:none;
-border-radius:12px;
-margin:22px auto 0;
-font-weight:600;
-box-shadow:0 8px 15px rgba(2,62,138,.28);
+border-radius:10px;
+margin:20px;
 }
 
 /* ================= RESPONSIVE HP ================= */
 
 @media (max-width:600px){
 
-.container{
-padding:18px 12px 30px;
-}
-
-.card{
-padding:18px 14px;
-border-radius:18px;
+header{
+font-size:20px;
+padding:15px;
 }
 
 .earth-host{
@@ -317,22 +212,12 @@ height:45px;
 }
 
 .section{
-margin:22px 0;
-padding:16px 10px;
-border-radius:16px;
+margin:25px 0;
 }
 
 button{
 width:90%;
 max-width:250px;
-}
-
-.video-section{
-padding:14px;
-}
-
-.safe-list li{
-font-size:15px;
 }
 
 }
@@ -342,7 +227,7 @@ font-size:15px;
 
 <body>
 
-<header>ðŸŒ§ï¸ Edukasi Banjir</header>
+<header>🌧️ Edukasi Banjir</header>
 
 <div id="rain-container"></div>
 
@@ -361,45 +246,43 @@ font-size:15px;
 </div>
 
 <div class="bubble" id="bubble"></div>
-<p class="intro-note">Yuk belajar banjir pelan-pelan, satu materi setiap langkah.</p>
 
 </div>
 
 <div class="section">
 
-<h2>ðŸ“˜ Materi Pembelajaran</h2>
-<h3 class="materi-title" id="judulMateri"></h3>
-<p class="progress-pill" id="progressMateri"></p>
-<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<h2>📘 Materi Pembelajaran</h2>
+<h3 id="judulMateri"></h3>
+<p id="progressMateri"></p>
 
-<div class="btn-row">
-<button id="prevBtn" onclick="prevMateri()">â¬… Sebelumnya</button>
-<button id="nextBtn" onclick="nextMateri()">Selanjutnya âž¡</button>
+<div style="margin-top:15px;">
+<button onclick="prevMateri()">⬅ Sebelumnya</button>
+<button onclick="nextMateri()">Selanjutnya ➡</button>
 </div>
 
 </div>
 
 <div class="section">
-<h2>ðŸ›‘ Cara Aman Saat Banjir</h2>
-<ul class="safe-list">
-<li>âœ… Matikan listrik</li>
-<li>âœ… Pindah ke tempat tinggi</li>
-<li>âœ… Hindari arus deras</li>
-<li>âœ… Siapkan tas siaga</li>
-</ul>
+<h2>🛑 Cara Aman Saat Banjir</h2>
+<p>
+✅ Matikan listrik<br>
+✅ Pindah ke tempat tinggi<br>
+✅ Hindari arus deras<br>
+✅ Siapkan tas siaga
+</p>
 </div>
 
 <div class="video-section">
-<h2>ðŸŽ¥ Video Animasi Edukasi Banjir</h2>
-<p>Silakan masukkan link YouTube animasi edukasi banjir pada video di bawah ini.</p>
+<h2>🎥 Studi Kasus: Banjir di Jakarta</h2>
+<p>Dokumentasi kejadian banjir besar di Jakarta.</p>
 
-<div class="video-frame">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sM_i7MRfSkY?si=6fd3vWqLNZY66iww" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="video-container">
+<div class="video-placeholder">Video studi kasus sedang diperbarui. Silakan lanjut ke materi dan quiz terlebih dahulu.</div>
 </div>
 
 </div>
 
-<a href="belajar.html" class="btn">â¬… Kembali</a>
+<a href="belajar.html" class="btn">⬅ Kembali</a>
 
 </div>
 
@@ -453,13 +336,6 @@ mouth.classList.remove("talking");
 function loadMateri(){
 document.getElementById("judulMateri").innerHTML=materiData[currentIndex].judul;
 document.getElementById("progressMateri").innerHTML="Materi "+(currentIndex+1)+" / "+materiData.length;
-
-const progress=((currentIndex+1)/materiData.length)*100;
-document.getElementById("progressFill").style.width=progress+"%";
-
-document.getElementById("prevBtn").disabled=currentIndex===0;
-document.getElementById("nextBtn").disabled=currentIndex===materiData.length-1;
-
 typeText(materiData[currentIndex].isi);
 }
 
@@ -479,15 +355,6 @@ loadMateri();
 
 loadMateri();
 
-</script>
-
-<script>
-	(function checkLogin() {
-		const raw = localStorage.getItem('app_user');
-		if (!raw) {
-			window.location.href = 'login.html';
-		}
-	})();
 </script>
 
 </body>
