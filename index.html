@@ -9,18 +9,43 @@
 
 <style>
 
+:root{
+--sky-1:#c7e4f4;
+--sky-2:#e6f3fa;
+--sky-3:#d4eaf5;
+--sky-4:#f6fbfe;
+--sky-5:#9ac7dd;
+--deep-blue:#0c4a6e;
+--mid-blue:#0369a1;
+}
+
 /* ================= BODY ================= */
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
 overflow-x:hidden;
+min-height:100vh;
 
 /* gradient bergerak */
-background: linear-gradient(-45deg, #90e0ef, #caf0f8, #ade8f4, #f1fbff);
-background-size: 400% 400%;
-animation: gradientBG 12s ease infinite;
+background: linear-gradient(-45deg, var(--sky-1), var(--sky-2), var(--sky-3), var(--sky-4), var(--sky-5));
+background-size: 420% 420%;
+animation: gradientBG 14s ease infinite;
 
 text-align:center;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-2;
+pointer-events:none;
+opacity:.2;
+background:repeating-linear-gradient(
+120deg,
+rgba(255,255,255,.5) 0 15px,
+rgba(255,255,255,0) 15px 40px
+);
 }
 
 @keyframes gradientBG {
@@ -31,7 +56,7 @@ text-align:center;
 
 /* ================= CLOUD ================= */
 .cloud{
-position:absolute;
+position:fixed;
 background:white;
 border-radius:50px;
 opacity:.6;
@@ -95,29 +120,105 @@ z-index:0;
 
 /* ================= HEADER ================= */
 header{
-background:#0077b6;
-color:white;
-padding:20px;
-font-size:clamp(18px,4vw,26px);
-font-weight:bold;
+background:rgba(255,255,255,.78);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.65);
+color:var(--deep-blue);
+padding:22px 20px;
+font-size:clamp(20px,4vw,30px);
+font-weight:600;
 position:relative;
 z-index:2;
+box-shadow:0 10px 26px rgba(3,105,161,.15);
+}
+
+.header-title{
+display:block;
+padding:0 170px;
+}
+
+.logout-top{
+position:absolute;
+top:50%;
+left:20px;
+transform:translateY(-50%);
+display:inline-block;
+padding:10px 16px;
+background:linear-gradient(135deg,#ef4444,#dc2626);
+color:white;
+border-radius:12px;
+font-size:16px;
+text-decoration:none;
+box-shadow:0 8px 18px rgba(220,38,38,.3);
+transition:.25s;
+}
+
+.logout-top:hover{
+transform:translateY(-50%) scale(1.05);
+}
+
+.profil-top{
+position:absolute;
+top:50%;
+right:20px;
+transform:translateY(-50%);
+display:inline-block;
+padding:10px 16px;
+background:linear-gradient(135deg,#0284c7,#0369a1);
+color:white;
+border-radius:12px;
+font-size:16px;
+text-decoration:none;
+box-shadow:0 8px 18px rgba(2,132,199,.28);
+transition:.25s;
+}
+
+.profil-top:hover{
+transform:translateY(-50%) scale(1.05);
 }
 
 /* ================= CONTAINER ================= */
 .container{
 max-width:1000px;
-margin:auto;
-padding:30px;
+margin:34px auto;
+padding:30px 22px;
 position:relative;
 z-index:2;
 }
 
 .card{
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,.15);
+background:rgba(255,255,255,.82);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.7);
+padding:38px 30px;
+border-radius:28px;
+box-shadow:0 20px 45px rgba(3,105,161,.2);
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:'';
+position:absolute;
+width:240px;
+height:240px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(56,189,248,.22),rgba(56,189,248,0));
+top:-130px;
+right:-90px;
+pointer-events:none;
+}
+
+.card::after{
+content:'';
+position:absolute;
+width:200px;
+height:200px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(14,165,233,.16),rgba(14,165,233,0));
+bottom:-115px;
+left:-70px;
+pointer-events:none;
 }
 
 /* ================= HOST ================= */
@@ -125,6 +226,8 @@ box-shadow:0 8px 20px rgba(0,0,0,.15);
 .host-wrapper{
 margin-bottom:30px;
 animation:fadeIn 1s ease;
+position:relative;
+z-index:1;
 }
 
 @keyframes fadeIn{
@@ -216,15 +319,16 @@ right:-22px;
 
 /* chat bubble */
 .bubble{
-background:white;
+background:rgba(255,255,255,.95);
 padding:14px 22px;
 border-radius:25px;
 display:inline-block;
 margin-top:15px;
-box-shadow:0 5px 12px rgba(0,0,0,.2);
+box-shadow:0 10px 22px rgba(2,132,199,.18);
 min-height:40px;
 font-size:clamp(14px,3vw,18px);
 max-width:90%;
+color:var(--deep-blue);
 }
 
 /* ================= MENU ================= */
@@ -232,40 +336,74 @@ max-width:90%;
 .menu{
 display:flex;
 justify-content:center;
-gap:25px;
+gap:20px;
 flex-wrap:wrap;
 margin-top:30px;
+position:relative;
+z-index:1;
 }
 
 .menu-btn{
-width:200px;
-padding:25px;
-border-radius:18px;
+width:220px;
+padding:24px 18px;
+border-radius:20px;
 color:white;
-font-size:20px;
+font-size:19px;
 font-weight:bold;
 cursor:pointer;
 transition:.3s;
-box-shadow:0 6px 15px rgba(0,0,0,.2);
+background:linear-gradient(165deg,#0f172a,#1e293b);
+border:1px solid rgba(148,163,184,.24);
+border-top:4px solid transparent;
+box-shadow:0 16px 28px rgba(15,23,42,.28);
+text-shadow:0 1px 2px rgba(2,6,23,.45);
 text-decoration:none;
 display:block;
+position:relative;
+overflow:hidden;
+letter-spacing:.2px;
+}
+
+.menu-btn::after{
+content:'';
+position:absolute;
+width:140px;
+height:140px;
+background:radial-gradient(circle,rgba(255,255,255,.16),rgba(255,255,255,0));
+top:-70px;
+right:-55px;
+pointer-events:none;
 }
 
 .menu-btn:hover{
-transform:translateY(-8px) scale(1.05);
+transform:translateY(-6px) scale(1.02);
+border-color:rgba(226,232,240,.38);
+box-shadow:0 20px 32px rgba(15,23,42,.34);
 }
 
 /* warna tombol */
-.profil{ background:#f77f00; }
-.belajar{ background:#00b4d8; }
-.game{ background:#43aa8b; }
+.profil{ background:linear-gradient(135deg,#fb8500,#ef6c00); }
+.studi{
+border-top-color:#f43f5e;
+box-shadow:0 16px 28px rgba(15,23,42,.28), 0 0 0 1px rgba(244,63,94,.15) inset;
+}
+
+.belajar{
+border-top-color:#0ea5e9;
+box-shadow:0 16px 28px rgba(15,23,42,.28), 0 0 0 1px rgba(14,165,233,.15) inset;
+}
+
+.game{
+border-top-color:#22c55e;
+box-shadow:0 16px 28px rgba(15,23,42,.28), 0 0 0 1px rgba(34,197,94,.15) inset;
+}
 
 /* ================= RESPONSIVE ================= */
 
 @media (max-width:768px){
 
 .container{ padding:20px; }
-.card{ padding:20px; }
+.card{ padding:24px 18px; }
 
 .earth-host{
 width:120px;
@@ -286,6 +424,31 @@ font-size:18px;
 padding:20px;
 }
 
+header{
+display:flex;
+flex-direction:column;
+gap:10px;
+align-items:center;
+}
+
+.header-title{
+padding:0;
+}
+
+.logout-top{
+position:static;
+transform:none;
+font-size:14px;
+padding:8px 14px;
+}
+
+.profil-top{
+position:static;
+transform:none;
+font-size:14px;
+padding:8px 14px;
+}
+
 }
 
 </style>
@@ -302,7 +465,11 @@ padding:20px;
 <div class="particle" style="left:60%; animation-delay:4s;"></div>
 <div class="particle" style="left:80%; animation-delay:1s;"></div>
 
-<header>&#x1F30E; Media Edukasi Bencana Alam</header>
+<header>
+<a href="login.html" class="logout-top">&#x1F6AA; Logout</a>
+<span class="header-title">&#x1F30E; Media Edukasi Bencana Alam</span>
+<a href="menu_profil.html" class="profil-top">&#x1F464; Profil</a>
+</header>
 
 <div class="container">
 <div class="card">
@@ -330,7 +497,7 @@ Selamat datang!
 
 <div class="menu">
 
-<a href="menu_profil.html" class="menu-btn profil">&#x1F464; Profil</a>
+<a href="studi_kasus.html" class="menu-btn studi">&#x1F4CB; Studi Kasus</a>
 <a href="belajar.html" class="menu-btn belajar">&#x1F4D8; Belajar</a>
 <a href="menu_quiz.html" class="menu-btn game">&#x1F3AE; Game</a>
 
@@ -372,7 +539,7 @@ mouth.classList.remove("talking");
 window.onload=function(){
 
 typeText(
-"Halo teman! \u{1F30E} Selamat datang di Media Edukasi Bencana Alam. Pilih menu Profil, Belajar, atau Game untuk mulai petualangan belajar kamu!"
+"Halo teman! \u{1F30E} Selamat datang di Media Edukasi Bencana Alam. Profil ada di kanan atas, lalu pilih menu Studi Kasus, Belajar, atau Game untuk mulai petualangan belajar kamu!"
 );
 
 };

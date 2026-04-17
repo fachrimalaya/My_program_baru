@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studi Kasus Bencana Alam</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body{
+margin:0;
+font-family:Fredoka, sans-serif;
+background:linear-gradient(180deg,#d9f4ff 0%,#eef9ff 45%,#ffffff 100%);
+color:#143b52;
+}
+
+header{
+background:#0077b6;
+color:white;
+padding:24px 16px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:clamp(22px,4vw,34px);
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:28px 18px 40px;
+}
+
+.intro{
+background:white;
+border-radius:16px;
+padding:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+line-height:1.6;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:18px;
+margin-top:20px;
+}
+
+.case-card{
+background:white;
+border-radius:16px;
+padding:18px;
+box-shadow:0 8px 18px rgba(0,0,0,.1);
+border-top:8px solid #00b4d8;
+}
+
+.case-card h2{
+margin:0 0 10px;
+font-size:22px;
+}
+
+.case-card p{
+margin:0 0 12px;
+line-height:1.6;
+}
+
+.video-wrap{
+margin:0 0 12px;
+border-radius:12px;
+overflow:hidden;
+background:#0f172a;
+box-shadow:0 8px 16px rgba(15,23,42,.18);
+}
+
+.case-video{
+display:block;
+width:100%;
+aspect-ratio:16/9;
+border:0;
+}
+
+.badge{
+display:inline-block;
+padding:6px 12px;
+border-radius:999px;
+font-size:14px;
+font-weight:600;
+background:#e3f6ff;
+color:#0077b6;
+margin-bottom:12px;
+}
+
+.lesson{
+background:#f3fbff;
+border-radius:12px;
+padding:12px;
+font-size:15px;
+}
+
+.back-link{
+display:inline-block;
+margin-top:24px;
+padding:11px 18px;
+background:#f77f00;
+color:white;
+text-decoration:none;
+border-radius:12px;
+font-weight:600;
+transition:.2s;
+}
+
+.back-link:hover{
+transform:translateY(-2px);
+}
+
+footer{
+text-align:center;
+padding:18px;
+background:#0077b6;
+color:white;
+font-size:14px;
+}
+
+@media (max-width:768px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Studi Kasus Bencana Alam</h1>
+</header>
+
+<div class="container">
+<div class="intro">
+Setiap kejadian bencana memberikan pelajaran penting. Di halaman ini, kamu bisa mempelajari contoh kasus nyata dan memahami langkah kesiapsiagaan yang bisa diterapkan di lingkungan sekitar.
+</div>
+
+<div class="grid">
+<article class="case-card">
+<span class="badge">Banjir</span>
+<h2>Banjir Jakarta 2020</h2>
+<div class="video-wrap">
+<iframe class="case-video" src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="Video Studi Kasus Banjir" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p>Curah hujan ekstrem menyebabkan genangan luas di beberapa wilayah. Aktivitas warga terganggu dan proses evakuasi menjadi prioritas utama.</p>
+<div class="lesson">
+Pelajaran: Pentingnya sistem drainase, peringatan dini cuaca, dan tas siaga keluarga.
+</div>
+</article>
+
+<article class="case-card">
+<span class="badge">Gempa Bumi</span>
+<h2>Gempa Lombok 2018</h2>
+<div class="video-wrap">
+<iframe class="case-video" src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="Video Studi Kasus Gempa Bumi" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p>Gempa kuat menimbulkan kerusakan bangunan dan korban jiwa. Respons cepat diperlukan untuk pencarian serta distribusi bantuan.</p>
+<div class="lesson">
+Pelajaran: Bangunan tahan gempa, latihan evakuasi, dan titik kumpul harus dipahami warga.
+</div>
+</article>
+
+<article class="case-card">
+<span class="badge">Tsunami</span>
+<h2>Tsunami Palu 2018</h2>
+<div class="video-wrap">
+<iframe class="case-video" src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="Video Studi Kasus Tsunami" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p>Gelombang tinggi datang setelah gempa, berdampak besar pada wilayah pesisir. Banyak warga tidak sempat menyelamatkan diri.</p>
+<div class="lesson">
+Pelajaran: Kenali jalur evakuasi ke tempat tinggi dan respons cepat setelah gempa kuat.
+</div>
+</article>
+
+<article class="case-card">
+<span class="badge">Gunung Meletus</span>
+<h2>Erupsi Semeru 2021</h2>
+<div class="video-wrap">
+<iframe class="case-video" src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="Video Studi Kasus Gunung Meletus" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+<p>Awan panas dan hujan abu memengaruhi pemukiman sekitar. Warga harus segera mengikuti arahan otoritas kebencanaan.</p>
+<div class="lesson">
+Pelajaran: Masker, kacamata pelindung, dan kepatuhan zona bahaya sangat penting.
+</div>
+</article>
+</div>
+
+<a class="back-link" href="index.html">Kembali ke Beranda</a>
+</div>
+
+<footer>Media Edukasi Bencana Alam</footer>
+
+</body>
+</html>
