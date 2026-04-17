@@ -279,6 +279,26 @@ color:#1f638f;
 font-weight:600;
 }
 
+.video-embed{
+position:relative;
+margin:16px auto 0;
+max-width:760px;
+padding-top:56.25%;
+overflow:hidden;
+border-radius:16px;
+box-shadow:0 10px 20px rgba(24,93,135,.18);
+border:2px solid #cde8f8;
+background:#000;
+}
+
+.video-embed iframe{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+border:0;
+}
+
 .btn{
 display:inline-block;
 padding:10px 18px;
@@ -348,7 +368,8 @@ button{width:90%;max-width:250px;}
 <div class="video-section">
 <h2>&#x1F3A5; Video Animasi Edukasi Banjir</h2>
 <p>Video studi kasus sedang diperbarui. Sambil menunggu, pelajari materi mitigasi di atas dulu ya.</p>
-<div class="video-placeholder">Konten video akan segera tersedia.</div>
+<div class="video-embed">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sM_i7MRfSkY?si=5l_WyyfQghqwd94y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 </div>
 
 <a href="belajar.html" class="btn">&#x2B05; Kembali</a>
