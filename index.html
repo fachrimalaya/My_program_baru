@@ -537,10 +537,36 @@ mouth.classList.remove("talking");
 },35);
 }
 
+function getLoggedInUserName(){
+
+let rawUser=localStorage.getItem("app_user");
+
+if(!rawUser){
+return "teman";
+}
+
+try{
+
+let user=JSON.parse(rawUser);
+let name=(user && user.name ? String(user.name).trim() : "") || (user && user.email ? String(user.email).trim() : "");
+
+if(!name){
+return "teman";
+}
+
+return name.split(" ")[0];
+
+}catch(error){
+return "teman";
+}
+}
+
 window.onload=function(){
 
+let userName=getLoggedInUserName();
+
 typeText(
-"Halo teman! \u{1F30E} Selamat datang di Media Edukasi Bencana Alam. Profil ada di kanan atas, lalu pilih menu Studi Kasus, Belajar, atau Game untuk mulai petualangan belajar kamu!"
+"Halo "+userName+"! \u{1F30E} Selamat datang di Media Edukasi Bencana Alam. Profil ada di kanan atas, lalu pilih menu Studi Kasus, Belajar, atau Game untuk mulai petualangan belajar kamu!"
 );
 
 };
