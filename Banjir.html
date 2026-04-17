@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edukasi Banjir</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--water-1:#3fa7d6;
+--water-2:#236fa1;
+--paper:#ffffff;
+--paper-soft:#f8fcff;
+--ink:#1a3d56;
+--line:#c9e7f8;
+}
+
+body{
+font-family:Fredoka, sans-serif;
+margin:0;
+text-align:center;
+overflow-x:hidden;
+color:var(--ink);
+background:
+radial-gradient(circle at 14% 15%, rgba(255,255,255,.72) 0 62px, transparent 63px),
+radial-gradient(circle at 84% 16%, rgba(255,255,255,.45) 0 95px, transparent 96px),
+linear-gradient(180deg, #d8f0ff 0%, #c8e9ff 45%, #f1f9ff 100%);
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-2;
+pointer-events:none;
+opacity:.16;
+background:repeating-linear-gradient(
+120deg,
+rgba(255,255,255,.45) 0 14px,
+rgba(255,255,255,0) 14px 42px
+);
+}
+
+.rain-layer{
+position:fixed;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+z-index:-1;
+}
+
+.rain{
+position:absolute;
+width:2px;
+height:18px;
+background:linear-gradient(transparent, rgba(136,198,234,.8));
+animation:fall linear infinite;
+opacity:.7;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+header{
+background:linear-gradient(120deg, var(--water-1), var(--water-2));
+color:white;
+padding:18px 16px;
+font-size:clamp(20px,4vw,26px);
+font-weight:bold;
+box-shadow:0 8px 20px rgba(18,80,121,.22);
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:24px 16px 34px;
+display:grid;
+gap:22px;
+}
+
+.card{
+background:linear-gradient(180deg, var(--paper) 0%, var(--paper-soft) 100%);
+padding:24px 18px;
+border-radius:20px;
+box-shadow:0 12px 28px rgba(24,93,135,.14);
+border:2px solid var(--line);
+}
+
+.earth-host{
+width:150px;
+height:150px;
+margin:20px auto;
+border-radius:50%;
+background:radial-gradient(circle at 35% 35%, #70c5eb, #1f78b4);
+position:relative;
+box-shadow:0 12px 25px rgba(0,0,0,.24);
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+}
+
+.face{
+position:absolute;
+top:45px;
+left:0;
+right:0;
+}
+
+.eye{
+width:16px;
+height:16px;
+background:white;
+border-radius:50%;
+position:absolute;
+}
+
+.eye.left{left:42px;}
+.eye.right{right:42px;}
+
+.mouth{
+width:40px;
+height:20px;
+border-bottom:4px solid white;
+border-radius:0 0 40px 40px;
+margin:22px auto;
+transition:.2s;
+}
+
+.talking{
+height:10px;
+background:white;
+border:none;
+border-radius:10px;
+}
+
+.hand{
+width:22px;
+height:55px;
+background:#70c5eb;
+position:absolute;
+top:55px;
+border-radius:20px;
+}
+
+.left-hand{left:-20px;}
+.right-hand{right:-20px;}
+
+.bubble{
+background:#fff;
+padding:14px 20px;
+border-radius:20px;
+display:inline-block;
+margin:12px 0 6px;
+box-shadow:0 8px 16px rgba(0,0,0,.12);
+min-height:58px;
+max-width:92%;
+line-height:1.5;
+font-size:clamp(14px,3vw,18px);
+}
+
+button{
+padding:11px 20px;
+margin:6px;
+border:none;
+border-radius:12px;
+background:linear-gradient(120deg, var(--water-1), #1f78b4);
+color:white;
+cursor:pointer;
+font-weight:600;
+box-shadow:0 5px 14px rgba(31,120,180,.24);
+transition:transform .2s, box-shadow .2s;
+}
+
+button:hover{
+transform:translateY(-2px) scale(1.02);
+box-shadow:0 10px 18px rgba(31,120,180,.32);
+}
+
+button:disabled{
+opacity:.55;
+cursor:not-allowed;
+transform:none;
+box-shadow:none;
+}
+
+.section{
+padding:20px 16px;
+background:#fff;
+border-radius:20px;
+box-shadow:0 8px 24px rgba(24,93,135,.12);
+border:2px dashed #cde9f8;
+}
+
+.section h2{margin:0 0 6px;}
+
+.materi-title{
+font-size:clamp(19px,3.4vw,24px);
+margin:6px 0;
+color:#1d6898;
+}
+
+.progress-pill{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:8px 14px;
+border-radius:999px;
+background:#ecf7ff;
+border:2px solid #c9e7f8;
+font-size:14px;
+font-weight:600;
+}
+
+.progress-bar{
+height:12px;
+width:min(360px, 92%);
+margin:16px auto 0;
+background:#dff0fb;
+border-radius:999px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+width:0;
+background:linear-gradient(90deg, var(--water-1), var(--water-2));
+border-radius:999px;
+transition:width .25s ease;
+}
+
+.btn-row{
+margin-top:16px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.safe-list{
+max-width:620px;
+margin:12px auto 0;
+padding:0;
+list-style:none;
+display:grid;
+gap:10px;
+}
+
+.safe-list li{
+background:#f0f9ff;
+border:2px solid #cfe9f8;
+border-radius:14px;
+padding:10px 12px;
+font-size:16px;
+text-align:left;
+}
+
+.video-section{
+padding:20px;
+background:linear-gradient(180deg, #f2faff 0%, #e8f5fd 100%);
+border-radius:20px;
+box-shadow:0 8px 22px rgba(24,93,135,.14);
+border:2px solid #cde8f8;
+}
+
+.video-placeholder{
+width:100%;
+max-width:600px;
+margin:0 auto;
+padding:35px 20px;
+border-radius:15px;
+background:linear-gradient(135deg,#ddf2ff,#ffffff);
+border:2px dashed #9acfe8;
+color:#1f638f;
+font-weight:600;
+}
+
+.btn{
+display:inline-block;
+padding:10px 18px;
+background:linear-gradient(120deg, var(--water-1), var(--water-2));
+color:white;
+text-decoration:none;
+border-radius:12px;
+margin:0 auto;
+font-weight:600;
+box-shadow:0 8px 15px rgba(24,93,135,.28);
+}
+
+@media (max-width:600px){
+.container{padding:18px 12px 30px;gap:18px;}
+header{font-size:20px;padding:15px;}
+.card{padding:18px 14px;border-radius:18px;}
+.earth-host{width:120px;height:120px;}
+.eye{width:12px;height:12px;}
+.mouth{width:30px;}
+.hand{height:45px;}
+.section{padding:16px 10px;border-radius:16px;}
+button{width:90%;max-width:250px;}
+.video-section{padding:14px;}
+.safe-list li{font-size:15px;}
+}
+</style>
+</head>
+<body>
+<div class="rain-layer" id="rainLayer"></div>
+<header>&#x1F327;&#xFE0F; Edukasi Banjir</header>
+<div class="container">
+<div class="card">
+<div class="earth-host">
+<div class="face">
+<div class="eye left"></div>
+<div class="eye right"></div>
+<div class="mouth" id="mouth"></div>
+</div>
+<div class="hand left-hand"></div>
+<div class="hand right-hand"></div>
+</div>
+<div class="bubble" id="bubble"></div>
+</div>
+
+<div class="section">
+<h2>&#x1F4D8; Materi Pembelajaran</h2>
+<h3 class="materi-title" id="judulMateri"></h3>
+<p class="progress-pill" id="progressMateri"></p>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="btn-row">
+<button id="prevBtn" onclick="prevMateri()">&#x2B05; Sebelumnya</button>
+<button id="nextBtn" onclick="nextMateri()">Selanjutnya &#x27A1;</button>
+</div>
+</div>
+
+<div class="section">
+<h2>&#x1F6D1; Cara Aman Saat Banjir</h2>
+<ul class="safe-list">
+<li>&#x2705; Matikan listrik saat air mulai masuk rumah</li>
+<li>&#x2705; Segera pindah ke tempat yang lebih tinggi</li>
+<li>&#x2705; Hindari berjalan di arus deras atau genangan dalam</li>
+<li>&#x2705; Siapkan tas siaga berisi dokumen, obat, dan senter</li>
+<li>&#x2705; Pantau informasi resmi dari BPBD atau pemerintah</li>
+</ul>
+</div>
+
+<div class="video-section">
+<h2>&#x1F3A5; Video Animasi Edukasi Banjir</h2>
+<p>Video studi kasus sedang diperbarui. Sambil menunggu, pelajari materi mitigasi di atas dulu ya.</p>
+<div class="video-placeholder">Konten video akan segera tersedia.</div>
+</div>
+
+<a href="belajar.html" class="btn">&#x2B05; Kembali</a>
+</div>
+
+<script>
+const rainLayer=document.getElementById("rainLayer");
+for(let r=0;r<90;r++){
+const drop=document.createElement("span");
+drop.className="rain";
+drop.style.left=Math.random()*100+"%";
+drop.style.animationDuration=(0.45+Math.random()*0.9)+"s";
+drop.style.animationDelay=Math.random()*2+"s";
+drop.style.height=(12+Math.random()*14)+"px";
+rainLayer.appendChild(drop);
+}
+
+const materiData=[
+{judul:"Apa itu Banjir?",isi:"Banjir adalah peristiwa meluapnya air hingga menggenangi wilayah yang biasanya kering."},
+{judul:"Penyebab Banjir",isi:"Banjir bisa terjadi karena hujan deras, saluran air tersumbat, dan berkurangnya daerah resapan."},
+{judul:"Proses Terjadinya",isi:"Saat curah hujan tinggi, sungai dan drainase tidak mampu menampung air sehingga air meluap ke permukiman."},
+{judul:"Dampak Banjir",isi:"Banjir dapat merusak rumah, fasilitas umum, memicu penyakit, serta mengganggu aktivitas warga."},
+{judul:"Mitigasi Banjir",isi:"Mitigasi dilakukan dengan menjaga kebersihan saluran air, menanam pohon, membuat sumur resapan, dan menyiapkan jalur evakuasi."}
+];
+
+let currentIndex=0;
+let typingTimer;
+
+function typeText(text){
+const bubble=document.getElementById("bubble");
+const mouth=document.getElementById("mouth");
+bubble.textContent="";
+let i=0;
+
+if(typingTimer){
+clearInterval(typingTimer);
+}
+
+typingTimer=setInterval(()=>{
+bubble.textContent+=text.charAt(i);
+mouth.classList.add("talking");
+
+setTimeout(()=>{
+mouth.classList.remove("talking");
+},120);
+
+i++;
+
+if(i>=text.length){
+clearInterval(typingTimer);
+typingTimer=null;
+mouth.classList.remove("talking");
+}
+},30);
+}
+
+function loadMateri(){
+document.getElementById("judulMateri").textContent=materiData[currentIndex].judul;
+document.getElementById("progressMateri").textContent="Materi "+(currentIndex+1)+" / "+materiData.length;
+const progress=((currentIndex+1)/materiData.length)*100;
+document.getElementById("progressFill").style.width=progress+"%";
+document.getElementById("prevBtn").disabled=currentIndex===0;
+document.getElementById("nextBtn").disabled=currentIndex===materiData.length-1;
+typeText(materiData[currentIndex].isi);
+}
+
+function nextMateri(){
+if(currentIndex < materiData.length-1){
+currentIndex++;
+loadMateri();
+}
+}
+
+function prevMateri(){
+if(currentIndex > 0){
+currentIndex--;
+loadMateri();
+}
+}
+
+loadMateri();
+</script>
+</body>
+</html>
