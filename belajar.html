@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -11,21 +11,13 @@
 
 *{ box-sizing:border-box; }
 
-:root{
---sky-1:#c7e4f4;
---sky-2:#9ac7dd;
---sky-3:#2f6f8e;
---sky-4:#1e4a63;
---card:#ffffff;
-}
-
 /* ================= BODY ================= */
 body{
 font-family:Fredoka, sans-serif;
 margin:0;
 overflow-x:hidden;
 
-background: linear-gradient(-45deg, var(--sky-1), #e6f3fa, #d4eaf5, #f6fbfe, var(--sky-2));
+background: linear-gradient(-45deg, #c7e4f4, #e6f3fa, #d4eaf5, #f6fbfe, #9ac7dd);
 background-size: 420% 420%;
 animation: gradientBG 14s ease infinite;
 
@@ -150,7 +142,7 @@ z-index:0;
 
 /* ================= HEADER ================= */
 header{
-background:linear-gradient(120deg, var(--sky-3), var(--sky-4));
+background:linear-gradient(120deg, #2f6f8e, #1e4a63);
 color:white;
 padding:18px;
 font-size:clamp(18px,4vw,26px);
@@ -450,32 +442,32 @@ font-size:12px;
 </div>
 
 <header>
-<h1>📚 Materi Pembelajaran</h1>
+<h1>ðŸ“š Materi Pembelajaran</h1>
 </header>
 
 <div class="container">
 <div class="card">
 <div class="menu">
 <a href="Gunung_Meletus.html" class="menu-btn gunung">
-<div class="menu-icon">🌋</div>
+<div class="menu-icon">ðŸŒ‹</div>
 <span class="menu-title">Gunung Meletus</span>
 <span class="menu-desc">Erupsi Magma</span>
 </a>
 
 <a href="Tsunami.html" class="menu-btn tsunami">
-<div class="menu-icon">🌊</div>
+<div class="menu-icon">ðŸŒŠ</div>
 <span class="menu-title">Tsunami</span>
 <span class="menu-desc">Gelombang Besar</span>
 </a>
 
 <a href="Banjir.html" class="menu-btn banjir">
-<div class="menu-icon">💧</div>
+<div class="menu-icon">ðŸ’§</div>
 <span class="menu-title">Banjir</span>
 <span class="menu-desc">Genangan Air</span>
 </a>
 
 <a href="gempa_Bumi.html" class="menu-btn gempa">
-<div class="menu-icon">📍</div>
+<div class="menu-icon">ðŸ“</div>
 <span class="menu-title">Gempa Bumi</span>
 <span class="menu-desc">Getaran Tanah</span>
 </a>
@@ -484,13 +476,13 @@ font-size:12px;
 </div>
 </div>
 
-<button class="logout-btn" onclick="window.location.href='index.html'">← Kembali</button>
+<button class="logout-btn" onclick="window.location.href='index.html'">â† Kembali</button>
 
-<button id="musicBtn">🎵 Musik OFF</button>
+<button id="musicBtn">ðŸŽµ Musik OFF</button>
 
 <script>
 // ===== TYPING EFFECT =====
-const text = "Yuk belajar mengenai bencana alam! 📚";
+const text = "Yuk belajar mengenai bencana alam! ðŸ“š";
 let i = 0;
 const speed = 50;
 const bubble = document.getElementById("bubble");
@@ -517,10 +509,10 @@ document.addEventListener("click", function () {
 btn.addEventListener("click", () => {
     if(audio.paused){
         audio.play();
-        btn.textContent = "🔊 Musik ON";
+        btn.textContent = "ðŸ”Š Musik ON";
     } else {
         audio.pause();
-        btn.textContent = "🔇 Musik OFF";
+        btn.textContent = "ðŸ”‡ Musik OFF";
     }
 });
 </script>
