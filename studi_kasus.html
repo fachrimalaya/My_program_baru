@@ -98,12 +98,16 @@ font-size:15px;
 }
 
 .back-wrap{
-text-align:center;
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .back-link{
 display:inline-block;
 margin-top:24px;
+width:fit-content;
 padding:11px 18px;
 background:#f77f00;
 color:white;
@@ -128,6 +132,10 @@ font-size:14px;
 @media (max-width:768px){
 .grid{
 grid-template-columns:1fr;
+}
+
+.back-link{
+margin-top:20px;
 }
 }
 </style>
