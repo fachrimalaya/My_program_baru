@@ -405,6 +405,20 @@ box-shadow:0 16px 28px rgba(15,23,42,.28), 0 0 0 1px rgba(34,197,94,.15) inset;
 .container{ padding:20px; }
 .card{ padding:24px 18px; }
 
+header{
+padding:16px 14px;
+display:grid;
+grid-template-columns:auto 1fr auto;
+align-items:center;
+column-gap:10px;
+}
+
+.header-title{
+padding:0;
+font-size:clamp(16px,4vw,22px);
+line-height:1.2;
+}
+
 .earth-host{
 width:120px;
 height:120px;
@@ -424,29 +438,16 @@ font-size:18px;
 padding:20px;
 }
 
-header{
-display:flex;
-flex-direction:column;
-gap:10px;
-align-items:center;
-}
-
-.header-title{
-padding:0;
-}
-
 .logout-top{
-position:static;
-transform:none;
 font-size:14px;
 padding:8px 14px;
+white-space:nowrap;
 }
 
 .profil-top{
-position:static;
-transform:none;
 font-size:14px;
 padding:8px 14px;
+white-space:nowrap;
 }
 
 }
