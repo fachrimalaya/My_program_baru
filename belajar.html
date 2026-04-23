@@ -111,97 +111,87 @@ z-index:2;
 /* BADAN BUMI */
 
 .earth{
-width:140px;
-height:140px;
-background:radial-gradient(circle at 30% 30%, #4facfe, #0077b6);
+width:160px;
+height:160px;
+background:radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
 border-radius:50%;
 position:relative;
 animation:bounce 2s ease-in-out infinite;
-box-shadow:0 14px 30px rgba(2,132,199,.35);
+box-shadow:0 12px 25px rgba(0,0,0,.25);
 }
 
 /* WAJAH */
 
 .face{
 position:absolute;
-width:100%;
-top:45px;
-text-align:center;
+top:50px;
+left:0;
+right:0;
 }
 
 .eye{
-width:10px;
-height:10px;
-background:#000;
+width:18px;
+height:18px;
+background:white;
 border-radius:50%;
-display:inline-block;
-margin:0 10px;
-animation:blink 4s infinite;
+position:absolute;
+animation:blink 5s infinite;
 }
 
-.smile{
-width:30px;
-height:15px;
-border-bottom:4px solid black;
-border-radius:0 0 20px 20px;
-margin:5px auto;
+.eye.left{ left:45px;}
+.eye.right{ right:45px;}
+
+.mouth{
+width:45px;
+height:22px;
+border-bottom:4px solid white;
+border-radius:0 0 40px 40px;
+margin:25px auto;
+transition:.2s;
+}
+
+.talking{
+height:12px;
+background:white;
+border:none;
+border-radius:10px;
 }
 
 /* TANGAN */
 
-.arm{
-width:18px;
+.hand{
+width:24px;
 height:60px;
-background:#4facfe;
+background:#4cc9f0;
 position:absolute;
-top:50px;
+top:60px;
 border-radius:20px;
 }
 
-.left-arm{
-left:-20px;
+.left-hand{
+left:-22px;
 transform-origin:top;
 animation:wave 2s infinite;
 }
 
-.right-arm{
-right:-20px;
-}
-
-/* KAKI */
-
-.leg{
-width:18px;
-height:45px;
-background:#333;
-position:absolute;
-bottom:-35px;
-border-radius:20px;
-}
-
-.left-leg{
-left:35px;
-animation:walk 1s infinite alternate;
-}
-
-.right-leg{
-right:35px;
-animation:walk 1s infinite alternate-reverse;
+.right-hand{
+right:-22px;
 }
 
 /* BALON KATA */
 
-.speech{
+.bubble{
 margin-top:15px;
-background:rgba(255,255,255,.9);
+background:rgba(255,255,255,.95);
 color:#0c4a6e;
-padding:10px 18px;
-border-radius:20px;
+padding:14px 22px;
+border-radius:25px;
 box-shadow:0 10px 22px rgba(2,132,199,.18);
-font-size:14px;
-animation:fadeTalk 3s infinite;
+font-size:clamp(14px,3vw,18px);
 max-width:90%;
 text-align:center;
+min-height:40px;
+display:inline-block;
 }
 
 /* ===== CONTENT ===== */
@@ -360,15 +350,14 @@ max-height:none;
 }
 
 .earth{
-width:110px;
-height:110px;
+width:120px;
+height:120px;
 }
 
-.eye{
-margin:0 6px;
-}
+.eye.left{ left:30px;}
+.eye.right{ right:30px;}
 
-.speech{
+.bubble{
 font-size:13px;
 }
 
@@ -440,19 +429,14 @@ to{ transform:rotate(-10deg); }
         <div class="face">
             <div class="eye left"></div>
             <div class="eye right"></div>
-            <div class="smile"></div>
+            <div class="mouth"></div>
         </div>
 
-        <!-- tangan -->
-        <div class="arm left-arm"></div>
-        <div class="arm right-arm"></div>
-
-        <!-- kaki -->
-        <div class="leg left-leg"></div>
-        <div class="leg right-leg"></div>
+        <div class="hand left-hand"></div>
+        <div class="hand right-hand"></div>
     </div>
 
-    <div class="speech">
+    <div class="bubble">
         Halo teman! Yuk belajar bencana alam! 🌎
     </div>
 </div>

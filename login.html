@@ -160,13 +160,13 @@ body::before {
 }
 
 .earth-mascot {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   margin: auto;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
   position: relative;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
   animation: float 3s ease-in-out infinite;
 }
 
@@ -177,19 +177,26 @@ body::before {
 
 .face {
   position: absolute;
-  width: 100%;
-  top: 38px;
-  text-align: center;
+  top: 50px;
+  left: 0;
+  right: 0;
 }
 
 .eye {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   background: white;
   border-radius: 50%;
-  display: inline-block;
-  margin: 0 8px;
-  animation: blink 4s infinite;
+  position: absolute;
+  animation: blink 5s infinite;
+}
+
+.eye.left {
+  left: 45px;
+}
+
+.eye.right {
+  right: 45px;
 }
 
 @keyframes blink {
@@ -198,11 +205,36 @@ body::before {
 }
 
 .mouth {
-  width: 30px;
-  height: 14px;
-  border-bottom: 3px solid white;
-  border-radius: 0 0 25px 25px;
-  margin: 12px auto;
+  width: 45px;
+  height: 22px;
+  border-bottom: 4px solid white;
+  border-radius: 0 0 40px 40px;
+  margin: 25px auto;
+  transition: .2s;
+}
+
+.hand {
+  width: 24px;
+  height: 60px;
+  background: #4cc9f0;
+  position: absolute;
+  top: 60px;
+  border-radius: 20px;
+}
+
+.left-hand {
+  left: -22px;
+  animation: wave 2s infinite;
+}
+
+.right-hand {
+  right: -22px;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(-35deg); }
+  100% { transform: rotate(0deg); }
 }
 
 /* ================= TITLE ================= */
@@ -348,6 +380,19 @@ button:disabled {
     border-radius: 22px;
   }
 
+  .earth-mascot {
+    width: 120px;
+    height: 120px;
+  }
+
+  .eye.left {
+    left: 30px;
+  }
+
+  .eye.right {
+    right: 30px;
+  }
+
   h1 {
     font-size: 26px;
   }
@@ -370,10 +415,12 @@ button:disabled {
       <div class="mascot-wrapper">
         <div class="earth-mascot">
           <div class="face">
-            <div class="eye"></div>
-            <div class="eye"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
             <div class="mouth"></div>
           </div>
+          <div class="hand left-hand"></div>
+          <div class="hand right-hand"></div>
         </div>
       </div>
 
