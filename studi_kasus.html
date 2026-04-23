@@ -11,6 +11,7 @@ margin:0;
 font-family:Fredoka, sans-serif;
 background:linear-gradient(180deg,#d9f4ff 0%,#eef9ff 45%,#ffffff 100%);
 color:#143b52;
+overflow-x:hidden;
 }
 
 header{
@@ -75,6 +76,15 @@ box-shadow:0 8px 16px rgba(15,23,42,.18);
 .case-video{
 display:block;
 width:100%;
+height:100%;
+aspect-ratio:16/9;
+border:0;
+}
+
+.video-wrap iframe{
+display:block;
+width:100%;
+height:auto;
 aspect-ratio:16/9;
 border:0;
 }
@@ -115,6 +125,8 @@ color:#0d4e73;
 margin:0;
 font-size:14px;
 line-height:1.5;
+white-space:pre-line;
+word-break:break-word;
 }
 
 .back-wrap{
@@ -150,8 +162,24 @@ font-size:14px;
 }
 
 @media (max-width:768px){
+.container{
+padding:20px 14px 28px;
+}
+
 .grid{
 grid-template-columns:1fr;
+}
+
+.case-card{
+padding:14px;
+}
+
+.case-card h2{
+font-size:20px;
+}
+
+.video-wrap{
+margin:0 0 10px;
 }
 
 .back-link{
