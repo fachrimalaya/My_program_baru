@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edukasi Bencana Alam Anak</title>
+
+<!-- FONT ANAK -->
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--sky-1:#c7e4f4;
+--sky-2:#e6f3fa;
+--sky-3:#d4eaf5;
+--sky-4:#f6fbfe;
+--deep-navy:#0f172a;
+--slate:#1e293b;
+--accent:#0ea5e9;
+--accent-2:#0369a1;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Fredoka', sans-serif;
+}
+
+body{
+background:linear-gradient(-45deg,var(--sky-1),var(--sky-2),var(--sky-3),var(--sky-4));
+background-size:420% 420%;
+animation:gradientBG 14s ease infinite;
+overflow-x:hidden;
+min-height:100vh;
+color:#dbeafe;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-1;
+opacity:.22;
+pointer-events:none;
+background:repeating-linear-gradient(
+120deg,
+rgba(255,255,255,.55) 0 14px,
+rgba(255,255,255,0) 14px 36px
+);
+}
+
+/* ===== HEADER ===== */
+
+header{
+max-width:1100px;
+margin:20px auto 0;
+text-align:center;
+padding:36px 20px 28px;
+color:#e0f2fe;
+background:rgba(15,23,42,.78);
+backdrop-filter:blur(10px);
+border:1px solid rgba(148,163,184,.24);
+border-radius:26px;
+box-shadow:0 20px 40px rgba(15,23,42,.25);
+animation:fadeDown 1s ease;
+position:relative;
+overflow:hidden;
+}
+
+header::before{
+content:"";
+position:absolute;
+width:280px;
+height:280px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(14,165,233,.23),rgba(14,165,233,0));
+top:-150px;
+right:-70px;
+pointer-events:none;
+}
+
+header h1{
+font-size:clamp(24px,5vw,40px);
+position:relative;
+z-index:1;
+}
+
+header p{
+margin-top:10px;
+font-size:clamp(14px,3vw,18px);
+color:#bae6fd;
+position:relative;
+z-index:1;
+}
+
+/* ===== EARTH HOST ===== */
+
+.earth-host{
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+margin-top:28px;
+padding:0 15px;
+position:relative;
+z-index:2;
+}
+
+/* BADAN BUMI */
+
+.earth{
+width:160px;
+height:160px;
+background:radial-gradient(circle at 35% 35%, #4cc9f0, #0077b6);
+border-radius:50%;
+position:relative;
+animation:bounce 2s ease-in-out infinite;
+box-shadow:0 12px 25px rgba(0,0,0,.25);
+}
+
+/* WAJAH */
+
+.face{
+position:absolute;
+top:50px;
+left:0;
+right:0;
+}
+
+.eye{
+width:18px;
+height:18px;
+background:white;
+border-radius:50%;
+position:absolute;
+animation:blink 5s infinite;
+}
+
+.eye.left{ left:45px;}
+.eye.right{ right:45px;}
+
+.mouth{
+width:45px;
+height:22px;
+border-bottom:4px solid white;
+border-radius:0 0 40px 40px;
+margin:25px auto;
+transition:.2s;
+}
+
+.talking{
+height:12px;
+background:white;
+border:none;
+border-radius:10px;
+}
+
+/* TANGAN */
+
+.hand{
+width:24px;
+height:60px;
+background:#4cc9f0;
+position:absolute;
+top:60px;
+border-radius:20px;
+}
+
+.left-hand{
+left:-22px;
+transform-origin:top;
+animation:wave 2s infinite;
+}
+
+.right-hand{
+right:-22px;
+}
+
+/* BALON KATA */
+
+.bubble{
+margin-top:15px;
+background:rgba(255,255,255,.95);
+color:#0c4a6e;
+padding:14px 22px;
+border-radius:25px;
+box-shadow:0 10px 22px rgba(2,132,199,.18);
+font-size:clamp(14px,3vw,18px);
+max-width:90%;
+text-align:center;
+min-height:40px;
+display:inline-block;
+}
+
+/* ===== CONTENT ===== */
+
+.container{
+max-width:1100px;
+padding:34px 20px 10px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:22px;
+}
+
+.card{
+background:rgba(15,23,42,.8);
+border:1px solid rgba(148,163,184,.24);
+border-top:4px solid #38bdf8;
+border-radius:22px;
+padding:20px;
+text-align:center;
+box-shadow:0 16px 30px rgba(15,23,42,.26);
+transition:.35s;
+animation:fadeUp 1s ease;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 24px 34px rgba(15,23,42,.34);
+}
+
+.card::before{
+content:"";
+position:absolute;
+width:170px;
+height:170px;
+border-radius:50%;
+background:radial-gradient(circle,rgba(56,189,248,.16),rgba(56,189,248,0));
+top:-95px;
+right:-60px;
+pointer-events:none;
+}
+
+.card img{
+width:100%;
+height:auto;
+max-height:220px;
+object-fit:contain;
+margin-bottom:14px;
+border-radius:14px;
+border:1px solid rgba(148,163,184,.24);
+background:rgba(255,255,255,.06);
+}
+
+.card h3{
+color:#f0f9ff;
+font-size:22px;
+}
+
+.card p{
+font-size:14px;
+margin:10px 0 14px;
+color:#cbd5e1;
+min-height:40px;
+}
+
+.btn{
+display:inline-block;
+padding:10px 18px;
+background:linear-gradient(135deg,var(--accent),var(--accent-2));
+border-radius:12px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+transition:.3s;
+box-shadow:0 10px 16px rgba(2,132,199,.32);
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+text-align:center;
+padding:20px;
+background:rgba(15,23,42,.9);
+color:#cbd5e1;
+margin-top:40px;
+font-size:14px;
+}
+
+/* ===== MUSIC BUTTON ===== */
+
+#musicBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+padding:12px 18px;
+border:none;
+border-radius:12px;
+background:linear-gradient(135deg,var(--accent),var(--accent-2));
+color:white;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 12px 20px rgba(2,132,199,.34);
+z-index:5;
+}
+
+/* ===== BUTTON KEMBALI DASHBOARD ===== */
+
+.back-btn{
+position:absolute;
+top:20px;
+left:20px;
+background:rgba(255,255,255,.94);
+color:#0c4a6e;
+border:none;
+padding:8px 15px;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 6px 14px rgba(15,23,42,.22);
+text-decoration:none;
+font-size:14px;
+z-index:2;
+}
+
+.back-btn:hover{
+transform:translateY(-2px);
+}
+
+/* ===== RESPONSIVE HP ===== */
+
+@media (max-width:768px){
+
+header{
+padding:30px 15px;
+}
+
+.container{
+padding:30px 15px;
+gap:16px;
+grid-template-columns:1fr;
+}
+
+.card{
+width:100%;
+}
+
+.card img{
+max-height:none;
+}
+
+.earth{
+width:120px;
+height:120px;
+}
+
+.eye.left{ left:30px;}
+.eye.right{ right:30px;}
+
+.bubble{
+font-size:13px;
+}
+
+.back-btn{
+top:10px;
+left:10px;
+font-size:12px;
+padding:6px 12px;
+}
+
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes fadeDown{
+from{opacity:0; transform:translateY(-40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes bounce{
+0%,100%{ transform:translateY(0); }
+50%{ transform:translateY(-10px); }
+}
+
+@keyframes wave{
+0%{ transform:rotate(0deg); }
+50%{ transform:rotate(-35deg); }
+100%{ transform:rotate(0deg); }
+}
+
+@keyframes walk{
+from{ transform:rotate(10deg); }
+to{ transform:rotate(-10deg); }
+}
+
+@keyframes blink{
+0%,95%,100%{ transform:scaleY(1); }
+97%{ transform:scaleY(0.1); }
+}
+
+@keyframes fadeTalk{
+0%,100%{ opacity:1; }
+50%{ opacity:.7; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== BACKSOUND ===== -->
+<audio id="backsound" loop>
+    <source src="assets/mp3/audio1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ===== BUMI HOST ===== -->
+<div class="earth-host">
+    <div class="earth">
+        <div class="face">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="mouth"></div>
+        </div>
+
+        <div class="hand left-hand"></div>
+        <div class="hand right-hand"></div>
+    </div>
+
+    <div class="bubble">
+        Halo teman! Yuk belajar bencana alam! 🌎
+    </div>
+</div>
+
+
+<header>
+
+<a href="index.html" class="back-btn">
+⬅ Keluar
+</a>
+
+<h1>🌎 Edukasi Bencana Alam</h1>
+<p>Belajar Aman dari Bencana dengan Cara Seru!</p>
+</header>
+<section class="container">
+    <div class="card">
+        <img src="assets/jpg/gn_meletus.jpg">
+        <h3>Gunung Meletus</h3>
+        <p>Pahami tanda erupsi, zona bahaya, dan langkah evakuasi yang tepat.</p>
+        <a href="Gunung_Meletus.html" class="btn">Belajar</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/jpg/Tsunami.jpg">
+        <h3>Tsunami</h3>
+        <p>Pelajari cara membaca peringatan dini dan bergerak cepat ke tempat tinggi.</p>
+        <a href="Tsunami.html" class="btn">Belajar</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/jpg/banjir.jpg">
+        <h3>Banjir</h3>
+        <p>Ketahui penyebab banjir, pencegahan sederhana, dan perlengkapan siaga.</p>
+        <a href="Banjir.html" class="btn">Belajar</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/jpg/gempa.jpg">
+        <h3>Gempa Bumi</h3>
+        <p>Latih prosedur Drop, Cover, and Hold On untuk melindungi diri saat gempa.</p>
+        <a href="gempa_Bumi.html" class="btn">Belajar</a>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Website Edukasi Bencana Alam | Fachri Malaya ✨</p>
+</footer>
+
+<!-- BUTTON MUSIC -->
+<button id="musicBtn">🎵 Musik OFF</button>
+
+<!-- ===== SCRIPT BACKSOUND ===== -->
+<script>
+const audio = document.getElementById("backsound");
+const btn = document.getElementById("musicBtn");
+
+let started = false;
+
+// autoplay setelah klik pertama
+document.addEventListener("click", function () {
+    if(!started){
+        audio.play();
+        btn.textContent = "🔊 Musik ON";
+        started = true;
+    }
+}, { once:true });
+
+// tombol ON/OFF
+btn.addEventListener("click", () => {
+    if(audio.paused){
+        audio.play();
+        btn.textContent = "🔊 Musik ON";
+    } else {
+        audio.pause();
+        btn.textContent = "🔇 Musik OFF";
+    }
+});
+</script>
+
+</body>
+</html>
